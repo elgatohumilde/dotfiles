@@ -1,0 +1,38 @@
+#+title: Foot
+#+PROPERTY: header-args :tangle ~/.config/foot/foot.ini :mkdirp yes
+
+* Font
+#+BEGIN_SRC sh
+font=jetbrainsMonoNF:size=16
+
+#+END_SRC
+* Colorscheme
+#+BEGIN_SRC sh
+[colors]
+background=272E33
+foreground=D3C6AA
+regular0=475258
+regular1=E67E80
+regular2=A7C080
+regular3=DBBC7F
+regular4=7FBBB3
+regular5=D699B6
+regular6=83C092
+regular7=272E33
+bright0=475258
+bright1=E67E80
+bright2=A7C080
+bright3=DBBC7F
+bright4=7FBBB3
+bright5=D699B6
+bright6=83C092
+bright7=D3C6AA
+
+#+END_SRC
+* Cursor
+#+BEGIN_SRC sh
+[cursor]
+style=beam
+color=000000 FF0017
+
+#+END_SRC

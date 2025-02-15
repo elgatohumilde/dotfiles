@@ -1,0 +1,227 @@
+#+TITLE: Hyprland
+#+PROPERTY: header-args :tangle ~/.config/hypr/hyprland.conf :mkdirp yes
+
+* Disable update notifications
+#+BEGIN_SRC sh
+ecosystem:no_update_news = true
+
+#+END_SRC
+* Monitor config
+#+BEGIN_SRC sh
+################
+### MONITORS ###
+################
+
+monitor=,preferred,auto,1
+
+#+END_SRC
+* Set default programs
+#+BEGIN_SRC sh
+###################
+### MY PROGRAMS ###
+###################
+
+$terminal = foot
+$fileManager = thunar
+$TfileManager = foot -e yazi
+$menu = rofi -show drun
+
+#+END_SRC
+* Set autostart commands
+#+BEGIN_SRC sh
+#################
+### AUTOSTART ###
+#################
+
+exec-once = nm-applet &
+exec-once = waybar & hyprpaper &
+exec-once = emacs --daemon &
+
+#+END_SRC
+* Environment variables
+#+BEGIN_SRC sh
+#############################
+### ENVIRONMENT VARIABLES ###
+#############################
+
+env = XCURSOR_SIZE,24
+env = HYPRCURSOR_SIZE,24
+
+#+END_SRC
+* Aesthetic configs
+#+BEGIN_SRC sh
+#####################
+### LOOK AND FEEL ###
+#####################
+
+general {
+    gaps_in = 2.5
+    gaps_out = 5
+
+    border_size = 4
+
+    col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
+    col.inactive_border = rgba(595959aa)
+
+    resize_on_border = true
+
+    allow_tearing = false
+
+    layout = dwindle
+}
+
+decoration {
+    rounding = 0
+
+    active_opacity = 0.95
+    inactive_opacity = 0.95
+
+    shadow {
+        enabled = false
+    }
+
+    blur {
+        enabled = false
+    }
+}
+
+animations {
+    enabled = no
+}
+
+dwindle {
+    pseudotile = true
+
+    preserve_split = true
+}
+
+master {
+    new_status = master
+}
+
+misc {
+    force_default_wallpaper = 0
+    disable_hyprland_logo = true
+}
+
+#+END_SRC
+* Input devices config
+#+BEGIN_SRC sh
+#############
+### INPUT ###
+#############
+
+input {
+    kb_layout = latam
+    kb_variant =
+    kb_model =
+    kb_options = caps:swapescape
+    kb_rules =
+
+    follow_mouse = 1
+
+    sensitivity = 0
+
+    touchpad {
+        natural_scroll = false
+    }
+}
+
+gestures {
+    workspace_swipe = false
+}
+
+device {
+    name = epic-mouse-v1
+    sensitivity = -0.5
+}
+
+#+END_SRC
+* Set keybinds
+#+BEGIN_SRC sh
+###################
+### KEYBINDINGS ###
+###################
+
+$mainMod = SUPER
+
+bind = , Print             ,exec, ~/.local/bin/screenshot.sh all
+bind = SHIFT, Print        ,exec, ~/.local/bin/screenshot.sh region
+
+bind = $mainMod, Q, exec, $terminal
+bind = $mainMod, C, killactive,
+bind = $mainMod, M, exit,
+bind = $mainMod, E, exec, $fileManager
+bind = $mainMod + SHIFT, E, exec, $TfileManager
+bind = $mainMod, V, togglefloating,
+bind = $mainMod, R, exec, $menu
+bind = $mainMod, P, pseudo, # dwindle
+bind = $mainMod, J, togglesplit, # dwindle
+
+bind = $mainMod, left, movefocus, l
+bind = $mainMod, right, movefocus, r
+bind = $mainMod, up, movefocus, u
+bind = $mainMod, down, movefocus, d
+
+bind = $mainMod, 1, workspace, 1
+bind = $mainMod, 2, workspace, 2
+bind = $mainMod, 3, workspace, 3
+bind = $mainMod, 4, workspace, 4
+bind = $mainMod, 5, workspace, 5
+bind = $mainMod, 6, workspace, 6
+bind = $mainMod, 7, workspace, 7
+bind = $mainMod, 8, workspace, 8
+bind = $mainMod, 9, workspace, 9
+bind = $mainMod, 0, workspace, 10
+
+bind = $mainMod SHIFT, 1, movetoworkspace, 1
+bind = $mainMod SHIFT, 2, movetoworkspace, 2
+bind = $mainMod SHIFT, 3, movetoworkspace, 3
+bind = $mainMod SHIFT, 4, movetoworkspace, 4
+bind = $mainMod SHIFT, 5, movetoworkspace, 5
+bind = $mainMod SHIFT, 6, movetoworkspace, 6
+bind = $mainMod SHIFT, 7, movetoworkspace, 7
+bind = $mainMod SHIFT, 8, movetoworkspace, 8
+bind = $mainMod SHIFT, 9, movetoworkspace, 9
+bind = $mainMod SHIFT, 0, movetoworkspace, 10
+
+bind = $mainMod, S, togglespecialworkspace, magic
+bind = $mainMod SHIFT, S, movetoworkspace, special:magic
+
+bind = $mainMod, mouse_down, workspace, e+1
+bind = $mainMod, mouse_up, workspace, e-1
+
+bindm = $mainMod, mouse:272, movewindow
+bindm = $mainMod, mouse:273, resizewindow
+
+bindel = ,XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindel = ,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindel = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindel = ,XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+bindel = ,XF86MonBrightnessUp, exec, brightnessctl s 10%+
+bindel = ,XF86MonBrightnessDown, exec, brightnessctl s 10%-
+bindel = ,XF86KbdBrightnessUp, exec, brightnessctl -d asus::kbd_backlight s 1+
+bindel = ,XF86KbdBrightnessDown, exec, brightnessctl -d asus::kbd_backlight s 1-
+
+bindl = , XF86AudioNext, exec, playerctl next
+bindl = , XF86AudioPause, exec, playerctl play-pause
+bindl = , XF86AudioPlay, exec, playerctl play-pause
+bindl = , XF86AudioPrev, exec, playerctl previous
+
+#+END_SRC
+* Windows/Workspaces rules
+#+BEGIN_SRC sh
+##############################
+### WINDOWS AND WORKSPACES ###
+##############################
+
+windowrulev2 = suppressevent maximize, class:.*
+
+windowrulev2 = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
+
+#+END_SRC
+* Hyprpaper
+#+BEGIN_SRC sh :tangle ~/.config/hypr/hyprpaper.conf :mkdirp yes
+preload = /home/joaquin/.config/hypr/background.jpg
+wallpaper = , /home/joaquin/.config/hypr/background.jpg
+#+END_SRC

@@ -1,0 +1,3 @@
+#+TITLE:	Dotfiles
+
+Configuraciones que quiero almacenar para no estar reescribiendo cada vez que realice un formateo.

@@ -1,0 +1,233 @@
+#+title: Waybar
+
+* Config
+:PROPERTIES:
+:header-args: :tangle ~/.config/waybar/config.jsonc :mkdirp yes
+:END:
+** General settings
+#+BEGIN_SRC json
+{
+    "position" : "top",
+    "modules-left": ["tray"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["pulseaudio", "network", "backlight", "cpu", "memory", "battery", "battery#bat2", "clock"],
+
+#+END_SRC
+** Modules
+#+BEGIN_SRC json
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:%H:%M }",
+        "format-alt": "{:%Y-%m-%d}"
+
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "backlight": {
+        "format": "{percent}% ",
+        "format-icons": ["", ""]
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% ",
+        "format-charging": "{capacity}%",
+        "format-plugged": "{capacity}%",
+        "format-alt": "{time} ",
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        "format": "{volume}%  {format_source}",
+        "format-bluetooth": "{volume}%  {format_source}",
+        "format-bluetooth-muted": "  {format_source}",
+        "format-muted": "  {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "on-click": "pavucontrol"
+    }
+}
+
+#+END_SRC
+* Style
+:PROPERTIES:
+:header-args: :tangle ~/.config/waybar/style.css :mkdirp yes
+:END:
+** General settings
+#+BEGIN_SRC css
+*{
+    border: none;
+    border-radius: 0px;
+    font-family: "Roboto Mono Medium", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    min-height: 0;
+}
+
+#+END_SRC
+** Windows/Workspaces config
+#+BEGIN_SRC css
+window#waybar {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #ffffff;
+}
+
+#workspaces button {
+    color: #ffffff;
+    box-shadow: inset 0 -3px transparent;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces button.focused {
+    background-color: #64727D;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#mode {
+    background-color: #64727D;
+}
+
+#+END_SRC
+** Modules
+#+BEGIN_SRC css
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#mpd {
+    padding: 0 10px;
+    margin: 6px 3px;
+    color: #000000;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#clock {
+    background-color: #000000;
+    color: white;
+}
+
+#battery {
+    background-color: #000000;
+    color: white;
+}
+
+#battery.charging {
+    color: #ffffff;
+    background-color: #000000;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#cpu {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#memory {
+    background-color: #000000;
+    color: white;
+}
+
+#backlight {
+    background-color: #000000;
+    color:white;
+}
+
+#network {
+    background-color: #000000;
+    color:white;
+
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+}
+
+#pulseaudio {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#pulseaudio.muted {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#temperature {
+    background-color: #f0932b;
+}
+
+#temperature.critical {
+    background-color: #eb4d4b;
+}
+
+#tray {
+    background-color: #2980b9;
+}
+
+#+END_SRC
