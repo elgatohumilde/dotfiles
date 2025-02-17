@@ -55,7 +55,6 @@ vim.api.nvim_create_autocmd({"VimLeave"},{
 })
 
 #+END_SRC
-
 * Plugin manager config
 :PROPERTIES:
 :header-args: :tangle ~/.config/nvim/lua/config/lazy.lua :mkdirp yes
@@ -93,7 +92,6 @@ require("lazy").setup({
 })
 
 #+END_SRC
-
 * Plugin settings
 ** cmp
 #+BEGIN_SRC lua :tangle ~/.config/nvim/lua/plugins/cmp.lua :mkdirp yes
