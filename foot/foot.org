@@ -3,7 +3,7 @@
 
 * Font
 #+BEGIN_SRC sh
-font=jetbrainsMonoNF:size=16
+font=caskaydiaCoveNF:size=16
 
 #+END_SRC
 * Colorscheme

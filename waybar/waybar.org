@@ -7,7 +7,7 @@
 ** General settings
 #+BEGIN_SRC json
 {
-    "position" : "top",
+    "position" : "bottom",
     "modules-left": ["tray"],
     "modules-center": ["hyprland/workspaces"],
     "modules-right": ["pulseaudio", "network", "backlight", "cpu", "memory", "battery", "battery#bat2", "clock"],

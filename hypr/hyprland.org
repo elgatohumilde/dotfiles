@@ -73,8 +73,8 @@ general {
 decoration {
     rounding = 0
 
-    active_opacity = 0.95
-    inactive_opacity = 0.95
+    active_opacity = 0.97
+    inactive_opacity = 0.97
 
     shadow {
         enabled = false
@@ -222,6 +222,6 @@ windowrulev2 = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinn
 #+END_SRC
 * Hyprpaper
 #+BEGIN_SRC sh :tangle ~/.config/hypr/hyprpaper.conf :mkdirp yes
-preload = /home/joaquin/.config/hypr/background.jpg
-wallpaper = , /home/joaquin/.config/hypr/background.jpg
+preload = /home/joaquin/.config/hypr/background.png
+wallpaper = , /home/joaquin/.config/hypr/background.png
 #+END_SRC
