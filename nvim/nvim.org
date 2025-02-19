@@ -481,6 +481,26 @@ return {
   },
 }
 #+END_SRC
+** live-share
+#+BEGIN_SRC lua :tangle ~/.config/nvim/lua/plugins/live-share.lua :mkdirp yes
+return {
+  {
+    "azratul/live-share.nvim",
+    dependencies = {
+      "jbyuki/instant.nvim",
+    },
+    config = function()
+      vim.g.instant_username = "elgatohumilde"
+      require("live-share").setup({
+        port_internal = 8765,
+        max_attempts = 40,
+        service_url = "/tmp/service.url",
+        service = "nokey@localhost.run",
+      })
+    end
+  },
+}
+#+END_SRC
 ** theme
 #+BEGIN_SRC lua :tangle ~/.config/nvim/lua/plugins/theme.lua :mkdirp yes
 return {

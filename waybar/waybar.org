@@ -76,7 +76,7 @@
 *{
     border: none;
     border-radius: 0px;
-    font-family: "Roboto Mono Medium", Helvetica, Arial, sans-serif;
+    font-family: "Roboto Mono Medium";
     font-size: 14px;
     min-height: 0;
 }

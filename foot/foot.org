@@ -3,7 +3,7 @@
 
 * Font
 #+BEGIN_SRC sh
-font=caskaydiaCoveNF:size=16
+font=caskaydiaCoveNFM-Regular:size=14
 
 #+END_SRC
 * Colorscheme
@@ -18,7 +18,7 @@ regular3=DBBC7F
 regular4=7FBBB3
 regular5=D699B6
 regular6=83C092
-regular7=272E33
+regular7=D3C6AA
 bright0=475258
 bright1=E67E80
 bright2=A7C080
