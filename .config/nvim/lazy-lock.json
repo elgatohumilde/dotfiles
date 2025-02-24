@@ -1,6 +1,6 @@
 {
   "LuaSnip": { "branch": "master", "commit": "c9b9a22904c97d0eb69ccb9bab76037838326817" },
-  "R.nvim": { "branch": "main", "commit": "a32131a9f71ed2e1527db3a3994958d33210cb79" },
+  "R.nvim": { "branch": "main", "commit": "a17340023892e96723a23ab0cb00ce6427b13f95" },
   "base16-nvim": { "branch": "master", "commit": "3f13e15c53ea2aaf79c24ceab725309d87f0619c" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "99290b3ec1322070bcfb9e846450a46f6efa50f0" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },

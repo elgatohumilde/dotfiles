@@ -29,6 +29,18 @@ c.content.default_encoding = "utf-8"
 c.statusbar.widgets = ["keypress", "progress", "url", "scroll"]
 c.content.javascript.clipboard = "access"
 
+# Yazi as file picker [Not working]
+#config.set("fileselect.handler", "default")
+#config.set("fileselect.handler", "external")
+#config.set("fileselect.single_file.command", ['echo', '/home/joaquin/.gitconfig'])
+#config.set("fileselect.multiple_files.command", ['echo', '/home/joaquin/.gitconfig'])
+#config.set("fileselect.single_file.command", ['bash', '-i', '-c', '"/home/joaquin/.local/bin/file-picker 2>/dev/null"'])
+#config.set("fileselect.multiple_files.command", ['bash', '-i', '-c', '"/home/joaquin/.local/bin/file-picker 2>/dev/null"'])
+#config.set("fileselect.single_file.command", ['bash', '-c', 'filepick'])
+#config.set("fileselect.multiple_files.command", ['bash', '-c', 'filepick'])
+#config.set("fileselect.single_file.command", ['foot', '-e', 'yazi', '--chooser-file', '{file}'])
+#config.set("fileselect.multiple_files.command", ['foot', '-e', 'yazi', '--chooser-file', '{files}'])
+
 # Adblock / Javascript
 c.content.javascript.enabled = True
 c.content.blocking.enabled = True
