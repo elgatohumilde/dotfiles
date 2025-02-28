@@ -41,10 +41,10 @@
 	"on-click": "$TERMINAL -e nmtui"
     },
     "pulseaudio": {
-		"format": "{icon}    {format_source}",
+		"format": "{icon}     {format_source}",
 		"format-source": "",
 		"format-source-muted": "",
-		"format-muted": "󰖁    {format_source}",
+		"format-muted": "󰖁     {format_source}",
 		"format-icons": {
 			"default": ["", "", "󰕾"]
 		},

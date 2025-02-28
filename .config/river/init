@@ -1,5 +1,5 @@
-riverctl spawn 'hyprpaper &'
 riverctl spawn 'waybar &'
+riverctl spawn 'hyprpaper &'
 
 riverctl keyboard-layout -options "caps:swapescape" latam
 

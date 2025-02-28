@@ -36,7 +36,7 @@
 }
 
 window#waybar {
-    background-color: @crust;
+    background-color: #000000;
     color: @text;
     transition-property: background-color;
     transition-duration: .5s;
@@ -153,7 +153,7 @@ button {
 	font-size: 4px;
 	margin-bottom: 0px;
 	border-radius: 10px;
-	background: #161320;
+	background: #000000;
 	transition: none;
 }
 
