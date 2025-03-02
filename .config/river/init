@@ -1,3 +1,4 @@
+riverctl spawn 'eww open desktop-time &'
 riverctl spawn 'waybar &'
 riverctl spawn 'hyprpaper &'
 
@@ -5,7 +6,7 @@ riverctl keyboard-layout -options "caps:swapescape" latam
 
 riverctl map normal Super Q spawn foot
 riverctl map normal Super E spawn thunar
-riverctl map normal Super+Shift E spawn 'foot -e yazi'
+riverctl map normal Super+Shift E spawn 'foot -e spf'
 riverctl map normal Super R spawn 'exec $(tofi-drun)'
 riverctl map normal Super P spawn hyprlock
 

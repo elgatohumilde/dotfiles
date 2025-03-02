@@ -1,6 +1,7 @@
 return {
   {
     'R-nvim/R.nvim',
+    enabled = false,
     lazy = false,
     config = function()
       local opts = {

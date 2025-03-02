@@ -1,9 +1,9 @@
 return {
-  "RRethy/base16-nvim",
+  "rose-pine/neovim",
   lazy = false,
   priority = 1000,
   init = function()
-    vim.cmd.colorscheme 'base16-gruvbox-dark-hard'
+    vim.cmd.colorscheme 'rose-pine'
     vim.cmd.hi 'Comment gui=none'
   end,
 }

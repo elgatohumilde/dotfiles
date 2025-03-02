@@ -11,8 +11,8 @@ export PATH=$PATH:/home/joaquin/.local/bin
 export EDITOR=nvim
 export TERMINAL=foot
 
-alias ls='ls --color=auto'
-alias la='ls -a'
+alias ls='ls --color=auto -l'
+alias la='ls -A'
 alias grep='grep --color=auto'
 alias open='xdg-open'
 

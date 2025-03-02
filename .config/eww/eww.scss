@@ -1,0 +1,17 @@
+* {
+  all: unset;
+  font-family: "Caskaydia Cove Nerd Font Mono";
+  color: rgb(255, 255, 255);
+}
+
+.desktop-time {
+  .time {
+    font-weight: bold;
+    font-size: 10em;
+    margin-bottom: 0.5rem;
+  }
+
+  .date {
+    font-size: 3em;
+  }
+}

@@ -1,0 +1,24 @@
+(defpoll time :interval "1s"
+  `date +'%H:%M'`)
+
+(defpoll date :interval "30s"
+  `date +'%A, %B %-d'`)
+
+(defwindow desktop-time
+  :monitor 0
+  :geometry (geometry :anchor "center left" :x "10%")
+  :stacking "bg"
+  :namespace "eww-desktop"
+  (desktop-time))
+
+(defwindow desktop-time-alt
+  :monitor 0
+  :geometry (geometry :anchor "center left" :x "5%")
+  :stacking "bg"
+  :namespace "eww-desktop"
+  (desktop-time))
+
+(defwidget desktop-time []
+  (box :class "desktop-time" :orientation "v" :space-evenly false
+    (label :class "time" :text {time})
+    (label :class "date" :text {date})))
