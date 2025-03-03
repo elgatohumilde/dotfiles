@@ -13,11 +13,7 @@ auto_check_update = true
 cd_on_quit = false
 #
 # Whether to open file preview automatically every time superfile is opened.
-<<<<<<< HEAD
 default_open_file_preview = false
-=======
-default_open_file_preview = true
->>>>>>> cf81462a9f9ea8a4deb644c498fd284db72bf9e8
 # 
 # The path of the first file panel when superfile is opened.
 default_directory = "."
