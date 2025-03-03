@@ -159,7 +159,7 @@ button {
 
 #tags button {
 	transition: none;
-	color: #B5E8E0;
+	color: @text;
 	background: transparent;
 	font-size: 16px;
 	border-radius: 2px;

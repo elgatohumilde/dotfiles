@@ -2,11 +2,20 @@ riverctl spawn 'eww open desktop-time &'
 riverctl spawn 'waybar &'
 riverctl spawn 'hyprpaper &'
 
+systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
+systemctl --user restart xdg-desktop-portal
+
 riverctl keyboard-layout -options "caps:swapescape" latam
 
 riverctl map normal Super Q spawn foot
 riverctl map normal Super E spawn thunar
 riverctl map normal Super+Shift E spawn 'foot -e spf'
+<<<<<<< HEAD
+riverctl map normal None Print spawn 'screenshot all'
+riverctl map normal Shift Print spawn 'screenshot region'
+=======
+>>>>>>> cf81462a9f9ea8a4deb644c498fd284db72bf9e8
 riverctl map normal Super R spawn 'exec $(tofi-drun)'
 riverctl map normal Super P spawn hyprlock
 

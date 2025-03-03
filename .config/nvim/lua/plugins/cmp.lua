@@ -56,10 +56,10 @@ return {
           { name = 'luasnip' },
           { name = 'path' },
           { name = 'orgmode' },
-          { name = 'cmp_r' }
+          -- { name = 'cmp_r' }
         },
       }
-      require("cmp_r").setup({})
+      -- require("cmp_r").setup({})
     end,
   },
 }

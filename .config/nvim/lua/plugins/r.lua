@@ -31,5 +31,6 @@ return {
   },
   {
     "r-nvim/cmp-r",
+    enabled = false,
   },
 }
