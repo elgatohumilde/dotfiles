@@ -9,8 +9,9 @@ systemctl --user restart xdg-desktop-portal
 riverctl keyboard-layout -options "caps:swapescape" latam
 
 riverctl map normal Super Q spawn foot
+riverctl map normal Super+Shift Q spawn 'foot tmux a'
 riverctl map normal Super E spawn thunar
-riverctl map normal Super+Shift E spawn 'foot -e spf'
+riverctl map normal Super+Shift E spawn 'foot -a "foot-float" -e spf'
 riverctl map normal None Print spawn 'screenshot all'
 riverctl map normal Shift Print spawn 'screenshot region'
 riverctl map normal Super R spawn 'exec $(tofi-drun)'
@@ -109,6 +110,10 @@ riverctl set-repeat 50 300
 
 riverctl rule-add -app-id 'R_x11' -title '*' float
 riverctl rule-add -app-id '*' -title 'Data*' float
+riverctl rule-add -app-id '*hunar' float
+riverctl rule-add -app-id '*hunar' dimensions 1200 800
+riverctl rule-add -app-id 'foot-float' float
+riverctl rule-add -app-id 'foot-float' dimensions 1200 800
 
 riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 &

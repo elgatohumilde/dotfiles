@@ -1,18 +1,19 @@
 
 return {
   {
-    'OXY2DEV/markview.nvim',
-    opts = {
-      preview = {
-        hybrid_modes = { 'n' },
-      },
-    },
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
   },
-  {
-    'tadmccorkle/markdown.nvim',
-	ft = "markdown",
-	opts = {
-
-	},
-  },
+--  {
+--    'tadmccorkle/markdown.nvim',
+--	  ft = "markdown",
+--	  opts = {
+--
+--	  },
+--  },
 }

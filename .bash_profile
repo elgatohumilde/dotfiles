@@ -4,4 +4,6 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-exec river
+if [ -z $TMUX ]; then
+    exec river
+fi

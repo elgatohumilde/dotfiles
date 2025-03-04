@@ -21,8 +21,9 @@ vim.g.have_nerd_font = true
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_hide = 0
-vim.g.netrw_liststyle = 3
-vim.g.netrw_winsize = 25
+vim.g.netrw_liststyle = 0
+vim.g.netrw_winsize = 30
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
@@ -39,7 +40,14 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<leader>mp', vim.cmd.MarkdownPreviewToggle, { desc = 'Toggle Markdown Preview' })
 vim.keymap.set('n', '\\', vim.cmd.Lexplore, { desc = 'Open Netrw' })
+vim.keymap.set('n', '<leader>|', '<cmd>vsplit<CR>')
+vim.keymap.set('n', '<leader>_', '<cmd>split<CR>')
+-- fast tab switching
+for i = 1, 9 do
+  vim.api.nvim_set_keymap('n', '<A-'..i..'>', i..'gt', { noremap = true, silent = true })
+end
 
 vim.api.nvim_create_autocmd({"VimLeave"},{
     command = "set guicursor=a:ver20",
