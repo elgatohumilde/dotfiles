@@ -22,8 +22,6 @@ riverctl map normal Super K focus-view previous
 riverctl map normal Super+Shift J swap next
 riverctl map normal Super+Shift K swap previous
 riverctl map normal Super Period focus-output next
-riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05"
-riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05"
 riverctl map normal Super Comma focus-output previous
 riverctl map normal Super+Shift Period send-to-output next
 riverctl map normal Super+Shift Comma send-to-output previous

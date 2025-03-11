@@ -7,4 +7,4 @@
         (table.insert plugins
                       (require (.. :plugins. (file:match "^(.*)%.fnl$")))))))
 
-((. (require :lazy) :setup) plugins {:ui {:border :rounded} :install {:colorscheme ["default"]}})
+((. (require :lazy) :setup) plugins {:ui {:border :rounded} :install {:colorscheme ["default"]} :checker {:enabled true}})

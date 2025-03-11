@@ -7,10 +7,10 @@ mode="$1"
 
 case $mode in
     "region")
-        grim -g "$(slurp)" - | wl-copy
+      (grim -g "$(slurp)" - | wl-copy) && notify-send -t 2000 "Screenshot taken"
         ;;
     "all")
-        grim - | wl-copy
+      (grim - | wl-copy) && notify-send -t 2000 "Screenshot taken"
         ;;
     *)
         echo >&2 "unsupported command \"$mode\""

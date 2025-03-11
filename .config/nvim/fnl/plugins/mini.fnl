@@ -11,5 +11,7 @@
          (let [statusline (require "mini.statusline")]
            (statusline.setup {:use_icons vim.g.have_nerd_font})
            (set statusline.section_location (fn [] "%2l:%2v"))
-           ))})
+           )
+         nil
+         )})
 ]

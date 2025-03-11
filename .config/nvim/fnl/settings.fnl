@@ -34,6 +34,7 @@
 
 (vim.schedule (fn init []
 		(set vim.opt.clipboard :unnamedplus)
+    nil
     )
   )
 
