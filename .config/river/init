@@ -112,6 +112,7 @@ riverctl rule-add -app-id '*hunar' float
 riverctl rule-add -app-id '*hunar' dimensions 1200 800
 riverctl rule-add -app-id 'kitty-float' float
 riverctl rule-add -app-id 'kitty-float' dimensions 1200 800
+riverctl rule-add -title 'Save As' dimensions 1200 800
 
 riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 &

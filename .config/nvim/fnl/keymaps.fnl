@@ -13,7 +13,7 @@
 (vim.api.nvim_set_keymap :n :<leader>sf "<cmd>Pick cli command={\"fd\" \"-I\"}<CR>" {:desc "[S]earch [F]iles"})
 (vim.api.nvim_set_keymap :n :<leader>sh "<cmd>Pick cli command={\"fd\" \"-H\" \"-I\"}<CR>" {:desc "[S]earch [H]idden"})
 (vim.api.nvim_set_keymap :n :<leader>sk "<cmd>Pick keymaps<CR>" {:desc "[S]earch [K]eymaps"})
-(vim.api.nvim_set_keymap :n :<leader>sn "<cmd>Pick cli command={\"fd\" \"-H\" \"-I\" \".\" \"/home/joaquin/.config/nvim/\"}<CR>" {:desc "[S]earch [N]eovim config"})
+(vim.api.nvim_set_keymap :n :<leader>sn "<cmd>Pick cli command={\"fd\" \"-H\" \"-I\" \".\" \"/home/joaquin/.config/nvim/\"}<CR>" {:desc "[S]earch [N]eovim files"})
 (vim.api.nvim_set_keymap :n :<leader>sc "<cmd>Pick cli command={\"fd\" \"-H\" \"-I\" \".\" \"/home/joaquin/.dotfiles/\"}<CR>" {:desc "[S]earch [C]onfiguration"})
 (vim.api.nvim_set_keymap :n :<leader>/ "<cmd>Pick buf_lines<CR>" {:desc "[/] Search current buffer"})
 (vim.api.nvim_set_keymap :n :<leader><leader> "<cmd>Pick buffers<CR>" {:desc "[ ] Search existing buffers"})
