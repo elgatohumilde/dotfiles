@@ -1,8 +1,8 @@
-(import-macros {: pack} :macros)
-
 [
- (pack :christoomey/vim-tmux-navigator
-       {:lazy false})
- (pack :tpope/vim-obsession
-       {:event "VeryLazy"})
-]
+ {1 :christoomey/vim-tmux-navigator
+
+ :lazy false}
+ {1 :tpope/vim-obsession
+
+ :event "VeryLazy"}
+ ]

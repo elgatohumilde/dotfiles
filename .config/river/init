@@ -89,8 +89,8 @@ do
     riverctl map $mode None XF86AudioMute spawn 'pamixer --toggle-mute'
     riverctl map $mode None XF86AudioMicMute spawn 'pamixer --default-source --toggle-mute'
 
-    riverctl map $mode None XF86AudioMedia spawn 'playerctl play-pause'
-    riverctl map $mode None XF86AudioPlay spawn 'playerctl play-pause'
+    riverctl map $mode None XF86AudioPlay spawn 'playerctl play'
+    riverctl map $mode None XF86AudioStop spawn 'playerctl pause'
     riverctl map $mode None XF86AudioPrev spawn 'playerctl previous'
     riverctl map $mode None XF86AudioNext spawn 'playerctl next'
 
@@ -113,6 +113,8 @@ riverctl rule-add -app-id '*hunar' dimensions 1200 800
 riverctl rule-add -app-id 'kitty-float' float
 riverctl rule-add -app-id 'kitty-float' dimensions 1200 800
 riverctl rule-add -title 'Save As' dimensions 1200 800
+riverctl rule-add -app-id 'imv' float
+riverctl rule-add -app-id 'imv' dimensions 1200 800
 
 riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 &

@@ -2,8 +2,8 @@
 (set vim.opt.number true)
 (set vim.opt.relativenumber true)
 (set vim.opt.autoindent true)
-(set vim.opt.tabstop 2)
-(set vim.opt.shiftwidth 2)
+(set vim.opt.tabstop 4)
+(set vim.opt.shiftwidth 4)
 (set vim.opt.smarttab true)
 (set vim.opt.expandtab true)
 (set vim.opt.showmode false)
@@ -33,11 +33,11 @@
 (set vim.opt.spelllang [ "es" "en_us" ])
 
 (vim.schedule (fn init []
-		(set vim.opt.clipboard :unnamedplus)
-    nil
-    )
-  )
+                (set vim.opt.clipboard :unnamedplus)
+                nil
+                )
+              )
 
 (vim.api.nvim_create_autocmd ["VimLeave"]
-  {:command "set guicursor=a:ver20"}
-  )
+                             {:command "set guicursor=a:ver20"}
+                             )

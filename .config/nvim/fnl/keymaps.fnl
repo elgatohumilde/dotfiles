@@ -30,3 +30,6 @@
 
 ;;which-key
 (vim.api.nvim_set_keymap :n :<leader>? "<cmd>lua require(\"which-key\").show({global = false})<CR>" {:desc "[?] Buffer Local Keymaps"})
+
+;;Conform
+(vim.api.nvim_set_keymap :n :<leader>f "<cmd>lua require(\"conform\").format { async = true, lsp_format = 'fallback' }<CR>" {:desc "[F]ormat buffer"})
