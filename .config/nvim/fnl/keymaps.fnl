@@ -33,3 +33,6 @@
 
 ;;Conform
 (vim.api.nvim_set_keymap :n :<leader>f "<cmd>lua require(\"conform\").format { async = true, lsp_format = 'fallback' }<CR>" {:desc "[F]ormat buffer"})
+
+;;Markdown-Preview
+(vim.api.nvim_set_keymap :n :<leader>tp "<cmd>MarkdownPreviewToggle<CR>" {:desc "[T]oggle [P]review"})

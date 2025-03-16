@@ -10,6 +10,7 @@ export EDITOR=nvim
 export TERMINAL=kitty
 
 alias sudo='sudo '
+alias cls='clear'
 alias ls='ls --color=auto -l'
 alias la='ls -A'
 alias grep='grep --color=auto'
