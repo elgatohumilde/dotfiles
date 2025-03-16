@@ -26,7 +26,7 @@ cd() {
 }
 
 fuzzy_cd() {
-    local dir=$(fd -H -t d | fzf)
+    local dir=$(fd -H -t d . ~ | fzf)
     if [ -n "$dir" ]; then
         command cd "$dir"
     fi
