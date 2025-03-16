@@ -15,9 +15,8 @@
  :keymap {:preset "enter"}
  :appearance {:use_nvim_cmp_as_default true :nerd_font_variant "mono"}
  :sources {
- :default ["lsp" "path" "buffer" "lazydev" "vimtex"]
+ :default ["lsp" "path" "buffer" "vimtex"]
  :providers {
- :lazydev {:name "LazyDev" :module "lazydev.integrations.blink" :score_offset 100}
  :vimtex {:name "vimtex" :module "blink.compat.source" :score_offset -3}
  }}
  :signature {:enabled true :window {:border "single"}}

@@ -4,9 +4,6 @@
  :event ["BufReadPost" "BufNewFile"]
  :dependencies [
                 "saghen/blink.cmp"
-                {1 :folke/lazydev.nvim 
-                :opts {:library [{:path "${3rd}/luv/library" :words ["vim%.uv"]}]}
-                }
                 {1 :williamboman/mason.nvim
                 :opts {}
                 }
