@@ -15,6 +15,7 @@ alias la='ls -A'
 alias grep='grep --color=auto'
 alias open='xdg-open'
 alias nv='nvim'
+alias fastfetch='fastfetch --logo arch2'
 
 cd() {
     if [ -z "$1" ]; then

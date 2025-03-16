@@ -35,7 +35,8 @@
 (local items [
               {:name "Neovim files" :action "Pick cli command={\"fd\" \"-H\" \".\" \"/home/joaquin/.config/nvim/\"}" :section  "Pick"}
               {:name "Configuration files" :action "Pick cli command={\"fd\" \"-H\" \".\" \"/home/joaquin/.dotfiles/\"}" :section  "Pick"}
-              {:name "Edit neww buffer" :action "enew" :section "Actions"}
+              {:name "Edit new buffer" :action "enew" :section "Actions"}
+              {:name "Lazy dashboard" :action "Lazy" :section "Actions"}
               {:name "Quit Neovim" :action "qall" :section "Actions"}
               ])
 
