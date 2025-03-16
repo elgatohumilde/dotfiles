@@ -36,7 +36,17 @@ parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ on \1/'
 }
 
-PS1=" \[\e[1;32m\]\w\[\e[0m\]\[\033[33m\]\$(parse_git_branch)\[\033[00m\] \[\e[1;34m\]\t\[\e[0m\]\n  "
+git_prompt() {
+  if git rev-parse --is-inside-work-tree &> /dev/null; then
+    if git diff --quiet && git diff --cached --quiet; then
+      echo -e "\033[0;32m✔\033[0m"
+    else
+      echo -e "\033[0;31m✘\033[0m"
+    fi
+  fi
+}
+
+PS1=" \[\e[1;32m\]\w\[\e[0m\]\[\033[33m\]\$(parse_git_branch)\[\033[00m\] \$(git_prompt) \[\e[1;34m\]\t\[\e[0m\]\n  "
 
 [ -f "/home/joaquin/.ghcup/env" ] && . "/home/joaquin/.ghcup/env" # ghcup-env
 
