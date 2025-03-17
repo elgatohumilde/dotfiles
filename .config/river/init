@@ -10,6 +10,7 @@ riverctl keyboard-layout -options "caps:swapescape" latam
 
 riverctl map normal Super Q spawn kitty
 riverctl map normal Super+Shift Q spawn 'kitty tmux a'
+riverctl map normal Super+Alt Q spawn 'kitty --app-id "kitty-float"'
 riverctl map normal Super E spawn thunar
 riverctl map normal Super+Shift E spawn 'kitty --app-id "kitty-float" -e spf'
 riverctl map normal None Print spawn 'screenshot all'
