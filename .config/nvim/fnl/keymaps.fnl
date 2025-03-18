@@ -5,7 +5,7 @@
 (vim.keymap.set :n :<C-s> :<cmd>Ex<CR> {:desc "Files Tree"})
 (vim.keymap.set :n :\ :<cmd>Lexplore<CR> {:desc "Open Netrw"})
 (vim.keymap.set :n :<leader>q "<cmd>bd<CR>" {:desc "Kill Current Buffer"})
-(vim.keymap.set :n :<leader>Q "<cmd>%bd|e#<CR>" {:desc "Kill non-Current Buffer"})
+(vim.keymap.set :n :<leader>Q "<cmd>%bd|e#|bd#|'\"<CR>" {:desc "Kill non-Current Buffer"})
 (vim.keymap.set :n :<Esc> :<cmd>nohlsearch<CR> {:desc "Clear highlights"})
 (vim.keymap.set :n :<leader>| :<cmd>vsplit<CR> {:desc "[|] Vertical split"})
 (vim.keymap.set :n :<leader>- :<cmd>split<CR> {:desc "[-] Horizontal split"})
