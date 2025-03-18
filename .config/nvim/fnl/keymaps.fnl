@@ -1,12 +1,13 @@
 ;;General
 (vim.keymap.set :n "q:" :<nop> {})
-(vim.keymap.set :n "U" :<C-r> {:desc "Redo"})
 (vim.keymap.set :x "<leader>p" "\"_dP" {})
+(vim.keymap.set :n "U" :<C-r> {:desc "Redo"})
 (vim.keymap.set :n :<C-s> :<cmd>Ex<CR> {:desc "Files Tree"})
+(vim.keymap.set :n :\ :<cmd>Lexplore<CR> {:desc "Open Netrw"})
+(vim.keymap.set :n :<leader>q "<cmd>bd<CR>" {:desc "Kill Current Buffer"})
 (vim.keymap.set :n :<Esc> :<cmd>nohlsearch<CR> {:desc "Clear highlights"})
 (vim.keymap.set :n :<leader>| :<cmd>vsplit<CR> {:desc "[|] Vertical split"})
 (vim.keymap.set :n :<leader>- :<cmd>split<CR> {:desc "[-] Horizontal split"})
-(vim.keymap.set :n :\ :<cmd>Lexplore<CR> {:desc "Open Netrw"})
 (vim.keymap.set :t :<Esc><Esc> :<C-\><C-n> {:desc "Exit terminal mode"})
 (for [i 1 9]
   (vim.keymap.set :n (.. "<A-" i ">") (.. i "gt") {:noremap true :silent true}))
