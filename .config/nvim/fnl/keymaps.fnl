@@ -26,7 +26,7 @@
 (vim.api.nvim_create_autocmd "LspAttach" {
                                :desc "LSP actions"
                                :callback (fn [event]
-                                           (vim.keymap.set :n :K "<cmd>lua vim.lsp.buf.hover()<CR>" {:desc "[R]e[N]ame" :buffer (. event :buf)})
+                                           (vim.keymap.set :n :K "<cmd>lua vim.lsp.buf.hover()<CR>" {:desc "Hover Information" :buffer (. event :buf)})
                                            (vim.keymap.set :n :<leader>rn "<cmd>lua vim.lsp.buf.rename()<CR>" {:desc "[R]e[N]ame" :buffer (. event :buf)})
                                            (vim.keymap.set :n :<leader>ca "<cmd>lua vim.lsp.buf.code_action()<CR>" {:desc "[C]ode [A]ction" :buffer (. event :buf)})
                                            (vim.keymap.set :v :<leader>ca "<cmd>lua vim.lsp.buf.range_code_action()<CR>" {:desc "[C]ode [A]ction" :buffer (. event :buf)})
