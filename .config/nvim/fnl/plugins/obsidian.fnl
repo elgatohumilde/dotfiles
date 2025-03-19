@@ -21,11 +21,11 @@
               {:name "Personal" :path "~/Sync/Notes/"}
               ]
  :daily_notes { :folder "Journal" :default_tags ["daily"] }
- :templates { :folder "3 Resources/Templates" }
- :attachments { :img_folder "3 Resources/Images" }
+ :templates { :folder "3-Resources/Templates" }
+ :attachments { :img_folder "3-Resources/Images" }
  :mappings {}
  :new_notes_location "notes_subdir"
- :notes_subdir "3 Resources"
+ :notes_subdir "3-Resources"
  :preferred_link_style "markdown"
  :follow_url_func (fn [url] (vim.fn.jobstart ["xdg-open" url]) nil)
  :follow_img_func (fn [img] (vim.fn.jobstart ["xdg-open" img]) nil)
