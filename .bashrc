@@ -21,7 +21,6 @@ alias grep='grep --color=auto'
 alias hgrep='history | grep'
 alias open='xdg-open'
 alias nv='nvim'
-alias fastfetch='fastfetch --logo arch2'
 
 cd() {
     if [ -z "$1" ]; then

@@ -1,6 +1,4 @@
 riverctl spawn 'waybar &'
-# riverctl spawn 'eww open desktop-time &'
-# riverctl spawn 'hyprpaper &'
 
 systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
@@ -113,7 +111,7 @@ riverctl rule-add -app-id '*hunar' float
 riverctl rule-add -app-id '*hunar' dimensions 1200 800
 riverctl rule-add -app-id 'kitty-float' float
 riverctl rule-add -app-id 'kitty-float' dimensions 1200 800
-riverctl rule-add -title 'Save As' dimensions 1200 800
+riverctl rule-add -app-id 'LibreWolf' -title '*ave*' dimensions 1200 800
 riverctl rule-add -app-id 'imv' float
 riverctl rule-add -app-id 'imv' dimensions 1200 800
 
