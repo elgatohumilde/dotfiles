@@ -5,15 +5,20 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export PATH=$PATH:/home/joaquin/.local/bin
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
 export EDITOR=nvim
 export TERMINAL=kitty
 
 alias sudo='sudo '
 alias cls='clear'
-alias ls='ls --color=auto -l'
+alias ls='ls --color=auto -l -F --group-directories'
 alias la='ls -A'
 alias grep='grep --color=auto'
+alias hgrep='history | grep'
 alias open='xdg-open'
 alias nv='nvim'
 alias fastfetch='fastfetch --logo arch2'
@@ -52,3 +57,4 @@ PS1=" \[\e[1;32m\]\w\[\e[0m\]\[\033[33m\]\$(parse_git_branch)\[\033[00m\] \$(git
 bind '"\C-x\C-d":"fuzzy_cd\n"'
 
 [ -f "/home/joaquin/.ghcup/env" ] && . "/home/joaquin/.ghcup/env" # ghcup-env
+
