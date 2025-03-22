@@ -54,6 +54,7 @@
 ;;org-roam
 (vim.keymap.set :n :<leader>nf "<cmd>lua require(\"org-roam\").api.find_node()<CR>" {:desc "[N]ode [F]ind"})
 (vim.keymap.set :n :<leader>nc "<cmd>lua require(\"org-roam\").api.capture_node()<CR>" {:desc "[N]ode [C]apture"})
+(vim.keymap.set :n :<leader>ndd "<cmd>lua require(\"org-roam\").ext.dailies.goto_date()<CR>" {:desc "[N]ode [D]ailies [D]ate"})
 
 ;;Nabla
 (vim.keymap.set :n :<leader>tl "<cmd>lua require(\"nabla\").popup()<CR>" {:desc "[T]oggle [L]aTeX expression"})

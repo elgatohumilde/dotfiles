@@ -21,7 +21,7 @@
  :dependencies ["nvim-orgmode/orgmode"]
  :config (fn []
            ((. (require :org-roam) :setup) {
-                                           :directory "~/Sync/org/"
+                                           :directory "~/Sync/org/notes/"
                                            })
            nil)
  }
