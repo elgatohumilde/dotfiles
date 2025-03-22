@@ -48,8 +48,7 @@
 (vim.keymap.set :n :<leader>f "<cmd>lua require(\"conform\").format { async = true }<CR>" {:desc "[F]ormat buffer"})
 
 ;;org-mode
-(vim.keymap.set :n :<leader>oa "<cmd>Org agenda<CR>" {:desc "[O]rg [A]genda"})
-(vim.keymap.set :n :<leader>oc "<cmd>Org capture<CR>" {:desc "[O]rg [C]apture"})
+(vim.keymap.set :n :<leader>oa "<cmd>Org agenda<CR>" {:desc "org agenda"})
 
 ;;org-roam
 (vim.keymap.set :n :<leader>nf "<cmd>lua require(\"org-roam\").api.find_node()<CR>" {:desc "[N]ode [F]ind"})
