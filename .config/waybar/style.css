@@ -131,14 +131,6 @@ button {
   margin-right: 5px;
 }
 
-#keyboard-state > label {
-    padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
-}
-
 #scratchpad {
     background: rgba(0, 0, 0, 0.2);
 }
@@ -148,11 +140,7 @@ button {
 }
 
 #tags {
-	margin-top: 6px;
-	margin-left: 12px;
 	font-size: 4px;
-	margin-bottom: 0px;
-	border-radius: 10px;
 	background: #000000;
 	transition: none;
 }
@@ -162,7 +150,6 @@ button {
 	color: @text;
 	background: transparent;
 	font-size: 16px;
-	border-radius: 2px;
 }
 
 #tags button.occupied {
@@ -174,8 +161,6 @@ button {
 
 #tags button.focused {
 	color: #ABE9B3;
-    border-top: 2px solid #ABE9B3;
-    border-bottom: 2px solid #ABE9B3;
 }
 
 #tags button:hover {
@@ -183,10 +168,4 @@ button {
 	box-shadow: inherit;
 	text-shadow: inherit;
 	color: #FAE3B0;
-    border-color: #E8A2AF;
-    color: #E8A2AF;
-}
-
-#tags button.focused:hover {
-    color: #E8A2AF;
 }

@@ -2,6 +2,7 @@
  {1 :neovim/nvim-lspconfig
 
  :event ["BufReadPost" "BufNewFile"]
+ :cmd [ "Mason" ]
  :dependencies [
                 "saghen/blink.cmp"
                 {1 :williamboman/mason.nvim
