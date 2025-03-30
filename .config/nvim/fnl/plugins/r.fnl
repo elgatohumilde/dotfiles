@@ -2,8 +2,6 @@
  {
  1 :R-nvim/R.nvim
 
- ;:enabled false
- ;:lazy false
  :ft [ "r" "quarto" ]
  :config (fn []
            (local opts {
@@ -14,7 +12,6 @@
                   :R_args ["--quiet" "--no-save"]
                   :min_editor_width 72
                   :rconsole_width 78
-                  :objbr_mappings {:c "class" ["<localleader>gg"] "head({object}, n = 15)" :v (fn [] ((. (require :r.browser) :toggle_view)) nil)}
                   })
            (if (= vim.env.R_AUTO_START "true")
                (do

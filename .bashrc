@@ -5,10 +5,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
-then
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]] then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
+
 export PATH
 export EDITOR=nvim
 export TERMINAL=kitty
@@ -21,6 +21,18 @@ alias grep='grep --color=auto'
 alias hgrep='history | grep'
 alias open='xdg-open'
 alias nv='nvim'
+
+srvenv() {
+    command source "$@".venv/bin/activate
+}
+
+makerun() {
+    if [ -z "$1" ]; then
+        echo >&2 "error: no input files"
+    else
+        command cmake --build . && ./"$@"
+    fi
+}
 
 cd() {
     if [ -z "$1" ]; then
