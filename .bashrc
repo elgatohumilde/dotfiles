@@ -30,7 +30,7 @@ makerun() {
     if [ -z "$1" ]; then
         echo >&2 "error: no input files"
     else
-        command cmake --build . && ./"$@"
+        command cmake --build build/ && build/"$@"
     fi
 }
 

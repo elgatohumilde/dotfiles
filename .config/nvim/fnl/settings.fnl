@@ -33,6 +33,7 @@
 (set vim.opt.spelllang [ "es" "en_us" ])
 
 (vim.cmd "colorscheme gruvbox")
+(vim.cmd "set colorcolumn=80")
 
 (vim.schedule (fn init []
                 (set vim.opt.clipboard :unnamedplus)

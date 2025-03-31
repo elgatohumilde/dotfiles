@@ -9,6 +9,8 @@
  :cpp [ "clang-format" ]
  }
  :notify_on_error false
+ :format_on_save (fn [bufnr]
+                   (if (or vim.g.disable_autoformat (. (. vim.b bufnr) :disable_autoformat)) nil {:timeout_ms 500 :lsp_format "fallback"}))
  }
  }
  ]

@@ -49,6 +49,7 @@
 
 ;;org-mode
 (vim.keymap.set :n :<leader>oa "<cmd>Org agenda<CR>" {:desc "org agenda"})
+(vim.keymap.set :n :<leader>oc "<cmd>Org capture<CR>" {:desc "org capture"})
 
 ;;org-roam
 (vim.keymap.set :n :<leader>nf "<cmd>lua require(\"org-roam\").api.find_node()<CR>" {:desc "[N]ode [F]ind"})

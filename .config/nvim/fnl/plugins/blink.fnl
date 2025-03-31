@@ -22,7 +22,7 @@
  :orgmode {:name "Orgmode" :module "orgmode.org.autocompletion.blink"}
  }}
  :signature {:enabled true :window {:border "single"}}
- :completion {:ghost_text {:enabled true} :documentation {:window {:border "single"} :auto_show true :auto_show_delay_ms 500 } :menu {:border "single" :draw {:columns [["label" "label_description"] ["kind_icon" "kind"]]}}}
+ :completion {:ghost_text {:enabled true} :documentation {:window {:border "single"} :auto_show true :auto_show_delay_ms 500 } :menu {:draw {:columns [["label" "label_description"] ["kind_icon" "kind"]]}}}
  }
  :fuzzy {:implementation "rust"}
  :opts_extend ["sources.default"]

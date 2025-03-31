@@ -10,7 +10,6 @@
                                           :org_default_notes_file "~/Sync/org/refile.org"
                                           :org_highlight_latex_and_related "entities"
                                           :org_startup_indented true
-                                          :mappings {:global {:org_capture false}}
                                           })
            ((. (require :org-bullets) :setup))
            nil)
