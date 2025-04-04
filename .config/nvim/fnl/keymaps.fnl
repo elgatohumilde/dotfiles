@@ -1,3 +1,18 @@
+(local feed (fn [str ?num]
+              (var num (or ?num 1))
+              (if (< num 1) (set num 1))
+              (var result "")
+              (for [_ 1 num]
+                (set result (.. result str))
+                )
+              (vim.api.nvim_feedkeys (vim.api.nvim_replace_termcodes
+                                       result
+                                       true
+                                       false
+                                       true)
+                                     "n" true)
+              nil))
+
 ;;General
 (vim.keymap.set :n "q:" :<nop> {})
 (vim.keymap.set :x "<leader>p" "\"_dP" {})
@@ -10,6 +25,47 @@
 (vim.keymap.set :n :<leader>| :<cmd>vsplit<CR> {:desc "[|] Vertical split"})
 (vim.keymap.set :n :<leader>- :<cmd>split<CR> {:desc "[-] Horizontal split"})
 (vim.keymap.set :t :<Esc><Esc> :<C-\><C-n> {:desc "Exit terminal mode"})
+(vim.keymap.set :v :<leader>r "\"hy:%s/<C-r>h//g<left><left>")
+(vim.keymap.set :n "<C-o>" "<cmd>foldopen<CR>")
+(vim.keymap.set :n "<C-c>" "<cmd>foldclose<CR>")
+(vim.keymap.set :i "\"" 
+  (fn []
+    (let [line (vim.fn.getline ".")
+          col  (vim.fn.col ".")]
+      (if (= (string.sub line col col) "\"")
+          (feed "<right>")
+          (feed "\"\"<left>")))))
+(vim.keymap.set :i "'" 
+  (fn []
+    (let [line (vim.fn.getline ".")
+          col  (vim.fn.col ".")]
+      (if (= (string.sub line col col) "'")
+          (feed "<right>")
+          (feed "''<left>")))))
+(vim.keymap.set :i "{" "{}<left>")
+(vim.keymap.set :i "}" 
+  (fn []
+    (let [line (vim.fn.getline ".")
+          col  (vim.fn.col ".")]
+      (if (= (string.sub line col col) "}")
+          (feed "<right>")
+          (feed "}")))))
+(vim.keymap.set :i "[" "[]<left>")
+(vim.keymap.set :i "]" 
+  (fn []
+    (let [line (vim.fn.getline ".")
+          col  (vim.fn.col ".")]
+      (if (= (string.sub line col col) "]")
+          (feed "<right>")
+          (feed "]")))))
+(vim.keymap.set :i "(" "()<left>")
+(vim.keymap.set :i ")" 
+  (fn []
+    (let [line (vim.fn.getline ".")
+          col  (vim.fn.col ".")]
+      (if (= (string.sub line col col) ")")
+          (feed "<right>")
+          (feed ")")))))
 (for [i 1 9]
   (vim.keymap.set :n (.. "<A-" i ">") (.. i "gt") {:noremap true :silent true}))
 
@@ -26,6 +82,7 @@
 (vim.keymap.set :n :<leader><leader> "<cmd>Pick buffers<CR>" {:desc "[ ] Search existing buffers"})
 
 ;;LSP
+(vim.keymap.set :n :<leader>D "<cmd>lua vim.diagnostic.open_float()<CR>" {:desc "[O]pen [D]iagnostic"})
 (vim.api.nvim_create_autocmd "LspAttach" {
                              :desc "LSP actions"
                              :callback (fn [event]
@@ -33,7 +90,6 @@
                                          (vim.keymap.set :n :<leader>rn "<cmd>lua vim.lsp.buf.rename()<CR>" {:desc "[R]e[N]ame" :buffer (. event :buf)})
                                          (vim.keymap.set :n :<leader>ca "<cmd>lua vim.lsp.buf.code_action()<CR>" {:desc "[C]ode [A]ction" :buffer (. event :buf)})
                                          (vim.keymap.set :v :<leader>ca "<cmd>lua vim.lsp.buf.range_code_action()<CR>" {:desc "[C]ode [A]ction" :buffer (. event :buf)})
-                                         (vim.keymap.set :n :<leader>D "<cmd>lua vim.diagnostic.open_float()<CR>" {:desc "[O]pen [D]iagnostic" :buffer (. event :buf)})
                                          (vim.keymap.set :n :gd "<cmd>lua vim.lsp.buf.definition()<CR>" {:desc "[G]oto [D]efinition" :buffer (. event :buf)})
                                          (vim.keymap.set :n :gD "<cmd>lua vim.lsp.buf.declaration()<CR>" {:desc "[G]oto [D]eclaration" :buffer (. event :buf)})
                                          (vim.keymap.set :n :gi "<cmd>lua vim.lsp.buf.implementation()<CR>" {:desc "[G]oto [I]mplementation" :buffer (. event :buf)})

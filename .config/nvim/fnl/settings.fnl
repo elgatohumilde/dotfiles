@@ -32,6 +32,14 @@
 (set vim.opt.spell true)
 (set vim.opt.spelllang [ "es" "en_us" ])
 
+(set vim.o.foldenable true)
+(set vim.o.foldlevel 99)
+(set vim.o.foldmethod "expr")
+(set vim.o.foldexpr "v:lua.vim.treesitter.foldexpr()")
+(set vim.o.foldtext "")
+(set vim.opt.foldcolumn "0")
+(vim.opt.fillchars:append {:fold " "})
+
 (vim.cmd "colorscheme gruvbox")
 (vim.cmd "set colorcolumn=80")
 

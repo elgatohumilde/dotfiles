@@ -1,4 +1,5 @@
 set synctex true
+set database sqlite
 set selection-clipboard clipboard
 set highlight-color rgba(255,255,255,0)
 set highlight-active-color rgba(255,255,255,0)
