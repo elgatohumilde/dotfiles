@@ -41,7 +41,7 @@
 (vim.opt.fillchars:append {:fold " "})
 
 (vim.cmd "colorscheme gruvbox")
-(vim.cmd "set colorcolumn=80")
+(set vim.o.colorcolumn :80)
 
 (vim.schedule (fn init []
                 (set vim.opt.clipboard :unnamedplus)

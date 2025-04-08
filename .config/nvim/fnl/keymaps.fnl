@@ -29,43 +29,43 @@
 (vim.keymap.set :n "<C-o>" "<cmd>foldopen<CR>")
 (vim.keymap.set :n "<C-c>" "<cmd>foldclose<CR>")
 (vim.keymap.set :i "\"" 
-  (fn []
-    (let [line (vim.fn.getline ".")
-          col  (vim.fn.col ".")]
-      (if (= (string.sub line col col) "\"")
-          (feed "<right>")
-          (feed "\"\"<left>")))))
+                (fn []
+                  (let [line (vim.fn.getline ".")
+                             col  (vim.fn.col ".")]
+                    (if (= (string.sub line col col) "\"")
+                        (feed "<right>")
+                        (feed "\"\"<left>")))))
 (vim.keymap.set :i "'" 
-  (fn []
-    (let [line (vim.fn.getline ".")
-          col  (vim.fn.col ".")]
-      (if (= (string.sub line col col) "'")
-          (feed "<right>")
-          (feed "''<left>")))))
+                (fn []
+                  (let [line (vim.fn.getline ".")
+                             col  (vim.fn.col ".")]
+                    (if (= (string.sub line col col) "'")
+                        (feed "<right>")
+                        (feed "''<left>")))))
 (vim.keymap.set :i "{" "{}<left>")
 (vim.keymap.set :i "}" 
-  (fn []
-    (let [line (vim.fn.getline ".")
-          col  (vim.fn.col ".")]
-      (if (= (string.sub line col col) "}")
-          (feed "<right>")
-          (feed "}")))))
+                (fn []
+                  (let [line (vim.fn.getline ".")
+                             col  (vim.fn.col ".")]
+                    (if (= (string.sub line col col) "}")
+                        (feed "<right>")
+                        (feed "}")))))
 (vim.keymap.set :i "[" "[]<left>")
 (vim.keymap.set :i "]" 
-  (fn []
-    (let [line (vim.fn.getline ".")
-          col  (vim.fn.col ".")]
-      (if (= (string.sub line col col) "]")
-          (feed "<right>")
-          (feed "]")))))
+                (fn []
+                  (let [line (vim.fn.getline ".")
+                             col  (vim.fn.col ".")]
+                    (if (= (string.sub line col col) "]")
+                        (feed "<right>")
+                        (feed "]")))))
 (vim.keymap.set :i "(" "()<left>")
 (vim.keymap.set :i ")" 
-  (fn []
-    (let [line (vim.fn.getline ".")
-          col  (vim.fn.col ".")]
-      (if (= (string.sub line col col) ")")
-          (feed "<right>")
-          (feed ")")))))
+                (fn []
+                  (let [line (vim.fn.getline ".")
+                             col  (vim.fn.col ".")]
+                    (if (= (string.sub line col col) ")")
+                        (feed "<right>")
+                        (feed ")")))))
 (for [i 1 9]
   (vim.keymap.set :n (.. "<A-" i ">") (.. i "gt") {:noremap true :silent true}))
 
