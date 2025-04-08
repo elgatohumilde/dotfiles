@@ -5,5 +5,5 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 if [ -z $TMUX ]; then
-    exec river
+    exec hyprland
 fi

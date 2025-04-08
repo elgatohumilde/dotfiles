@@ -139,33 +139,33 @@ button {
 	background-color: transparent;
 }
 
-#tags {
-	font-size: 4px;
-	background: #000000;
-	transition: none;
+#workspaces button:hover {
+    color: @blue;
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: @crust;
+    border: @crust;
 }
 
-#tags button {
-	transition: none;
-	color: @text;
-	background: transparent;
-	font-size: 16px;
+#workspaces button {
+    padding: 0 5px;
+    color: @surface2;
+    margin: 4px 0 4px 6px;
+    transition: color 200ms ease-in-out;
 }
 
-#tags button.occupied {
-	transition: none;
-	color: #F28FAD;
-	background: transparent;
-	font-size: 4px;
+#workspaces button.selected {
+    color: @blue;
 }
 
-#tags button.focused {
-	color: #ABE9B3;
+#workspaces button.active {
+    color: @mauve;
 }
 
-#tags button:hover {
-	transition: none;
-	box-shadow: inherit;
-	text-shadow: inherit;
-	color: #FAE3B0;
+#workspaces button.urgent {
+    color: @red;
+}
+
+#workspaces {
+    margin: 0 4px;
 }

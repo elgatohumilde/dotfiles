@@ -1,6 +1,6 @@
 {
     "layer": "top",
-    "height": 30,
+    "height": 32,
     "spacing": 5,
     // Choose the order of the modules
     "modules-left": [
@@ -8,7 +8,7 @@
         "custom/playerctl",
     ],
     "modules-center": [
-        "river/tags"
+        "hyprland/workspaces"
     ],
     "modules-right": [
         "pulseaudio",
@@ -17,6 +17,11 @@
 	    "clock",
         "custom/power"
 		],
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "on-click": "activate"
+    },
     "custom/playerctl": {
         "format": "  {2} <span>{0}</span>",
         "return-type": "json",
@@ -50,7 +55,7 @@
         "format-wifi": "󰤨",
         "format-disconnected": "󰤭",
 	"tooltip-format": "Connected to {essid}",
-	"on-click": "$TERMINAL -e nmtui"
+	"on-click": "$TERMINAL --app-id \"kitty-float\" -e nmtui"
     },
     "pulseaudio": {
 		"format": "{icon}     {format_source}",
