@@ -19,13 +19,15 @@
 (vim.keymap.set :n "U" :<C-r> {:desc "Redo"})
 (vim.keymap.set :n :<C-s> :<cmd>Ex<CR> {:desc "File Tree"})
 (vim.keymap.set :n :\ :<cmd>Lexplore<CR> {:desc "Open Netrw"})
+(vim.keymap.set :o :ie ":<C-u>normal! mzggVG<CR>`z" {})
+(vim.keymap.set :x :ie ":<C-u>normal! ggVG<CR>" {})
 (vim.keymap.set :n :<leader>q "<cmd>bd<CR>" {:desc "Kill Current Buffer"})
 (vim.keymap.set :n :<leader>Q "<cmd>%bd|e#|bd#|'\"<CR>" {:desc "Kill non-Current Buffers"})
 (vim.keymap.set :n :<Esc> :<cmd>nohlsearch<CR> {:desc "Clear highlights"})
 (vim.keymap.set :n :<leader>| :<cmd>vsplit<CR> {:desc "[|] Vertical split"})
 (vim.keymap.set :n :<leader>- :<cmd>split<CR> {:desc "[-] Horizontal split"})
 (vim.keymap.set :t :<Esc><Esc> :<C-\><C-n> {:desc "Exit terminal mode"})
-(vim.keymap.set :v :<leader>r "\"hy:%s/<C-r>h//g<left><left>")
+(vim.keymap.set :v :<leader>r "\"hy:%s/<C-r>h//g<left><left>" {})
 (vim.keymap.set :n "<C-o>" "<cmd>foldopen<CR>")
 (vim.keymap.set :n "<C-c>" "<cmd>foldclose<CR>")
 (vim.keymap.set :i "\"" 
@@ -96,6 +98,33 @@
                                          (vim.keymap.set :n :gr "<cmd>lua vim.lsp.buf.references()<CR>" {:desc "[G]et [R]eferences" :buffer (. event :buf)})
                                          nil)
                              })
+
+;;DAP
+(vim.keymap.set "n" "<leader>bb" "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
+(vim.keymap.set "n" "<leader>bc" "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+(vim.keymap.set "n" "<leader>bl" "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
+(vim.keymap.set "n" "<leader>br" "<cmd>lua require'dap'.clear_breakpoints()<CR>")
+(vim.keymap.set "n" "<leader>dc" "<cmd>lua require'dap'.continue()<CR>")
+(vim.keymap.set "n" "<leader>dj" "<cmd>lua require'dap'.step_over()<CR>")
+(vim.keymap.set "n" "<leader>dk" "<cmd>lua require'dap'.step_into()<CR>")
+(vim.keymap.set "n" "<leader>do" "<cmd>lua require'dap'.step_out()<CR>")
+(vim.keymap.set "n" "<leader>dd" (fn []
+                                   ((. (require :dap) :disconnect))
+                                   ((. (require :dapui) :close))
+                                   nil))
+(vim.keymap.set "n" "<leader>dt" (fn []
+                                   ((. (require :dap) :terminate))
+                                   ((. (require :dapui) :close))
+                                   nil))
+(vim.keymap.set "n" "<leader>dr" "<cmd>lua require'dap'.repl.toggle()<CR>")
+(vim.keymap.set "n" "<leader>dl" "<cmd>lua require'dap'.run_last()<CR>")
+(vim.keymap.set "n" "<leader>di" (fn []
+                                   ((. (require :dap.ui.widgets) :hover))
+                                   nil))
+(vim.keymap.set "n" "<leader>d?" (fn []
+                                   (local widgets (require :dap.ui.widgets))
+                                   (widgets.centered_float widgets.scopes)
+                                   nil))
 
 ;;which-key
 (vim.keymap.set :n :<leader>? "<cmd>lua require(\"which-key\").show({global = false})<CR>" {:desc "[?] Buffer Local Keymaps"})

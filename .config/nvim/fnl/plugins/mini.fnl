@@ -47,8 +47,8 @@
            ((. (require :mini.surround) :setup))
            ((. (require :mini.pick) :setup))
            ((. (require :mini.extra) :setup))
-           ((. (require :mini.starter) :setup) {:header header :footer footer :items items})
            (set vim.ui.select MiniPick.ui_select)
+           ((. (require :mini.starter) :setup) {:header header :footer footer :items items})
            (let [statusline (require "mini.statusline")]
              (statusline.setup {:use_icons vim.g.have_nerd_font})
              (set statusline.section_location (fn [] "%2l:%2v"))

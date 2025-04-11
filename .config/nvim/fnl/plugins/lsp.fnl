@@ -14,21 +14,15 @@
                 }
                 ]
  :config (fn []
-
-           (local servers
-                  {})
-
            (var capabilities (vim.lsp.protocol.make_client_capabilities))
            (set capabilities (vim.tbl_deep_extend "force" capabilities ((. (require "blink.cmp") :get_lsp_capabilities))))
-           ((. (require :mason-lspconfig) :setup) {
-                                                  :ensure_installed []
-                                                  :automatic_installation true
-                                                  :handlers [(fn [server_name] 
-                                                               (local server (or (. servers server_name) {}))
-                                                               (set server.capabilities (vim.tbl_deep_extend "force" {} capabilities (or server.capabilities {})))
-                                                               ((. (. (require :lspconfig) server_name) :setup) server)
-                                                               nil)]
-                                                  })
+           ((. (require :mason-lspconfig) :setup_handlers) [
+                                                            (fn [server_name]
+                                                              (if (~= server_name :jdtls) (do
+                                                                                            ((. (. (require :lspconfig) server_name) :setup) {:capabilities capabilities})
+                                                                                            nil))
+                                                              nil)
+                                                            ])
            nil
            )
  }

@@ -43,6 +43,14 @@
 (vim.cmd "colorscheme gruvbox")
 (set vim.o.colorcolumn :80)
 
+(vim.api.nvim_create_autocmd ["CursorMoved" "CursorMovedI"]
+                             {:callback (fn []
+                                          (local pos (vim.fn.getpos "."))
+                                          (vim.cmd "normal! zz")
+                                          (vim.fn.setpos "." pos)
+                                          nil)}
+                             )
+
 (vim.schedule (fn init []
                 (set vim.opt.clipboard :unnamedplus)
                 nil
