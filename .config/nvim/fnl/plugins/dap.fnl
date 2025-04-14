@@ -1,66 +1,20 @@
 [
- {1 :rcarriga/nvim-dap-ui
+ {1 :mfussenegger/nvim-dap
 
  :event ["BufReadPost" "BufNewFile"]
+ :cmd ["DapInstall"]
  :dependencies [
-                "mfussenegger/nvim-dap"
-                "nvim-neotest/nvim-nio"
-                "theHamsta/nvim-dap-virtual-text"
+                :leoluz/nvim-dap-go
+                :rcarriga/nvim-dap-ui
+                {1 :theHamsta/nvim-dap-virtual-text :opts {}}
+                :nvim-neotest/nvim-nio
+                {1 :jay-babu/mason-nvim-dap.nvim :dependencies ["williamboman/mason.nvim"] :opts {:handles {}}}
                 ]
- :opts {
- :controls {
- :element "repl"
- :enabled false
- :icons {
- :disconnect ""
- :pause ""
- :play ""
- :run_last ""
- :step_back ""
- :step_into ""
- :step_out ""
- :step_over ""
- :terminate ""
- }}
- :element_mappings []
- :expand_lines true
- :floating {:border "single" :mappings {:close ["q" "<Esc>"]}}
- :force_buffers true
- :icons {
- :collapsed ""
- :current_frame ""
- :expanded ""
- }
- :layouts [
-           {
-           :elements [
-                      {:id "scopes" :size 0.50}
-                      {:id "stacks" :size 0.30}
-                      {:id "matches" :size 0.10}
-                      {:id "breakpoints" :size 0.10}
-                      ]
-           :size 40
-           :position "left"
-           }
-           {
-           :elements ["repl" "console"]
-           :size 10
-           :position "bottom"
-           }
-           ]
- :mappings {
- :edit "e"
- :expand ["<CR>" "<2-LeftMouse>"]
- :open "o"
- :remove "d"
- :repl "r"
- :toggle "t"
- }
- :render {:indent 1 :max_value_lines 100}
- }
- :config (fn [_ opts]
+ :config (fn []
            (local dap (require :dap))
-           ((. (require :dapui) :setup) opts)
+
+           ((. (require :dapui) :setup))
+           ((. (require :dap-go) :setup))
 
            (vim.api.nvim_set_hl 0 "DapStoppedHl" {:fg "#98BB6C" :bg "#2A2A2A" :bold true})
            (vim.api.nvim_set_hl 0 "DapStoppedLineHl" {:bg "#204028" :bold true})
@@ -71,12 +25,25 @@
            (vim.fn.sign_define "DapLogPoint" {:text "" :texthl "DiagnosticSignInfo" :linehl "" :numhl ""})
 
            (tset dap.listeners.after.event_initialized :dapui_config (fn []
-                                                                       ((. (require :dapui) :open))
+                                                                       ((. (require :dapui) :open) {})
                                                                        nil))
            (tset dap.listeners.after.event_terminated :dapui_config (fn []
+                                                                      ((. (require :dapui) :close) {})
                                                                       nil))
            (tset dap.listeners.after.event_exited :dapui_config (fn []
+                                                                  ((. (require :dapui) :close) {})
                                                                   nil))
+
+           (set dap.adapters {
+                :codelldb {
+                :type "server"
+                :port "${port}"
+                :executable {
+                :command "/home/joaquin/.local/share/nvim/mason/packages/codelldb/codelldb"
+                :args ["--port" "${port}"]
+                }
+                }
+                })
 
            (set dap.configurations.java [
                                          {
@@ -106,14 +73,18 @@
                                          :vmArgs (.. "" "-Xmx2g")
                                          }
                                          ])
+           (set dap.configurations.cpp [
+                                      {
+                                      :name "Launch lldb (custom file)"
+                                      :type "codelldb"
+                                      :request "launch"
+                                      :program (fn []
+                                                 (vim.fn.input "Path to executable: " (.. (vim.fn.getcwd) "/") "file")
+                                                 )
+                                      :cwd "${workspaceFolder}"
+                                      }
+                                      ])
 
            nil)
- }
- {1 :theHamsta/nvim-dap-virtual-text
-
- :lazy true
- :opts {:commented true :display_callback (fn [variable buf stackframe node options]
-                                            (if (options.virt_text_pos "inline") (.. " " variable.value) (.. variable.name " " variable.value))
-                                            )}
  }
  ]
