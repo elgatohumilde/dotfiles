@@ -100,14 +100,14 @@
                              })
 
 ;;DAP
-(vim.keymap.set "n" "<leader>bb" "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
+(vim.keymap.set "n" "<leader>bb" :<cmd>DapToggleBreakpoint<CR> {})
+(vim.keymap.set "n" "<leader>br" :<cmd>DapClearBreakpoints<CR> {})
 (vim.keymap.set "n" "<leader>bc" "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
 (vim.keymap.set "n" "<leader>bl" "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
-(vim.keymap.set "n" "<leader>br" "<cmd>lua require'dap'.clear_breakpoints()<CR>")
-(vim.keymap.set "n" "<leader>dc" "<cmd>lua require'dap'.continue()<CR>")
-(vim.keymap.set "n" "<leader>dj" "<cmd>lua require'dap'.step_over()<CR>")
-(vim.keymap.set "n" "<leader>dk" "<cmd>lua require'dap'.step_into()<CR>")
-(vim.keymap.set "n" "<leader>do" "<cmd>lua require'dap'.step_out()<CR>")
+(vim.keymap.set "n" "<leader>dc" :<cmd>DapContinue<CR> {})
+(vim.keymap.set "n" "<leader>dk" :<cmd>DapStepInto<CR> {})
+(vim.keymap.set "n" "<leader>dj" :<cmd>DapStepOver<CR> {})
+(vim.keymap.set "n" "<leader>do" :<cmd>DapStepOut<CR> {})
 (vim.keymap.set "n" "<leader>dd" (fn []
                                    ((. (require :dap) :disconnect))
                                    ((. (require :dapui) :close))
