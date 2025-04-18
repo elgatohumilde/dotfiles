@@ -25,6 +25,7 @@
 (set vim.g.netrw_hide 0)
 (set vim.g.netrw_liststyle 3)
 (set vim.g.netrw_winsize 25)
+(set vim.o.colorcolumn :80)
 
 (set vim.g.mapleader " ")
 (set vim.g.maplocalleader ",")
@@ -39,9 +40,6 @@
 (set vim.o.foldtext "")
 (set vim.opt.foldcolumn "0")
 (vim.opt.fillchars:append {:fold " "})
-
-(vim.cmd "colorscheme gruvbox")
-(set vim.o.colorcolumn :80)
 
 (vim.api.nvim_create_autocmd ["CursorMoved" "CursorMovedI"]
                              {:callback (fn []
