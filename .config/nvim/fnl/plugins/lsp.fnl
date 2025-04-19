@@ -16,6 +16,7 @@
  :config (fn []
            (var capabilities (vim.lsp.protocol.make_client_capabilities))
            (set capabilities (vim.tbl_deep_extend "force" capabilities ((. (require "blink.cmp") :get_lsp_capabilities))))
+           ((. (require :mason) :setup))
            ((. (require :mason-lspconfig) :setup_handlers) [
                                                             (fn [server_name]
                                                               (if (~= server_name :jdtls) (do

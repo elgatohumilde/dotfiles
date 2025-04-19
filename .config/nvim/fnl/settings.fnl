@@ -28,6 +28,7 @@
 (set vim.g.netrw_hide 0)
 (set vim.g.netrw_liststyle 3)
 (set vim.o.colorcolumn :80)
+(set vim.opt.clipboard :unnamedplus)
 
 (set vim.g.mapleader " ")
 (set vim.g.maplocalleader ",")
@@ -58,12 +59,6 @@
                                           (vim.fn.setpos "." pos)
                                           nil)}
                              )
-
-(vim.schedule (fn init []
-                (set vim.opt.clipboard :unnamedplus)
-                nil
-                )
-              )
 
 (vim.api.nvim_create_autocmd ["VimLeave"]
                              {:command "set guicursor=a:ver20"}

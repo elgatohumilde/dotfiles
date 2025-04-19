@@ -41,4 +41,7 @@ require('hotpot').setup({
 
 require('settings')
 require('config.lazy')
-require('keymaps')
+
+vim.schedule(function()
+    require("keymaps")
+end)
