@@ -21,6 +21,7 @@
 (vim.keymap.set :n :\ :<cmd>Lexplore<CR> {:desc "Open Netrw"})
 (vim.keymap.set :o :ie ":<C-u>normal! mzggVG<CR>`z" {})
 (vim.keymap.set :x :ie ":<C-u>normal! ggVG<CR>" {})
+(vim.keymap.set :n :<A-z> "<cmd>b#<CR>" {:desc "Alternate Buffer"})
 (vim.keymap.set :n :<leader>q "<cmd>bd<CR>" {:desc "Kill Current Buffer"})
 (vim.keymap.set :n :<leader>Q "<cmd>%bd|e#|bd#|'\"<CR>" {:desc "Kill non-Current Buffers"})
 (vim.keymap.set :n :<Esc> :<cmd>nohlsearch<CR> {:desc "Clear highlights"})
@@ -30,6 +31,18 @@
 (vim.keymap.set :v :<leader>r "\"hy:%s/<C-r>h//g<left><left>" {})
 (vim.keymap.set :n "<C-o>" "<cmd>foldopen<CR>")
 (vim.keymap.set :n "<C-c>" "<cmd>foldclose<CR>")
+(vim.keymap.set :i "<BS>" (fn []
+                            (let [line (vim.fn.getline ".")
+                                       col (vim.fn.col ".")]
+                              (if (or (and (= (string.sub line (- col 1) (- col 1)) "(") (= (string.sub line col col) ")"))
+                                      (and (= (string.sub line (- col 1) (- col 1)) "{") (= (string.sub line col col) "}"))
+                                      (and (= (string.sub line (- col 1) (- col 1)) "[") (= (string.sub line col col) "]"))
+                                      (and (= (string.sub line (- col 1) (- col 1)) "\"") (= (string.sub line col col) "\""))
+                                      (and (= (string.sub line (- col 1) (- col 1)) "'") (= (string.sub line col col) "'"))
+                                      )
+                                  (feed "<right><BS><BS>")
+                                  (feed "<BS>")
+                                  ))))
 (vim.keymap.set :i "\"" 
                 (fn []
                   (let [line (vim.fn.getline ".")
@@ -80,7 +93,8 @@
 (vim.keymap.set :n :<leader>sn "<cmd>Pick cli command={\"fd\" \"-H\" \".\" \"/home/joaquin/.config/nvim/\"}<CR>" {:desc "[S]earch [N]eovim files"})
 (vim.keymap.set :n :<leader>sc "<cmd>Pick cli command={\"fd\" \"-H\" \".\" \"/home/joaquin/.dotfiles/\"}<CR>" {:desc "[S]earch [C]onfiguration"})
 (vim.keymap.set :n :<leader>os "<cmd>Pick cli command={\"fd\" \"-H\" \".\" \"/home/joaquin/Sync/org/\"}<CR>" {:desc "[O]rg [S]earch"})
-(vim.keymap.set :n :<leader>/ "<cmd>Pick buf_lines<CR>" {:desc "[/] Search current buffer"})
+(vim.keymap.set :n :<leader>/ "<cmd>Pick buf_lines scope='current' preserve_order=true<CR>" {:desc "[/] Search current buffer"})
+(vim.keymap.set [:n :i] :<A-x> "<cmd>Pick spellsuggest<CR>" {:desc "Spelling suggestions"})
 (vim.keymap.set :n :<leader><leader> "<cmd>Pick buffers<CR>" {:desc "[ ] Search existing buffers"})
 
 ;;LSP

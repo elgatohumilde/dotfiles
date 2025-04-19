@@ -41,6 +41,14 @@
 (set vim.opt.foldcolumn "0")
 (vim.opt.fillchars:append {:fold " "})
 
+(vim.api.nvim_create_autocmd "TextYankPost"
+                             {
+                             :desc "Highlight when yanking text"
+                             :callback (fn []
+                                         (vim.highlight.on_yank)
+                                         nil)
+                             })
+
 (vim.api.nvim_create_autocmd ["CursorMoved" "CursorMovedI"]
                              {:callback (fn []
                                           (local pos (vim.fn.getpos "."))
