@@ -1,14 +1,248 @@
 #!/usr/bin/env bash
+clear
 
 set -o errexit -o pipefail -o nounset
 
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-cd ..
-rm -rf yay
-yay --needed -Sy pacman-contrib waybar hyprland tofi gnu-free-fonts ttf-cascadia-code-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common noto-fonts-emoji noto-fonts-cjk otf-fonts-awesome xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk wlr-randr stow vim neovim wl-clipboard unzip 7zip wget kitty brightnessctl pavucontrol pamixer playerctl ripgrep fd fzf zathura zathura-pdf-mupdf zathura-djvu python python-pip imv mpv yt-dlp man-db man-pages hyprlock qt5-wayland qt6-wayland thunar vesktop-bin texlive librewolf-bin tree-sitter-cli nodejs syncthing openssh gitu yazi fastfetch eww-git pipewire lib32-pipewire pipewire-audio pipewire-pulse pipewire-docs wireplumber wireplumber-docs lswt-git yarn tmux moreutils mako fennel tree perl-file-mimeinfo jq bc
-# yay --needed -Sy tokyonight-gtk-theme-git nwg-look
-# curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
-# sudo ln -s /usr/bin/kitty /usr/bin/xterm
-# xdg-mime default org.pwmt.zathura-pdf-mupdf.desktop application/pdf
+# Variables
+
+HOME_dir="$HOME"
+
+packages=(
+    "gnu-free-fonts"
+    "ttf-cascadia-code-nerd"
+    "ttf-jetbrains-mono-nerd"
+    "ttf-nerd-fonts-symbols"
+    "ttf-nerd-fonts-symbols-common"
+    "noto-fonts"
+    "noto-fonts-emoji"
+    "noto-fonts-cjk"
+    "noto-fonts-extra"
+    "otf-font-awesome"
+    "pacman-contrib"
+    "man-db"
+    "man-pages"
+    "xdg-desktop-portal"
+    "xdg-desktop-portal-wlr"
+    "xdg-desktop-portal-gtk"
+    "xdg-desktop-portal-hyprland"
+    "xdg-utils"
+    "xdg-user-dirs"
+    "qt5-wayland"
+    "qt6-wayland"
+    "pipewire"
+    "lib32-pipewire"
+    "pipewire-audio"
+    "pipewire-pulse"
+    "pipewire-docs"
+    "wireplumber"
+    "wireplumber-docs"
+    "networkmanager"
+    "lswt-git"
+    "yarn"
+    "tmux"
+    "moreutils"
+    "mako"
+    "fennel"
+    "tree"
+    "wlr-randr"
+    "wget"
+    "sed"
+    "zip"
+    "unzip"
+    "7zip"
+    "kitty"
+    "vim"
+    "neovim"
+    "gum"
+    "wl-clipboard"
+    "brightnessctl"
+    "pavucontrol"
+    "pamixer"
+    "playerctl"
+    "ripgrep"
+    "fd"
+    "fzf"
+    "zathura"
+    "zathura-pdf-mupdf"
+    "zathura-djvu"
+    "python"
+    "python-pip"
+    "imv"
+    "mpv"
+    "yt-dlp"
+    "rsync"
+    "grim"
+    "slurp"
+    "git"
+    "figlet"
+    "tokyonight-gtk-theme-git"
+    "nwg-look"
+    "nwg-dock-hyprland"
+    "waybar"
+    "hyprland"
+    "hyprpaper"
+    "hyprlock"
+    "libnotify"
+    "thunar"
+    "vesktop-bin"
+    "texlive"
+    "librewolf-bin"
+    "spotube-bin"
+    "tree-sitter-cli"
+    "nodejs"
+    "syncthing"
+    "openssh"
+    "gitui"
+    "yazi"
+    "fastfetch"
+    "tofi"
+    "uwsm"
+    "stow"
+)
+
+# Utilities
+
+_isInstalled() {
+    package="$1"
+    check="$(sudo pacman -Qs --color always "${package}" | grep "local" | grep "${package} ")"
+    if [ -n "${check}" ]; then
+        echo 0
+        return #true
+    fi
+    echo 1
+    return #false
+}
+
+_checkCommandExists() {
+    package="$1"
+    if ! command -v $package >/dev/null; then
+        return 1
+    else
+        return 0
+    fi
+}
+
+_installPackages() {
+    toInstall=()
+    for pkg; do
+        if [[ $(_isInstalled "${pkg}") == 0 ]]; then
+            echo ":: ${pkg} is already installed."
+            continue
+        fi
+        toInstall+=("${pkg}")
+    done
+    if [[ "${toInstall[@]}" == "" ]]; then
+        return
+    fi
+    printf "Package not installed:\n%s\n" "${toInstall[@]}"
+    yay --noconfirm -S "${toInstall[@]}"
+}
+
+_installYay() {
+    _installPackages "base-devel"
+    SCRIPT=$(realpath "$0")
+    temp_path=$(dirname "$SCRIPT")
+    git clone https://aur.archlinux.org/yay.git $HOME_dir/yay
+    cd $HOME_dir/yay
+    makepkg -si
+    cd $temp_path
+    rm -rf $HOME_dir/yay
+    echo ":: yay has been installed successfully."
+}
+
+# Colors
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;32m'
+BLUE='\033[0;34m'
+NONE='\033[0m'
+
+echo -e "${GREEN}"
+cat <<"EOF"
+   ____         __       ____
+  /  _/__  ___ / /____ _/ / /__ ____
+ _/ // _ \(_-</ __/ _ `/ / / -_) __/
+/___/_//_/___/\__/\_,_/_/_/\__/_/
+
+EOF
+echo "elgatohumilde's dotfiles"
+echo -e "${NONE}"
+while true; do
+    read -p "DO YOU WANT TO START THE INSTALLATION NOW? (Yy/Nn): " yn
+    case $yn in
+        [Yy]*)
+            echo ":: Installation started."
+            echo
+            break
+            ;;
+        [Nn]*)
+            echo ":: Installation canceled."
+            exit
+            break
+            ;;
+        *)
+            echo ":: Please answer yes or no."
+            ;;
+    esac
+done
+
+sudo pacman -Sy
+echo
+
+if _checkCommandExists "yay"; then
+    echo ":: yay is already installed"
+else
+    echo ":: The installer requires yay. yay will be installed now"
+    _installYay
+fi
+echo
+
+echo ":: Checking that required packages are installed..."
+_installPackages "${packages[@]}"
+echo
+
+gum spin --spinner dot --title "Starting setup now..." -- sleep 3
+
+echo -e "${GREEN}"
+figlet -f smslant "NVIDIA Setup"
+echo -e "${NONE}"
+echo
+nvidia=$(gum confirm "Do you have an NVIDIA GPU and like to install the propietary driver for it?" && echo "Y" || echo "N")
+
+if [[ $nvidia =~ ^[Yy]$ ]]; then
+    echo "Installing NVIDIA packages..."
+    nvidia_pkgs=(
+        nvidia-dkms nvidia-settings nvidia-utils
+        libva libva-nvidia-driver-git
+    )
+    for krnl in $(cat /usr/lib/modules/*/pkgbase); do
+        for pkg in "${krnl}-headers" "${nvidia_pkgs[@]}"; do
+            yay -S --noconfirm "$pkg"
+        done
+    done
+
+    if ! grep -qE '^MODULES=.*nvidia.*nvidia_modeset.*nvidia_uvm.*nvidia_drm' /etc/mkinitcpio.conf; then
+        sudo sed -Ei 's/^(MODULES=\([^\)]*)\)/\1 nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
+        echo "Nvidia modules added to /etc/mkinitcpio.conf"
+    fi
+    sudo mkinitcpio -P
+
+    NVEA="/etc/modprobe.d/nvidia.conf"
+    if [[ ! -f "$NVEA" ]]; then
+        echo "options nvidia_drm modeset=1 fbdev=1" | sudo tee "$NVEA"
+    fi
+
+    if gum confirm "Would you like to blacklist the Nouveau driver?"; then
+        echo "blacklist nouveau" | sudo tee /etc/modprobe.d/nouveau.conf
+        echo "install nouveau /bin/true" | sudo tee /etc/modprobe.d/blacklist.conf
+    fi
+
+    echo "Configuration complete!"
+
+else
+    echo "NVIDIA installation skipped."
+fi
+
+sudo ln -s /usr/bin/kitty /usr/bin/xterm
+xdg-mime default org.pwmt.zathura-pdf-mupdf.desktop application/pdf

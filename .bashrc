@@ -21,6 +21,7 @@ alias grep='grep --color=auto'
 alias hgrep='history | grep'
 alias open='xdg-open'
 alias nv='nvim'
+alias emacs='emacs -nw'
 
 srvenv() {
     command source "$@".venv/bin/activate

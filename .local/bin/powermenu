@@ -9,6 +9,6 @@ case "$CHOSEN" in
 		"Suspend") systemctl suspend-then-hibernate ;;
 		"Reboot") reboot ;;
 		"Shutdown") poweroff ;;
-		"Log Out") riverctl exit ;;
+		"Log Out") hyprctl dispatch exit ;;
 		*) exit 1 ;;
 esac
