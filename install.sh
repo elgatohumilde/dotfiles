@@ -213,7 +213,7 @@ nvidia=$(gum confirm "Do you have an NVIDIA GPU and like to install the propieta
 if [[ $nvidia =~ ^[Yy]$ ]]; then
     echo "Installing NVIDIA packages..."
     nvidia_pkgs=(
-        nvidia-dkms nvidia-settings nvidia-utils
+        nvidia-open nvidia-settings nvidia-utils lib32-nvidia-utils
         libva libva-nvidia-driver-git
     )
     for krnl in $(cat /usr/lib/modules/*/pkgbase); do
@@ -244,5 +244,8 @@ else
     echo "NVIDIA installation skipped."
 fi
 
-sudo ln -s /usr/bin/kitty /usr/bin/xterm
+if [[ ! -f /usr/bin/xterm ]]; then
+    sudo ln -s /usr/bin/kitty /usr/bin/xterm
+fi
+
 xdg-mime default org.pwmt.zathura-pdf-mupdf.desktop application/pdf
