@@ -1,0 +1,19 @@
+* elgatohumilde's Hyprland dotfiles
+
+Here I store most of my configuration files.
+
+Feel free to copy and paste anything from this config, since the hole config is a bunch of copy/paste as well.
+
+The configuration has a install script (only for arch btw), but I don't recommend using it since it lacks testing.
+
+* Installation
+
+The installation script installs the [[https://github.com/Jguer/yay][yay]] AUR helper and all my packages.
+
+#+begin_src bash
+cd ~
+git clone https://github.com/elgatohumilde/dotfiles ./.dotfiles
+cd .dotfiles
+chmod +x install.sh
+./install.sh
+#+end_src

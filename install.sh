@@ -43,6 +43,7 @@ packages=(
     "moreutils"
     "mako"
     "fennel"
+    "postgresql"
     "tree"
     "wlr-randr"
     "wget"
