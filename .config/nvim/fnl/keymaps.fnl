@@ -171,3 +171,6 @@
 (vim.keymap.set :n :<C-j> "<cmd>TmuxNavigateDown<CR>" {})
 (vim.keymap.set :n :<C-k> "<cmd>TmuxNavigateUp<CR>" {})
 (vim.keymap.set :n :<C-l> "<cmd>TmuxNavigateRight<CR>" {})
+
+;;Dbee
+(vim.keymap.set :n :<leader>ts "<cmd>Dbee toggle<CR>" {})
