@@ -34,8 +34,6 @@
 (vim.keymap.set :n :<leader>- :<cmd>split<CR> {:desc "[-] Horizontal split"})
 (vim.keymap.set :t :<Esc><Esc> :<C-\><C-n> {:desc "Exit terminal mode"})
 (vim.keymap.set :v :<leader>r "\"hy:%s/<C-r>h//g<left><left>" {})
-(vim.keymap.set :n "<C-o>" "<cmd>foldopen<CR>")
-(vim.keymap.set :n "<C-c>" "<cmd>foldclose<CR>")
 (vim.keymap.set :i "<BS>" (fn []
                             (let [line (vim.fn.getline ".")
                                        col (vim.fn.col ".")]
