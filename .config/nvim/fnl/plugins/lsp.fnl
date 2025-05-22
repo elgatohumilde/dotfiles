@@ -13,6 +13,7 @@
                 }
                 ]
  :config (fn []
+           (vim.diagnostic.config {:virtual_text true})
            (var capabilities (vim.lsp.protocol.make_client_capabilities))
            (set capabilities (vim.tbl_deep_extend "force" capabilities ((. (require "blink.cmp") :get_lsp_capabilities))))
            ((. (require :mason) :setup))

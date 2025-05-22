@@ -20,7 +20,6 @@
 (set vim.opt.background :dark)
 (set vim.o.termguicolors true)
 (set vim.g.have_nerd_font true)
-(set vim.g.netrw_keepdir 0)
 (set vim.g.netrw_winsize 30)
 (set vim.g.netrw_browser_split 0)
 (set vim.g.netrw_localcopydircmd "cp -r")

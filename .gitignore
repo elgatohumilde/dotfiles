@@ -3,3 +3,4 @@ lazy-lock.json
 .local/bin/osu-wine
 .config/tmux/plugins
 spell/
+fish_variables

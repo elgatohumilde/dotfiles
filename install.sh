@@ -99,6 +99,8 @@ packages=(
     "tofi"
     "uwsm"
     "stow"
+    "eza"
+    "zoxide"
 )
 
 # Utilities

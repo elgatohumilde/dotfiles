@@ -4,7 +4,7 @@ Here I store most of my configuration files.
 
 Feel free to copy and paste anything from this config, since the hole config is a bunch of copy/paste as well.
 
-The configuration has a install script (only for arch btw), but I don't recommend using it since it lacks testing.
+The configuration has an install script (only for arch btw), but I don't recommend using it since it lacks testing.
 
 * Installation
 
