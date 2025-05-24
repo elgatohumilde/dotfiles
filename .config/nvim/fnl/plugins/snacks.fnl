@@ -27,6 +27,7 @@
  }
  :bigfile {}
  :quickfile {}
+ :input {}
  }
  }
  ]

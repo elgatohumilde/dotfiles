@@ -101,6 +101,7 @@ packages=(
     "stow"
     "eza"
     "zoxide"
+    "fish"
 )
 
 # Utilities

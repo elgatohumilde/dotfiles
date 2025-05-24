@@ -33,6 +33,9 @@
 (vim.keymap.set [:n :i] :<A-x> "<cmd>lua Snacks.picker.spelling()<CR>" {:desc "Spelling suggestions"})
 (vim.keymap.set :n :<leader><leader> "<cmd>lua Snacks.picker.buffers()<CR>" {:desc "[ ] Search existing buffers"})
 
+;;Snacks notifier
+(vim.keymap.set :n :<leader>dn "<cmd>lua Snacks.notifier.hide()<CR>" {:desc "[D]ismiss [N]otifications"})
+
 ;;LSP
 (vim.keymap.set :n :<leader>D "<cmd>lua vim.diagnostic.open_float()<CR>" {:desc "[O]pen [D]iagnostic"})
 (vim.api.nvim_create_autocmd "LspAttach" {
