@@ -102,6 +102,7 @@ packages=(
     "eza"
     "zoxide"
     "fish"
+    "yadm"
 )
 
 # Utilities
