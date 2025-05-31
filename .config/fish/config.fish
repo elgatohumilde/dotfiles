@@ -15,6 +15,8 @@ if status is-interactive
     alias open 'xdg-open'
     alias nv 'nvim'
     alias nvs 'nvim -S'
+    alias lg 'lazygit'
+    alias ylg 'lazygit --git-dir ~/.local/share/yadm/repo.git/'
 
     function srvenv
         source "$argv".venv/bin/activate.fish
