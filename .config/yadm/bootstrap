@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
+set -euo pipefail
+
+yadm checkout .
+yadm submodule update --recursive --init
 clear
 
-set -o errexit -o pipefail -o nounset
 
 # Variables
 
@@ -36,7 +39,6 @@ packages=(
     "wireplumber"
     "wireplumber-docs"
     "networkmanager"
-    "yarn"
     "tmux"
     "moreutils"
     "mako"
@@ -96,6 +98,7 @@ packages=(
     "eza"
     "zoxide"
     "fish"
+    "pnpm"
 )
 
 # Utilities
