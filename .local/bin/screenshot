@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+# Take a screenshot on wayland with grim and slurp
+
+# region|all
+mode="$1"
+
+case $mode in
+    "region")
+      (grim -g "$(slurp)" - | wl-copy) && notify-send -t 2000 "Screenshot taken"
+        ;;
+    "all")
+      (grim - | wl-copy) && notify-send -t 2000 "Screenshot taken"
+        ;;
+    *)
+        echo >&2 "unsupported command \"$mode\""
+        echo >&2 "Usage:"
+        echo >&2 "screenshot <region|all>"
+        exit 1
+esac

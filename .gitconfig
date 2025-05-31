@@ -1,0 +1,11 @@
+[user]
+    email = 159632612+elgatohumilde@users.noreply.github.com
+    name = Joaquin Lopez
+[credential]
+    helper = store
+[pull]
+	rebase = true
+[core]
+	excludesfile = /home/joaquin/.gitignore_global
+[init]
+	defaultBranch = main

@@ -1,0 +1,17 @@
+set synctex true
+set database sqlite
+set selection-clipboard clipboard
+set highlight-color rgba(255,255,255,0)
+set highlight-active-color rgba(255,255,255,0)
+set font "inconsolata 11"
+set scroll-step 50
+set recolor
+set recolor-lightcolor "#0F111A"
+set recolor-darkcolor "#EBDBB2"
+set recolor-reverse-video "true"
+set recolor-keephue "true"
+unmap f
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
+map R recolor
+map [fullscreen] R recolor

@@ -1,0 +1,9 @@
+# default-timeout=1500
+font="Caskaydia Cove Nerd Font Mono 16pt"
+background-color=#0f111a
+text-color=#ebdbb2
+border-color=#93a1a1
+progress-color=over #31748f
+
+[urgency=high]
+border-color=#eb6f92
