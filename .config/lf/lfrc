@@ -5,3 +5,5 @@ set drawbox
 set preview
 set previewer ~/.config/lf/preview.sh
 set cleaner ~/.config/lf/clean.sh
+
+cmd trash %trash-put -- $fx
