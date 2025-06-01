@@ -18,18 +18,6 @@ if status is-interactive
     alias lg 'lazygit'
     alias ylg 'lazygit --git-dir ~/.local/share/yadm/repo.git/'
 
-    function srvenv
-        source "$argv".venv/bin/activate.fish
-    end
-
-    function makerun
-        if text -z "$argv"
-            echo "error: no input files" >&2
-        else
-            command cmake --build build/; and build/$argv
-        end
-    end
-
     function fuzzy_cd
         set dir (fd -H -t d . ~ | fzf)
         if test -n "$dir"

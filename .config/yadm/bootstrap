@@ -106,6 +106,7 @@ packages=(
     "bat"
     "clang"
     "trash-cli"
+    "cmake"
 )
 
 # Utilities

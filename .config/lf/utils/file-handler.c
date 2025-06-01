@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 static void show_items(DBusMessage *message) {
-  const char *term = "kitty";
+  const char *term = getenv("TERMINAL");
   DBusMessageIter iter;
   dbus_message_iter_init(message, &iter);
   DBusMessageIter array;
