@@ -103,6 +103,8 @@ packages=(
     "docker"
     "docker-compose"
     "lazydocker-bin"
+    "bat"
+    "clang"
 )
 
 # Utilities

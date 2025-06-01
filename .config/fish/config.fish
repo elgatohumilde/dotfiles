@@ -24,9 +24,9 @@ if status is-interactive
 
     function makerun
         if text -z "$argv"
-        echo "error: no input files" >&2
-    else
-        command cmake --build build/; and build/$argv
+            echo "error: no input files" >&2
+        else
+            command cmake --build build/; and build/$argv
         end
     end
 

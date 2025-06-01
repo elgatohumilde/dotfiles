@@ -1,0 +1,7 @@
+set hidden true
+set ignorecase true
+set icons true
+set drawbox
+set preview
+set previewer ~/.config/lf/preview.sh
+set cleaner ~/.config/lf/clean.sh
