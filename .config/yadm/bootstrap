@@ -100,6 +100,9 @@ packages=(
     "fish"
     "pnpm"
     "r"
+    "docker"
+    "docker-compose"
+    "lazydocker-bin"
 )
 
 # Utilities
@@ -249,5 +252,11 @@ fi
 if [[ ! -f /usr/bin/xterm ]]; then
     sudo ln -s /usr/bin/kitty /usr/bin/xterm
 fi
+
+echo ":: Enabling systemd services..."
+systemctl enable --now docker.service
+
+echo ":: Adding user groups..."
+sudo usermod -aG docker joaquin
 
 xdg-mime default org.pwmt.zathura-pdf-mupdf.desktop application/pdf
