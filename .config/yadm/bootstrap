@@ -99,6 +99,7 @@ packages=(
     "zoxide"
     "fish"
     "pnpm"
+    "npm"
     "r"
     "docker"
     "docker-compose"

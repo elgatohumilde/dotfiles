@@ -3,21 +3,29 @@ set ignorecase true
 set icons true
 set drawbox
 set preview
+set info size:time
+set number true
+set relativenumber true
 set previewer ~/.config/lf/preview.sh
 set cleaner ~/.config/lf/clean.sh
+
+set shell sh
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 10
 
 cmd trash %trash-put -- $fx
 
 cmd mkdir ${{
-    printf "Directory Name: "
-        read ans
-        mkdir $ans
+    for dirname in "$@"; do
+        mkdir $dirname
+    done
 }}
 
 cmd mkfile ${{
-  printf "File Name: "
-  read ans
-  $EDITOR $ans
+    for filename in "$@"; do
+        touch $filename
+    done
 }}
 
 cmd fzf_jump ${{
@@ -32,7 +40,6 @@ cmd fzf_jump ${{
         lf -remote "send $id $cmd \"$res\""
     fi
 }}
-map <c-f> :fzf_jump
 
 cmd fzf_search ${{
     RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
@@ -44,6 +51,9 @@ cmd fzf_search ${{
     )"
     [ -n "$res" ] && lf -remote "send $id select \"$res\""
 }}
-map <c-g> :fzf_search
 
+map <c-f> :fzf_jump
+map <c-g> :fzf_search
 map . set hidden!
+map A push :mkdir<space>
+map a push :mkfile<space>
