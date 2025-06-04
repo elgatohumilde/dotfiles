@@ -4,6 +4,6 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-if [ -z $TMUX ]; then
-    exec hyprland
+if [ -z "$TMUX" ] && [ "$(tty)" = "/dev/tty1" ]; then
+    exec Hyprland
 fi
