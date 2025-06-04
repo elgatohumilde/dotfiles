@@ -52,6 +52,7 @@ packages=(
     "unzip"
     "7zip"
     "kitty"
+    "wezterm-git"
     "vim"
     "neovim"
     "gum"

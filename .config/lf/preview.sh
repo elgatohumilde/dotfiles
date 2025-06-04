@@ -7,7 +7,7 @@ x="$4"
 y="$5"
 
 if file --mime-type "$file" | grep -qE 'image/'; then
-    kitten icat --stdin no --transfer-mode memory --place "${w}x${h}@${x}x${y}" "$1" </dev/null >/dev/tty
+    kitten icat --stdin no --transfer-mode memory --place "${w}x${h}@${x}x${y}" "${file}" </dev/null >/dev/tty
     exit 1
 fi
 
