@@ -11,4 +11,4 @@ fi
 
 export PATH
 export EDITOR=nvim
-export TERMINAL=kitty
+export TERMINAL=wezterm

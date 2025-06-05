@@ -99,6 +99,7 @@ packages=(
     "eza"
     "zoxide"
     "fish"
+    "direnv"
     "pnpm"
     "npm"
     "r"
