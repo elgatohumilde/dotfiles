@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 static void show_items(DBusMessage *message) {
-  const char *term = getenv("TERMINAL");
+  const char *term = "wezterm";
   DBusMessageIter iter;
   dbus_message_iter_init(message, &iter);
   DBusMessageIter array;
@@ -13,7 +13,7 @@ static void show_items(DBusMessage *message) {
     dbus_message_iter_get_basic(&array, &item);
     item += 7;
     char *cmd;
-    asprintf(&cmd, "%s --app-id \"F_window\" -e lf '%s' &", term, item);
+    asprintf(&cmd, "%s start --class \"F_window\" -e lf '%s' &", term, item);
     system(cmd);
     free(cmd);
     dbus_message_iter_next(&array);
