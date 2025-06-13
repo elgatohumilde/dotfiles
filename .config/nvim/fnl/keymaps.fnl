@@ -15,6 +15,8 @@
 (vim.keymap.set :n :<leader>- :<cmd>split<CR> {:desc "[-] Horizontal split"})
 (vim.keymap.set :t :<Esc><Esc> :<C-\><C-n> {:desc "Exit terminal mode"})
 (vim.keymap.set :v :<leader>r "\"hy:%s/<C-r>h//g<left><left>" {})
+(vim.keymap.set :n :j :gj {})
+(vim.keymap.set :n :k :gk {})
 (for [i 1 9]
   (vim.keymap.set :n (.. "<A-" i ">") (.. i "gt") {:noremap true :silent true}))
 
