@@ -41,7 +41,7 @@ config.window_background_opacity = 0.85
 
 config.enable_tab_bar = false
 
-config.font = wezterm.font 'CaskaydiaCove Nerd Font Mono'
+config.font = wezterm.font 'JetBrains Mono Nerd Font'
 config.font_size = 14.0
 
 config.enable_kitty_graphics = true

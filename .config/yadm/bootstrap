@@ -12,10 +12,7 @@ HOME_dir="$HOME"
 
 packages=(
     "gnu-free-fonts"
-    "ttf-cascadia-code-nerd"
-    "ttf-jetbrains-mono-nerd"
-    "ttf-nerd-fonts-symbols"
-    "ttf-nerd-fonts-symbols-common"
+    "nerd-fonts"
     "noto-fonts"
     "noto-fonts-emoji"
     "noto-fonts-cjk"
