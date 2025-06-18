@@ -57,3 +57,4 @@ map <c-g> :fzf_search
 map . set hidden!
 map A push :mkdir<space>
 map a push :mkfile<space>
+map d push :delete<space>
