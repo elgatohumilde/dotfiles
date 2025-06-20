@@ -60,4 +60,8 @@ if status is-interactive
 
     zoxide init --cmd cd fish | source
     direnv hook fish | source
+
+    if not set -q TMUX
+        tmux attach-session -t default; or tmux new-session -s default
+    end
 end
