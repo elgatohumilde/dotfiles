@@ -2,9 +2,9 @@
     "position": "top",
     "height": 32,
     "spacing": 5,
-    // Choose the order of the modules
     "modules-left": [
         "tray",
+        "hyprland/language",
         "custom/playerctl",
     ],
     "modules-center": [
@@ -14,9 +14,12 @@
         "pulseaudio",
         "network",
         "battery",
-	    "clock",
+        "clock",
         "custom/power"
-		],
+    ],
+    "hyprland/language": {
+        "format": "  {}",
+    },
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -34,7 +37,6 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
         "spacing": 10
     },
     "clock": {
@@ -49,29 +51,27 @@
         "format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
         "format-charging": "󰂄",
         "format-warning": "󰂃",
-	"tooltip-format": "{capacity}% capacity  {time}"
+        "tooltip-format": "{capacity}% capacity  {time}"
     },
     "network": {
         "format-wifi": "󰤨",
         "format-disconnected": "󰤭",
-	"tooltip-format": "Connected to {essid}",
-	"on-click": "$TERMINAL start --class \"F_window\" -e nmtui"
+        "tooltip-format": "Connected to {essid}",
+        "on-click": "$TERMINAL start --class \"F_window\" -e nmtui"
     },
     "pulseaudio": {
-		"format": "{icon}     {format_source}",
-		"format-source": "",
-		"format-source-muted": "",
-		"format-muted": "󰖁     {format_source}",
-		"format-icons": {
-			"default": ["", "", "󰕾"]
-		},
-		"on-click": "pavucontrol",
-		"tooltip-format": "{volume}% volume"
-	},
+        "format": "{icon}     {format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-muted": "󰖁     {format_source}",
+        "format-icons": {
+            "default": ["", "", "󰕾"]
+        },
+        "on-click": "pavucontrol",
+        "tooltip-format": "{volume}% volume"
+    },
     "custom/power": {
         "format": "󰐥",
         "on-click": "powermenu"
     }
 }
-
-// vim: ft=jsonc
