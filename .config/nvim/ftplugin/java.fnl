@@ -6,6 +6,9 @@
 
 (local system_os "linux")
 
+(local launcher_jar
+  (vim.fn.glob (.. home "/.local/share/nvim/mason/share/jdtls/plugins/org.eclipse.equinox.launcher_*.jar")))
+
 (local bundles [
                 (vim.fn.glob (.. home "/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar"))
                 ])
@@ -25,7 +28,7 @@
              "--add-opens" "java.base/java.util=ALL-UNNAMED"
              "--add-opens" "java.base/java.lang=ALL-UNNAMED"
              "-jar"
-             (.. home "/.local/share/nvim/mason/share/jdtls/plugins/org.eclipse.equinox.launcher.jar")
+             launcher_jar
              "-configuration"
              (.. home "/.local/share/nvim/mason/packages/jdtls/config_" system_os)
              "-data"
