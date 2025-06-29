@@ -17,6 +17,7 @@ if status is-interactive
     alias nvs 'nvim -S'
     alias mc 'emacs -nw'
     alias lg 'lazygit'
+    alias ldc 'lazydocker'
     alias ylg 'lazygit --git-dir ~/.local/share/yadm/repo.git/'
 
     function fuzzy_cd
