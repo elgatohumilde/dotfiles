@@ -15,6 +15,7 @@
  :html [ "prettierd" ]
  :css [ "prettierd" ]
  :json [ "prettierd" ]
+ :python [ "isort" "black" ]
  }
  :notify_on_error false
  :format_on_save (fn [bufnr]
