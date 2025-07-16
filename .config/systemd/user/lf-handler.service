@@ -1,9 +1,0 @@
-[Unit]
-Description=LF D-Bus handler
-After=default.target
-
-[Service]
-ExecStart=%h/.config/lf/utils/file-handler
-
-[Install]
-WantedBy=default.target

@@ -57,7 +57,7 @@
         "format-wifi": "󰤨",
         "format-disconnected": "󰤭",
         "tooltip-format": "Connected to {essid}",
-        "on-click": "$TERMINAL start --class \"F_window\" -e nmtui"
+        "on-click": "$TERMINAL --class \"F_window\" -e nmtui"
     },
     "pulseaudio": {
         "format": "{icon}     {format_source}",
