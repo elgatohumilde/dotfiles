@@ -110,6 +110,7 @@ packages=(
     "clang"
     "trash-cli"
     "cmake"
+    "equibop-bin"
 )
 
 # Utilities

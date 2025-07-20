@@ -12,6 +12,7 @@ if status is-interactive
     alias sudo 'sudo '
     alias cls 'clear'
     alias ls 'eza'
+    alias f 'yazi'
     alias open 'xdg-open'
     alias nv 'nvim'
     alias nvs 'nvim -S'
