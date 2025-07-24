@@ -15,6 +15,10 @@
 (vim.keymap.set :n :<leader>- :<cmd>split<CR> {:desc "[-] Horizontal split"})
 (vim.keymap.set :t :<Esc><Esc> :<C-\><C-n> {:desc "Exit terminal mode"})
 (vim.keymap.set :v :<leader>r "\"hy:%s/<C-r>h//g<left><left>" {})
+(vim.keymap.set :n :<A-h> "<C-w>h<CR>" {})
+(vim.keymap.set :n :<A-j> "<C-w>j<CR>" {})
+(vim.keymap.set :n :<A-k> "<C-w>k<CR>" {})
+(vim.keymap.set :n :<A-l> "<C-w>l<CR>" {})
 (vim.keymap.set :n :j :gj {})
 (vim.keymap.set :n :k :gk {})
 (for [i 1 9]
@@ -31,7 +35,7 @@
 (vim.keymap.set :n :<leader>sn "<cmd>lua Snacks.picker.files({cwd = '/home/joaquin/.config/nvim/', hidden = true})<CR>" {:desc "[S]earch [N]eovim files"})
 (vim.keymap.set :n :<leader>os "<cmd>lua Snacks.picker.files({cwd = '/home/joaquin/Sync/org/', hidden = true})<CR>" {:desc "[O]rg [S]earch"})
 (vim.keymap.set :n :<leader>/ "<cmd>lua Snacks.picker.lines()<CR>" {:desc "[/] Search current buffer"})
-(vim.keymap.set [:n :i] :<A-x> "<cmd>lua Snacks.picker.spelling()<CR>" {:desc "Spelling suggestions"})
+(vim.keymap.set [:n :i] :<A-d> "<cmd>lua Snacks.picker.spelling()<CR>" {:desc "Spelling suggestions"})
 (vim.keymap.set :n :<leader><leader> "<cmd>lua Snacks.picker.buffers()<CR>" {:desc "[ ] Search existing buffers"})
 
 ;;Snacks notifier
@@ -101,12 +105,6 @@
 
 ;;UndoTree
 (vim.keymap.set :n :<leader>ut "<cmd>UndotreeToggle<CR>" {:desc "[U]ndo[T]ree"})
-
-;;Tmux-Navigator
-(vim.keymap.set :n :<C-h> "<cmd>TmuxNavigateLeft<CR>" {})
-(vim.keymap.set :n :<C-j> "<cmd>TmuxNavigateDown<CR>" {})
-(vim.keymap.set :n :<C-k> "<cmd>TmuxNavigateUp<CR>" {})
-(vim.keymap.set :n :<C-l> "<cmd>TmuxNavigateRight<CR>" {})
 
 ;;Dbee
 (vim.keymap.set :n :<leader>ts "<cmd>Dbee toggle<CR>" {})
