@@ -64,6 +64,7 @@
                                          :vmArgs (.. "" "-Xmx2g")
                                          }
                                          ])
+
            (set dap.configurations.cpp [
                                         {
                                         :name "Launch lldb (custom file)"

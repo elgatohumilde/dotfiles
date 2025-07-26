@@ -1,7 +1,7 @@
 vim.loader.enable()
 
-local lazy_plugins_path = vim.fn.stdpath('data') .. '/lazy'
 -- bootstrap lazy.nvim
+local lazy_plugins_path = vim.fn.stdpath('data') .. '/lazy'
 local lazy_path = lazy_plugins_path .. '/lazy.nvim'
 if not vim.loop.fs_stat(lazy_path) then
     vim.fn.system({
