@@ -20,6 +20,7 @@ packages=(
     "pacman-contrib"
     "man-db"
     "man-pages"
+    "texinfo"
     "xdg-desktop-portal"
     "xdg-desktop-portal-wlr"
     "xdg-desktop-portal-gtk"
@@ -36,12 +37,12 @@ packages=(
     "wireplumber"
     "wireplumber-docs"
     "networkmanager"
-    "zellij"
+    "tmux"
+    "tmux-plugin-manager"
     "moreutils"
     "mako"
-    "fennel"
-    "postgresql"
     "tree"
+    "postgresql"
     "wlr-randr"
     "wget"
     "sed"
@@ -67,10 +68,7 @@ packages=(
     "python-pip"
     "imv"
     "mpv"
-    "yt-dlp"
     "rsync"
-    "grim"
-    "slurp"
     "git"
     "figlet"
     "tokyonight-gtk-theme-git"
@@ -78,22 +76,19 @@ packages=(
     "nwg-dock-hyprland"
     "waybar"
     "hyprland"
+    "hyprshot"
+    "hyprpicker"
     "hyprpaper"
     "hyprlock"
     "libnotify"
-    "thunar"
     "texlive"
-    "qutebrowser"
-    "python-adblock"
     "coursier-bin"
     "sbt"
     "jdk-openjdk"
     "tree-sitter-cli"
     "nodejs"
-    "syncthing"
     "openssh"
     "lazygit"
-    "fastfetch"
     "tofi"
     "eza"
     "zoxide"
@@ -251,6 +246,11 @@ if [[ $nvidia =~ ^[Yy]$ ]]; then
         echo "blacklist nouveau" | sudo tee /etc/modprobe.d/nouveau.conf
         echo "install nouveau /bin/true" | sudo tee /etc/modprobe.d/blacklist.conf
     fi
+
+    echo ":: Disabling Nvidia Power Management"
+    systemctl disable nvidia-suspend
+    systemctl disable nvidia-hibernate
+    systemctl disable nvidia-resume
 
     echo "Configuration complete!"
 
