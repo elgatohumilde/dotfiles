@@ -34,7 +34,7 @@
 (vim.keymap.set :n :<leader>sn "<cmd>lua Snacks.picker.files({cwd = '/home/joaquin/.config/nvim/', hidden = true})<CR>" {:desc "[S]earch [N]eovim files"})
 (vim.keymap.set :n :<leader>os "<cmd>lua Snacks.picker.files({cwd = '/home/joaquin/Sync/org/', hidden = true})<CR>" {:desc "[O]rg [S]earch"})
 (vim.keymap.set :n :<leader>/ "<cmd>lua Snacks.picker.lines()<CR>" {:desc "[/] Search current buffer"})
-(vim.keymap.set [:n :i] :<A-d> "<cmd>lua Snacks.picker.spelling()<CR>" {:desc "Spelling suggestions"})
+(vim.keymap.set [:n :i] :<A-s> "<cmd>lua Snacks.picker.spelling()<CR>" {:desc "Spelling suggestions"})
 (vim.keymap.set :n :<leader><leader> "<cmd>lua Snacks.picker.buffers()<CR>" {:desc "[ ] Search existing buffers"})
 
 ;;Snacks notifier
