@@ -6,7 +6,6 @@ if status is-interactive
         bind -M $mode ctrl-space 'accept-autosuggestion'
         bind -M $mode \cp 'history-prefix-search-backward'
         bind -M $mode \cn 'history-prefix-search-forward'
-        bind -M $mode \cx\cd 'commandline -r "fuzzy_cd"; commandline -f execute'
     end
 
     alias sudo 'sudo '
@@ -21,13 +20,6 @@ if status is-interactive
     alias lg 'lazygit'
     alias ldc 'lazydocker'
     alias ylg 'lazygit --git-dir ~/.local/share/yadm/repo.git/'
-
-    function fuzzy_cd
-        set dir (fd -H -t d . ~ | fzf)
-        if test -n "$dir"
-            cd "$dir"
-        end
-    end
 
     function parse_git_branch
         set branch (git branch 2> /dev/null | sed -n 's/* \(.*\)/ on \1/p')
