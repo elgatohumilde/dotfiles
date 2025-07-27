@@ -1,0 +1,63 @@
+* {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+    border: none;
+    text-color: inherit;
+}
+
+window {
+    text-color: #dcd7ba;
+    background-color: #16161d;
+    border: 3px;
+    border-color: #7e9cd8;
+}
+
+mainbox {
+    children: [ "inputbar", "message", "listview" ];
+}
+
+inputbar {
+    background-color: #16161d;
+    children: [ "prompt", "entry" ];
+    padding: 8px 16px;
+    spacing: 8px;
+    border: 0 0 3px 0;
+    border-color: #7e9cd8;
+}
+
+prompt {
+    text-color: #dcd7ba;
+}
+
+message {
+    padding: 6px 16px;
+    border: 0 0 3px 0;
+    border-color: #7e9cd8;
+}
+
+listview {
+    columns: 1;
+    lines: 10;
+    fixed-height: false;
+}
+
+element {
+    padding: 10px 24px;
+    spacing: 16;
+    highlight: none;
+}
+
+element.selected {
+    background-color: #1f1f28;
+}
+
+element-icon {
+    size: 1.2em;
+}
+
+element-text {
+    vertical-align: 0.5;
+}
+
