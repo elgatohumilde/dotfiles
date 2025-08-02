@@ -1,7 +1,13 @@
+spawn-at-startup "mako"
 spawn-at-startup "waybar"
 spawn-at-startup "hyprpaper"
 spawn-at-startup "wl-clipboard-history" "-t"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+spawn-at-startup "xwayland-satellite"
+
+environment {
+    DISPLAY ":0"
+}
 
 hotkey-overlay {
     skip-at-startup
@@ -62,7 +68,7 @@ binds {
     Mod+B { spawn "zen-browser"; }
     Mod+P { spawn "hyprlock"; }
     Mod+Shift+L { spawn "hyprpicker" "-a"; }
-    Mod+E { spawn "kitty" "--class" "F_window" "-e" "yazi"; }
+    Mod+E { spawn "kitty" "--class" "F_window" "-e" "nvim" "-c" "Oil"; }
     Mod+O { spawn "bash" "-c" "kitty -e lazygit --git-dir ~/.local/share/yadm/repo.git/"; }
 
     Mod+Shift+R { spawn "bash" "-c" "pkill waybar && exec waybar"; }
