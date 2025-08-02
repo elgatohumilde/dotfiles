@@ -1,6 +1,5 @@
 [
- {
- 1 :R-nvim/R.nvim
+ {1 :R-nvim/R.nvim
 
  :ft [ "r" "quarto" ]
  :config (fn []

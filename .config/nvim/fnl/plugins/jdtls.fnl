@@ -14,9 +14,7 @@
            (local launcher_jar
                   (vim.fn.glob (.. home "/.local/share/nvim/mason/share/jdtls/plugins/org.eclipse.equinox.launcher_*.jar")))
 
-           (local bundles [
-                           (vim.fn.glob (.. home "/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar"))
-                           ])
+           (local bundles [ ])
 
            (vim.list_extend bundles (vim.split (vim.fn.glob (.. home "/.local/share/nvim/mason/share/java-test/*.jar") 1) "\n"))
 
@@ -75,14 +73,11 @@
                   :CodeGeneration {:toString {:template "${object.className}{${member.name()}=${member.value}, ${otherMembers}}"} :useBlocks true}
                   }
                   }
-                  :capabilities ((. (require "blink.cmp") :get_lsp_capabilities))
                   :flags {:allow_incremental_sync true}
                   :init_options {:bundles bundles :extendedClientCapabilities jdtls.extendedClientCapabilities}
                   })
 
            (set (. config "on_attach") (fn [client bufnr]
-                                         (jdtls.setup_dap {:hotcodereplace "auto"})
-                                         ((. (require :jdtls.dap) :setup_dap_main_class_configs))
                                          nil))
 
            (jdtls.start_or_attach config)

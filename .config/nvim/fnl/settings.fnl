@@ -9,6 +9,8 @@
 (set vim.opt.showmode false)
 (set vim.opt.cursorline true)
 (set vim.opt.mouse :a)
+(set vim.opt.virtualedit :all)
+(set vim.opt.winborder :rounded)
 (set vim.opt.breakindent true)
 (set vim.opt.undofile true)
 (set vim.opt.ignorecase true)

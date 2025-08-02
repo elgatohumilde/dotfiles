@@ -14,8 +14,7 @@
 
          (tset metals_config :init_options {:statusBarProvider "off"})
 
-         (var capabilities (vim.lsp.protocol.make_client_capabilities))
-         (set capabilities (vim.tbl_deep_extend "force" capabilities ((. (require "blink.cmp") :get_lsp_capabilities))))
+         (local capabilities (vim.lsp.protocol.make_client_capabilities))
          (set (. capabilities :textDocument.completion.completionItem)
               {
               :documentationFormat [ "markdown" "plaintext" ]
@@ -32,10 +31,6 @@
               })
 
          (tset metals_config :capabilities capabilities)
-
-         (tset metals_config :on_attach (fn [client bufnr]
-                                          ((. (require :metals) :setup_dap))
-                                          nil))
 
          metals_config
          )
