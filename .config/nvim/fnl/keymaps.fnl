@@ -3,7 +3,6 @@
 (vim.keymap.set :x "<leader>p" "\"_dP" {})
 (vim.keymap.set :n "U" :<C-r> {:desc "Redo"})
 (vim.keymap.set :n :<C-s> :<cmd>Oil<CR> {:desc "Open file explorer"})
-(vim.keymap.set :n :\ "<cmd>lua Snacks.explorer({auto_close = true, hidden = true})<CR>" {:desc "File Tree"})
 (vim.keymap.set :o :ie ":<C-u>normal! mzggVG<CR>`z" {})
 (vim.keymap.set :x :ie ":<C-u>normal! ggVG<CR>" {})
 (vim.keymap.set :n :<A-z> "<cmd>b#<CR>" {:desc "Alternate Buffer"})
