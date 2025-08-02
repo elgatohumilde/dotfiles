@@ -104,7 +104,6 @@ packages=(
     "bat"
     "exa"
     "clang"
-    "trash-cli"
     "cmake"
     "equibop-bin"
 )
