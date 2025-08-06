@@ -48,7 +48,7 @@ packages=(
     "zip"
     "unzip"
     "7zip"
-    "kitty"
+    "foot"
     "neovim-nightly-bin"
     "lua-language-server"
     "gum"
@@ -255,10 +255,6 @@ if [[ $nvidia =~ ^[Yy]$ ]]; then
 
 else
     echo "NVIDIA installation skipped."
-fi
-
-if [[ ! -f /usr/bin/xterm ]]; then
-    sudo ln -s /usr/bin/kitty /usr/bin/xterm
 fi
 
 echo ":: Enabling systemd services..."

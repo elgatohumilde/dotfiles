@@ -60,16 +60,16 @@ window-rule {
 }
 
 binds {
-    Mod+Q { spawn "kitty"; }
-    Mod+Ctrl+Q { spawn "kitty" "--class" "F_window"; }
-    Mod+Shift+Q { spawn "kitty" "tmux"; }
-    Mod+Ctrl+Shift+Q { spawn "kitty" "--class" "F_window" "tmux"; }
+    Mod+Q { spawn "foot"; }
+    Mod+Ctrl+Q { spawn "foot" "-a" "F_window"; }
+    Mod+Shift+Q { spawn "foot" "tmux"; }
+    Mod+Ctrl+Shift+Q { spawn "foot" "-a" "F_window" "tmux"; }
 
     Mod+B { spawn "zen-browser"; }
     Mod+P { spawn "hyprlock"; }
     Mod+Shift+L { spawn "hyprpicker" "-a"; }
-    Mod+E { spawn "kitty" "--class" "F_window" "-e" "nvim" "-c" "Oil"; }
-    Mod+O { spawn "bash" "-c" "kitty -e lazygit --git-dir ~/.local/share/yadm/repo.git/"; }
+    Mod+E { spawn "foot" "-a" "F_window" "-e" "nvim" "-c" "Oil"; }
+    Mod+O { spawn "bash" "-c" "foot -e lazygit --git-dir ~/.local/share/yadm/repo.git/"; }
 
     Mod+Shift+R { spawn "bash" "-c" "pkill waybar && exec waybar"; }
     Mod+R       { spawn "rofi" "-show-icons" "-display-drun" "Select" "-show" "drun"; }
