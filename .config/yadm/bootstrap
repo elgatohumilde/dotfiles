@@ -50,7 +50,7 @@ packages=(
     "7zip"
     "kitty"
     "neovim-nightly-bin"
-	  "lua-language-server"
+    "lua-language-server"
     "gum"
     "wl-clipboard"
     "wl-clipboard-history-git"
