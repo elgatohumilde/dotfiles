@@ -49,7 +49,7 @@
         "format-wifi": "󰤨",
         "format-disconnected": "󰤭",
         "tooltip-format": "Connected to {essid}",
-        "on-click": "$TERMINAL --class \"F_window\" -e nmtui"
+        "on-click": "$TERMINAL -a F_window -e sh -c 'sleep 0.1; exec nmtui'"
     },
     "battery": {
         "states": {
