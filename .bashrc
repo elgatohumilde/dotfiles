@@ -12,4 +12,6 @@ fi
 export PATH
 export SHELL=fish
 export EDITOR=nvim
+export VISUAL=nvim
 export TERMINAL=kitty
+export MANPAGER='nvim +Man!'
