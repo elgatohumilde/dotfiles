@@ -24,6 +24,8 @@ vim.pack.add({
 
     { src = "https://github.com/nvim-lua/plenary.nvim" },
     { src = "https://github.com/jiaoshijie/undotree" },
+
+    { src = "https://github.com/nvim-flutter/flutter-tools.nvim" },
 })
 require "mini.icons".setup()
 require "mini.sessions".setup()
@@ -46,6 +48,7 @@ require "blink-cmp".setup({
     },
 })
 
+require "flutter-tools".setup {}
 require "typst-preview".setup()
 require "undotree".setup()
 require "tmux".setup()
@@ -53,10 +56,7 @@ require "oil".setup()
 
 vim.ui.select = Snacks.picker.select
 
-vim.diagnostic.config({
-    virtual_text = true,
-})
-
+vim.diagnostic.config({ virtual_text = true, })
 vim.lsp.enable({ "lua_ls", "clangd", "bashls", "tinymist" })
 vim.lsp.config("lua_ls", {
     settings = {
@@ -144,6 +144,8 @@ map("x", "ie", ":<C-u>normal! ggVG<CR>")
 map("n", "<leader>-", ":sp<CR>")
 map("n", "<leader>|", ":vs<CR>")
 
+map("n", "<leader>n", ":e $MYVIMRC<CR>")
+
 map("n", "U", "<C-r>")
 map({ "n", "v" }, "j", "gj")
 map({ "n", "v" }, "k", "gk")
@@ -169,7 +171,6 @@ map("n", "<leader>sh", Snacks.picker.help)
 map("n", "<leader>sf", Snacks.picker.files)
 map("n", "<leader>sd", Snacks.picker.diagnostics)
 map("n", "<leader><leader>", Snacks.picker.buffers)
-map("n", "<leader>sn", function() Snacks.picker.grep({ cwd = vim.fn.stdpath("config") }) end)
 
 map('n', '<leader>ut', require('undotree').toggle)
 
