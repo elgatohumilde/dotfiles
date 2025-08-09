@@ -24,8 +24,6 @@ vim.pack.add({
 
     { src = "https://github.com/nvim-lua/plenary.nvim" },
     { src = "https://github.com/jiaoshijie/undotree" },
-
-    { src = "https://github.com/nvim-flutter/flutter-tools.nvim" },
 })
 require "mini.icons".setup()
 require "mini.sessions".setup()
@@ -48,7 +46,6 @@ require "blink-cmp".setup({
     },
 })
 
-require "flutter-tools".setup {}
 require "typst-preview".setup()
 require "undotree".setup()
 require "tmux".setup()
