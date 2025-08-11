@@ -118,6 +118,7 @@ binds {
 
     Mod+Shift+O { toggle-overview; }
 
+    Mod+Shift+F { fullscreen-window; }
     Mod+F { switch-preset-column-width; }
 
     Mod+V       { toggle-window-floating; }
