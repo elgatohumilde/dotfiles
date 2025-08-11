@@ -3,10 +3,10 @@
 CHOSEN=$(printf "Lock\nSuspend\nReboot\nShutdown\nLog Out" | rofi -dmenu -sync -i -p "Choose")
 
 case "$CHOSEN" in
-        "Lock") hyprctl dispatch exec hyprlock ;;
-		"Suspend") systemctl suspend-then-hibernate ;;
-		"Reboot") reboot ;;
-		"Shutdown") poweroff ;;
-		"Log Out") hyprctl dispatch exit ;;
-		*) exit 1 ;;
+    "Lock"    ) exec hyprlock ;;
+    "Suspend" ) systemctl suspend-then-hibernate ;;
+    "Reboot"  ) reboot ;;
+    "Shutdown") poweroff ;;
+    "Log Out" ) niri msg action quit ;;
+    *) exit 1 ;;
 esac
