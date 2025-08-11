@@ -5,7 +5,5 @@
     helper = store
 [pull]
 	rebase = true
-[core]
-	excludesfile = /home/joaquin/.gitignore_global
 [init]
 	defaultBranch = main
