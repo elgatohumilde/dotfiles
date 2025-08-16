@@ -4,15 +4,17 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
-vim.pack.add({
+vim.pack.add {
     { src = "https://github.com/rose-pine/neovim" },
+    { src = "https://github.com/nvim-lualine/lualine.nvim" },
 
     { src = "https://github.com/stevearc/oil.nvim" },
 
     { src = "https://github.com/aserowy/tmux.nvim" },
 
     { src = "https://github.com/Saghen/blink.cmp",               version = "v1.6.0" },
-    { src = "https://github.com/neovim/nvim-lspconfig" },
+    { src = "https://github.com/j-hui/fidget.nvim" },
+    { src = "https://github.com/mason-org/mason.nvim" },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 
     { src = "https://github.com/chomosuke/typst-preview.nvim" },
@@ -24,49 +26,44 @@ vim.pack.add({
 
     { src = "https://github.com/nvim-lua/plenary.nvim" },
     { src = "https://github.com/jiaoshijie/undotree" },
-})
+}
+
 require "mini.icons".setup()
+
 require "mini.sessions".setup()
 require "mini.surround".setup()
 require "mini.pairs".setup()
 require "mini.ai".setup()
 
 ---@diagnostic disable-next-line: missing-fields
-require "nvim-treesitter.configs".setup({
+require "nvim-treesitter.configs".setup {
     auto_install = true,
-    ignore_install = { "org" },
     highlight = { enable = true },
-})
+}
+require "fidget".setup {}
 
-require "blink-cmp".setup({
+require "mason".setup()
+require "blink-cmp".setup {
     signature = { enabled = true },
     completion = {
         ghost_text = { enabled = true },
         documentation = { auto_show = true }
     },
-})
+}
 
-require "typst-preview".setup()
+require "typst-preview".setup {
+    invert_colors = "auto",
+    dependencies_bin = { ["tinymist"] = "tinymist", },
+}
 require "undotree".setup()
+require "snacks".setup()
 require "tmux".setup()
 require "oil".setup()
 
 vim.ui.select = Snacks.picker.select
 
-vim.diagnostic.config({ virtual_text = true, })
-vim.lsp.enable({ "lua_ls", "clangd", "bashls", "tinymist" })
-vim.lsp.config("lua_ls", {
-    settings = {
-        Lua = {
-            workspace = {
-                library = vim.api.nvim_get_runtime_file("", true)
-            },
-            telemetry = {
-                enable = false,
-            },
-        }
-    },
-})
+vim.diagnostic.config { virtual_text = true, }
+vim.lsp.enable { "lua_ls", "tinymist" }
 
 
 --------------
@@ -98,6 +95,7 @@ vim.o.wrap = false
 vim.o.splitright = true
 vim.o.splitbelow = true
 
+vim.o.showmode = false
 vim.o.background = "dark"
 
 vim.o.tabstop = 2
@@ -120,7 +118,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function() vim.highlight.on_yank() end
 })
 vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-    callback = function() vim.cmd("normal! zz") end
+    callback = function() vim.cmd "normal! zz" end
 })
 vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function() vim.lsp.buf.format() end
@@ -173,22 +171,24 @@ map('n', '<leader>ut', require('undotree').toggle)
 
 map("n", "<leader>tp", ":TypstPreviewToggle<CR>")
 
+map("n", "K", vim.lsp.buf.hover)
 map("n", "<leader>f", vim.lsp.buf.format)
 map("n", "<leader>rn", vim.lsp.buf.rename)
 map("n", "<leader>ca", vim.lsp.buf.code_action)
 map("n", "<leader>D", vim.diagnostic.open_float)
+
 map("n", "gr", Snacks.picker.lsp_references)
 map("n", "gd", Snacks.picker.lsp_definitions)
 map("n", "gD", Snacks.picker.lsp_declarations)
-map("n", "gi", Snacks.picker.lsp_implementations)
 map("n", "<leader>so", Snacks.picker.lsp_symbols)
-map("n", "K", vim.lsp.buf.hover)
+map("n", "gi", Snacks.picker.lsp_implementations)
+map("n", "gt", Snacks.picker.lsp_type_definitions)
 
 
 ---------------
 ---- theme ----
 ---------------
-require "rose-pine".setup({
+require "rose-pine".setup {
     extend_background_behind_borders = false,
     palette = {
         main = {
@@ -197,21 +197,15 @@ require "rose-pine".setup({
             highlight_low = "none"
         },
     },
-})
-vim.cmd("colorscheme rose-pine")
-vim.cmd("hi visual guibg=#403D52")
-
-local statusline = {
-    "%F ",
-    "%w ",
-    "%m ",
-    "%q ",
-    "%r ",
-    "%= ",
-    "%y ",
-    "%3l:%-2c "
 }
+vim.cmd "colorscheme rose-pine"
+vim.cmd "hi visual guibg=#403D52"
 
-vim.o.statusline = table.concat(statusline, '')
+local lualine_theme = require "lualine.themes.rose-pine-alt"
+require "lualine".setup {
+    options = {
+        theme = lualine_theme,
+    },
+}
 
 -- vim.pack.update()
