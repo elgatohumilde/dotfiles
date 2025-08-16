@@ -9,7 +9,7 @@
         "tray",
     ],
     "modules-center": [
-        "niri/workspaces",
+        "hyprland/workspaces",
     ],
     "modules-right": [
         "pulseaudio",
@@ -28,9 +28,7 @@
     },
 
 
-    "niri/workspaces": {
-        "disable-click": false,
-        "all-outputs": false,
+    "hyprland/workspaces": {
     },
 
 

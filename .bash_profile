@@ -5,5 +5,5 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 if [ "$(tty)" = "/dev/tty1" ]; then
-    exec niri
+    exec hyprland
 fi
