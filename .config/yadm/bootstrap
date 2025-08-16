@@ -43,6 +43,7 @@ packages=(
     "mako"
     "tree"
     "postgresql"
+    "pgcli"
     "wlr-randr"
     "wget"
     "sed"
@@ -225,8 +226,9 @@ nvidia=$(gum confirm "Do you have an NVIDIA GPU and like to install the propieta
 if [[ $nvidia =~ ^[Yy]$ ]]; then
     echo "Installing NVIDIA packages..."
     nvidia_pkgs=(
-        nvidia-open nvidia-settings nvidia-utils lib32-nvidia-utils
+        nvidia-open nvidia-settings
         libva libva-nvidia-driver-git
+        nvidia-utils lib32-nvidia-utils
     )
     for krnl in $(cat /usr/lib/modules/*/pkgbase); do
         for pkg in "${krnl}-headers" "${nvidia_pkgs[@]}"; do
