@@ -14,4 +14,5 @@ export SHELL=fish
 export EDITOR=nvim
 export VISUAL=nvim
 export TERMINAL=foot
+export GTK_THEME=adw-gtk3-dark
 export MANPAGER='nvim +Man!'
