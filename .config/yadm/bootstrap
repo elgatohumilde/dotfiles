@@ -22,10 +22,9 @@ packages=(
     "man-pages"
     "texinfo"
     "xdg-desktop-portal"
-    "xdg-desktop-portal-wlr"
     "xdg-desktop-portal-gtk"
+    "xdg-desktop-portal-wlr"
     "xdg-desktop-portal-hyprland"
-    "adw-gtk-theme"
     "xdg-utils"
     "xdg-user-dirs"
     "qt5-wayland"
@@ -260,4 +259,5 @@ systemctl enable --now docker.service
 echo ":: Adding user groups..."
 sudo usermod -aG docker joaquin
 
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 xdg-mime default org.pwmt.zathura-pdf-mupdf.desktop application/pdf
