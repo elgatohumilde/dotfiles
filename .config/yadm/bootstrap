@@ -106,6 +106,8 @@ packages=(
     "exa"
     "cmake"
     "equibop-bin"
+    "zen-browser-bin"
+    "chromium"
 )
 
 # Utilities
