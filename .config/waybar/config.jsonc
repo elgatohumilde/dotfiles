@@ -21,10 +21,12 @@
 
 
     "memory": {
-        "format": "{}%  "
+        "format": "  {used:0.1f}G/{total:0.1f}G",
+        "tooltip": false,
     },
     "tray": {
-        "spacing": 10
+        "spacing": 10,
+        "icon-size": 20,
     },
 
 
@@ -33,36 +35,52 @@
 
 
     "pulseaudio": {
-        "format": "{icon}     {format_source}",
+        "format": "{icon}      {format_source}",
         "format-source": "",
         "format-source-muted": "",
-        "format-muted": "󰖁     {format_source}",
+        "format-muted": "󰖁      {format_source}",
         "format-icons": {
-            "default": ["", "", "󰕾"]
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
         },
         "on-click": "pavucontrol",
         "tooltip-format": "{volume}% volume"
     },
     "network": {
         "format-wifi": "󰤨",
-        "format-disconnected": "󰤭",
-        "tooltip-format": "Connected to {essid}",
-        "on-click": "$TERMINAL -a F_window -e sh -c 'sleep 0.1; exec nmtui'"
+        "format-ethernet": "  Wired",
+        "format-linked": "󱘖 {ifname} (No IP)",
+        "format-disconnected": "  Disconnected",
+        "on-click": "$TERMINAL -a F_window -e sh -c 'sleep 0.1; exec nmtui'",
+        "tooltip-format": "<span color='#F38BA8'>󰅧</span> {bandwidthUpBytes}   <span color='#89B4FA'>󰅢</span> {bandwidthDownBytes}",
+        "interval": 1,
     },
     "battery": {
         "states": {
-            "warning": 20
+            "warning": 30,
+            "critical": 15,
         },
         "format": "{capacity}%  {icon}",
-        "format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
         "format-charging": "{capacity}%  󰂄",
-        "format-warning": "{capacity}%  󰂃",
+        "format-icons": ["󰂎", "󰁼", "󰁿", "󰂁", "󰁹"],
+        "interval": 1,
     },
     "clock": {
-        "format": "{:%A %d, %H:%M}"
+        "format": "{:%A %d, %H:%M}",
+        "tooltip": false,
     },
     "custom/power": {
         "format": "󰐥",
-        "on-click": "powermenu"
+        "on-click": "powermenu",
+        "tooltip": false,
     }
 }
