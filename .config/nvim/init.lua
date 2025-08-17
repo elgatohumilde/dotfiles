@@ -132,6 +132,7 @@ local map = vim.keymap.set
 
 map("n", "q:", "<nop>")
 map("n", "<leader>/", "/")
+map("v", "<leader>r", "\"hy:%s/<C-r>h//g<left><left>")
 
 map("o", "ie", ":<C-u>normal! mzggVG<CR>`z")
 map("x", "ie", ":<C-u>normal! ggVG<CR>")
