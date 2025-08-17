@@ -1,0 +1,31 @@
+format = " $directory$all\n ${custom.vi_mode}$character"
+add_newline = false
+
+[line_break]
+disabled = true
+
+[directory]
+truncate_to_repo = false
+
+[custom.vi_mode]
+format="[$output]($style) "
+command = 'echo $vi_mode_symbol'
+when = 'test -n "$vi_mode_symbol"'
+
+[status]
+disabled = false
+map_symbol = true
+format = "[$symbol $status]($style) "
+not_executable_symbol = ""
+not_found_symbol = ""
+sigint_symbol = "ﭦ"
+symbol = ""
+
+[python]
+symbol = " "
+
+[java]
+symbol = " "
+
+[golang]
+symbol = " "

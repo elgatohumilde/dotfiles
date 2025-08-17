@@ -11,6 +11,7 @@ if status is-interactive
     alias sudo 'sudo '
     alias cls 'clear'
     alias ls 'eza'
+    alias tree 'ls -T'
     alias open 'xdg-open'
     alias nv 'nvim'
     alias nvs 'nvim -S'
@@ -18,39 +19,34 @@ if status is-interactive
     alias ldc 'lazydocker'
     alias ylg 'lazygit --git-dir ~/.local/share/yadm/repo.git/'
 
-    function parse_git_branch
-        set branch (git branch 2> /dev/null | sed -n 's/* \(.*\)/ on \1/p')
-        echo $branch
-    end
+    function on_fish_bind_mode --on-variable fish_bind_mode
+        set --global --export vi_mode_symbol ""
 
-    function git_prompt
-        if git rev-parse --is-inside-work-tree &> /dev/null
-            if git diff --quiet && git diff --cached --quiet
-                echo -e "\033[0;32m✔\033[0m"
-            else
-                echo -e "\033[0;31m✘\033[0m"
+        set --local color
+        set --local char
+        if test "$fish_key_bindings" = fish_vi_key_bindings
+            switch $fish_bind_mode
+                case default
+                    set color red
+                    set symbol N
+                case insert
+                    set color green
+                    set symbol I
+                case replace replace_one
+                    set color green
+                    set symbol R
+                case visual
+                    set color brmagenta
+                    set symbol V
+                case '*'
+                    set color cyan
+                    set symbol "?"
             end
+            set vi_mode_symbol (set_color --bold $color)"[$symbol]"(set_color normal)
         end
     end
 
-    function fish_prompt
-        set_color green
-        echo -n (prompt_pwd)
-        set_color normal
-
-        set_color yellow
-        echo -n (parse_git_branch)
-        set_color normal
-
-        echo -n " "(git_prompt)
-
-        set_color blue
-        echo -n " "(date "+%H:%M:%S")
-        set_color normal
-
-        echo -e "\n  "
-    end
-
     zoxide init --cmd cd fish | source
+    starship init fish | source
     direnv hook fish | source
 end
