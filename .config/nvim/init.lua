@@ -167,7 +167,7 @@ map("n", "<leader>sf", Snacks.picker.files)
 map("n", "<leader>sd", Snacks.picker.diagnostics)
 map("n", "<leader><leader>", Snacks.picker.buffers)
 
-map('n', '<leader>ut', require('undotree').toggle)
+map("n", "<leader>ut", require("undotree").toggle)
 
 map("n", "<leader>tp", ":TypstPreviewToggle<CR>")
 
