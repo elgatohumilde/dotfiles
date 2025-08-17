@@ -143,8 +143,6 @@ map("n", "<leader>|", ":vs<CR>")
 map("n", "<leader>n", ":e $MYVIMRC<CR>")
 
 map("n", "U", "<C-r>")
-map({ "n", "v" }, "j", "gj")
-map({ "n", "v" }, "k", "gk")
 map({ "n", "v" }, "gh", "^")
 map({ "n", "v" }, "gl", "$")
 map({ "n", "v" }, "gL", "g$")
