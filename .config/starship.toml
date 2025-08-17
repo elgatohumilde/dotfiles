@@ -21,6 +21,9 @@ not_found_symbol = ""
 sigint_symbol = "ﭦ"
 symbol = ""
 
+[cpp]
+disabled = false
+
 [python]
 symbol = " "
 
