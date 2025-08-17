@@ -1,5 +1,5 @@
 @theme "~/.config/rofi/theme.rasi"
 
 configuration {
-    font: "CaskaydiaCove Nerd Font Mono 14";
+    font: "CommitMono Nerd Font Mono 14";
 }
