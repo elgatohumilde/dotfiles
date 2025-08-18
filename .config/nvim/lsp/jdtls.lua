@@ -19,7 +19,7 @@ end
 
 local function get_jdtls_workspace_dir()
     local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-    return get_jdtls_cache_dir() .. "/workspace" .. project_name
+    return get_jdtls_cache_dir() .. "/workspace/" .. project_name
 end
 
 local function get_jdtls_jvm_args()
