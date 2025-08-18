@@ -26,6 +26,8 @@ vim.pack.add {
 
     { src = "https://github.com/nvim-lua/plenary.nvim" },
     { src = "https://github.com/jiaoshijie/undotree" },
+
+    { src = "https://github.com/mfussenegger/nvim-jdtls" },
 }
 
 require "mini.icons".setup()
@@ -63,7 +65,7 @@ require "oil".setup()
 vim.ui.select = Snacks.picker.select
 
 vim.diagnostic.config { virtual_text = true, }
-vim.lsp.enable { "lua_ls", "tinymist", "clangd", "jdtls" }
+vim.lsp.enable { "lua_ls", "tinymist", "clangd" }
 
 
 --------------
