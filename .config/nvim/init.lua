@@ -5,7 +5,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 vim.pack.add {
-    { src = "https://github.com/rose-pine/neovim" },
+    { src = "https://github.com/marko-cerovac/material.nvim" },
     { src = "https://github.com/nvim-lualine/lualine.nvim" },
 
     { src = "https://github.com/stevearc/oil.nvim" },
@@ -187,20 +187,14 @@ map("n", "gt", Snacks.picker.lsp_type_definitions)
 ---------------
 ---- theme ----
 ---------------
-require "rose-pine".setup {
-    extend_background_behind_borders = false,
-    palette = {
-        main = {
-            base = "none",
-            surface = "none",
-            highlight_low = "none"
-        },
-    },
+require "material".setup {
+    plugins = { "blink" },
+    disable = { background = true },
 }
-vim.cmd "colorscheme rose-pine"
-vim.cmd "hi visual guibg=#403D52"
+vim.g.material_style = "deep ocean"
+vim.cmd "colorscheme material"
 
-local lualine_theme = require "lualine.themes.rose-pine-alt"
+local lualine_theme = require "lualine.themes.material-stealth"
 require "lualine".setup {
     options = {
         theme = lualine_theme,
