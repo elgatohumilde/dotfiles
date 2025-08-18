@@ -63,7 +63,7 @@ require "oil".setup()
 vim.ui.select = Snacks.picker.select
 
 vim.diagnostic.config { virtual_text = true, }
-vim.lsp.enable { "lua_ls", "tinymist", "clangd" }
+vim.lsp.enable { "lua_ls", "tinymist", "clangd", "jdtls" }
 
 
 --------------
