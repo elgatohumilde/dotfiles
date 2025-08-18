@@ -3,7 +3,6 @@ local handlers = require "vim.lsp.handlers"
 local env = {
     HOME = vim.uv.os_homedir(),
     XDG_CACHE_HOME = os.getenv "XDG_CACHE_HOME",
-    JDTLS_JVM_ARGS = os.getenv "JDTLS_JVM_ARGS",
 }
 
 local function get_cache_dir()
@@ -19,7 +18,8 @@ local function get_jdtls_config_dir()
 end
 
 local function get_jdtls_workspace_dir()
-    return get_jdtls_cache_dir() .. "/workspace"
+    local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+    return get_jdtls_cache_dir() .. "/workspace" .. project_name
 end
 
 local function get_jdtls_jvm_args()
@@ -81,10 +81,11 @@ return {
     filetypes = { "java" },
     root_markers = {
         ".git",
+        "pom.xml",
+        "build.xml",
+        "build.mill",
         "build.gradle",
         "build.gradle.kts",
-        "build.xml",
-        "pom.xml",
         "settings.gradle",
         "settings.gradle.kts",
     },
