@@ -8,6 +8,7 @@ local config = {
     root_dir = vim.fs.root(0, {
         ".git",
         "pom.xml",
+        "build.sc",
         "build.mill",
         "build.gradle",
         "build.gradle.kts",
