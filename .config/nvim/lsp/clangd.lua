@@ -29,7 +29,6 @@ local function symbol_info(bufnr, client)
     ---@diagnostic disable-next-line:param-type-mismatch
     client:request(method_name, params, function(err, res)
         if err or #res == 0 then
-            -- Clangd always returns an error, there is no reason to parse it
             return
         end
         local container = string.format("container: %s", res[1].containerName) ---@type string

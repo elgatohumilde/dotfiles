@@ -18,7 +18,6 @@ local function create_tinymist_command(command_name, client, bufnr)
             if err then
                 return vim.notify(err.code .. ": " .. err.message, vim.log.levels.ERROR)
             end
-            -- If exporting, show the string result; else, show the table for inspection
             vim.notify(export_type and res or vim.inspect(res), vim.log.levels.INFO)
         end
         return client:exec_cmd({
@@ -27,7 +26,6 @@ local function create_tinymist_command(command_name, client, bufnr)
             arguments = arguments,
         }, { bufnr = bufnr }, handler)
     end
-    -- Construct a readable command name/desc
     local cmd_name = export_type and ("TinymistExport" .. cmd_display) or ("Tinymist" .. cmd_display) ---@type string
     local cmd_desc = export_type and ("Export to " .. cmd_display) or ("Get " .. cmd_display) ---@type string
     return run_tinymist_command, cmd_name, cmd_desc
@@ -44,7 +42,7 @@ return {
             "tinymist.exportSvg",
             "tinymist.exportPng",
             "tinymist.exportPdf",
-            -- "tinymist.exportHtml", -- Use typst 0.13
+            "tinymist.exportHtml",
             "tinymist.exportMarkdown",
             "tinymist.exportText",
             "tinymist.exportQuery",
