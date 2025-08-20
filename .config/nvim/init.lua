@@ -5,7 +5,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 vim.pack.add {
-    { src = "https://github.com/marko-cerovac/material.nvim" },
+    { src = "https://github.com/rebelot/kanagawa.nvim" },
     { src = "https://github.com/nvim-lualine/lualine.nvim" },
 
     { src = "https://github.com/stevearc/oil.nvim" },
@@ -49,7 +49,7 @@ require "blink-cmp".setup {
     signature = { enabled = true },
     completion = {
         ghost_text = { enabled = true },
-        documentation = { auto_show = true }
+        documentation = { auto_show = true },
     },
 }
 
@@ -189,14 +189,42 @@ map("n", "gt", Snacks.picker.lsp_type_definitions)
 ---------------
 ---- theme ----
 ---------------
-require "material".setup {
-    plugins = { "blink" },
-    disable = { background = true },
-}
-vim.g.material_style = "deep ocean"
-vim.cmd "colorscheme material"
+require "kanagawa".setup {
+    transparent = true,
+    overrides = function(colors)
+        local theme = colors.theme
 
-local lualine_theme = require "lualine.themes.material-stealth"
+        return {
+            NormalFloat = { bg = "none" },
+            FloatBorder = { bg = "none" },
+            FloatTitle = { bg = "none" },
+            Pmenu = {
+                fg = theme.ui.shade0,
+                bg = theme.ui.bg,
+                blend = vim.o.pumblend,
+            },
+            PmenuExtra = { fg = theme.syn.comment, bg = theme.ui.bg },
+            PmenuSel = { fg = 'none', bg = theme.ui.bg_p2 },
+            PmenuSbar = { bg = theme.ui.bg_m1 },
+            PmenuThumb = { bg = theme.ui.bg_p2 },
+        }
+    end,
+    colors = {
+        theme = {
+            all = {
+                ui = {
+                    bg = "none",
+                    bg_gutter = "none"
+                }
+            }
+        }
+    },
+}
+vim.cmd "colorscheme kanagawa"
+vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { link = "FloatBorder" })
+
+local lualine_theme = require "lualine.themes.kanagawa"
+lualine_theme.normal.c.bg = "none"
 require "lualine".setup {
     options = {
         theme = lualine_theme,
