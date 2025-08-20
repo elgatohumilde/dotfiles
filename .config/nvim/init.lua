@@ -201,6 +201,7 @@ require "kanagawa".setup {
 
             PmenuThumb = { bg = theme.ui.bg_p2 },
             PmenuSel = { fg = 'none', bg = theme.ui.bg_p2 },
+            PmenuExtra = { fg = theme.syn.comment, bg = theme.ui.bg },
             Pmenu = {
                 fg = theme.ui.shade0,
                 bg = theme.ui.bg,
