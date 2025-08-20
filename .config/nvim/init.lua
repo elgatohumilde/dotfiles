@@ -195,18 +195,17 @@ require "kanagawa".setup {
         local theme = colors.theme
 
         return {
+            FloatTitle = { bg = "none" },
             NormalFloat = { bg = "none" },
             FloatBorder = { bg = "none" },
-            FloatTitle = { bg = "none" },
+
+            PmenuThumb = { bg = theme.ui.bg_p2 },
+            PmenuSel = { fg = 'none', bg = theme.ui.bg_p2 },
             Pmenu = {
                 fg = theme.ui.shade0,
                 bg = theme.ui.bg,
                 blend = vim.o.pumblend,
             },
-            PmenuExtra = { fg = theme.syn.comment, bg = theme.ui.bg },
-            PmenuSel = { fg = 'none', bg = theme.ui.bg_p2 },
-            PmenuSbar = { bg = theme.ui.bg_m1 },
-            PmenuThumb = { bg = theme.ui.bg_p2 },
         }
     end,
     colors = {
