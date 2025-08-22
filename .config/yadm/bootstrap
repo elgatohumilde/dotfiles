@@ -2,7 +2,6 @@
 set -euo pipefail
 
 yadm checkout .
-yadm submodule update --recursive --init
 clear
 
 
