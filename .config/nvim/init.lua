@@ -6,7 +6,6 @@ vim.g.maplocalleader = ","
 
 vim.pack.add {
     { src = "https://github.com/rebelot/kanagawa.nvim" },
-    { src = "https://github.com/nvim-lualine/lualine.nvim" },
 
     { src = "https://github.com/stevearc/oil.nvim" },
 
@@ -97,6 +96,7 @@ vim.o.wrap = false
 vim.o.splitright = true
 vim.o.splitbelow = true
 
+vim.o.laststatus = 0
 vim.o.showmode = false
 vim.o.background = "dark"
 
@@ -222,13 +222,6 @@ require "kanagawa".setup {
 }
 vim.cmd "colorscheme kanagawa"
 vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { link = "FloatBorder" })
-
-local lualine_theme = require "lualine.themes.kanagawa"
-lualine_theme.normal.c.bg = "none"
-require "lualine".setup {
-    options = {
-        theme = lualine_theme,
-    },
-}
+vim.cmd "colorscheme kanagawa"
 
 -- vim.pack.update()
