@@ -15,3 +15,4 @@ export EDITOR=nvim
 export VISUAL=nvim
 export TERMINAL=foot
 export MANPAGER='nvim +Man!'
+export STARSHIP_CONFIG="$HOME/.config/starship/config.toml"
