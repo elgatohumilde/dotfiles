@@ -222,6 +222,5 @@ require "kanagawa".setup {
 }
 vim.cmd "colorscheme kanagawa"
 vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { link = "FloatBorder" })
-vim.cmd "colorscheme kanagawa"
 
 -- vim.pack.update()
