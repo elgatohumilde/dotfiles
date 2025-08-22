@@ -38,7 +38,6 @@ packages=(
     "wireplumber-docs"
     "networkmanager"
     "tmux"
-    "tmux-plugin-manager"
     "moreutils"
     "mako"
     "postgresql"
