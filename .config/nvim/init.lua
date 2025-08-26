@@ -5,7 +5,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 vim.pack.add {
-    { src = "https://github.com/rebelot/kanagawa.nvim" },
+    { src = "https://github.com/marko-cerovac/material.nvim" },
 
     { src = "https://github.com/stevearc/oil.nvim" },
 
@@ -189,38 +189,13 @@ map("n", "gt", Snacks.picker.lsp_type_definitions)
 ---------------
 ---- theme ----
 ---------------
-require "kanagawa".setup {
-    transparent = true,
-    overrides = function(colors)
-        local theme = colors.theme
-
-        return {
-            FloatTitle = { bg = "none" },
-            NormalFloat = { bg = "none" },
-            FloatBorder = { bg = "none" },
-
-            PmenuThumb = { bg = theme.ui.bg_p2 },
-            PmenuSel = { fg = 'none', bg = theme.ui.bg_p2 },
-            PmenuExtra = { fg = theme.syn.comment, bg = theme.ui.bg },
-            Pmenu = {
-                fg = theme.ui.shade0,
-                bg = theme.ui.bg,
-                blend = vim.o.pumblend,
-            },
-        }
-    end,
-    colors = {
-        theme = {
-            all = {
-                ui = {
-                    bg = "none",
-                    bg_gutter = "none"
-                }
-            }
-        }
-    },
+vim.g.material_style = "darker"
+require "material".setup {
+    plugins = { "blink" },
+    disable = {
+        background = true,
+    }
 }
-vim.cmd "colorscheme kanagawa"
-vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { link = "FloatBorder" })
+vim.cmd.colorscheme "material"
 
 -- vim.pack.update()
