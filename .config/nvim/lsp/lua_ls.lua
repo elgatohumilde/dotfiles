@@ -1,3 +1,6 @@
+local runtime_files = vim.api.nvim_get_runtime_file("", true)
+table.insert(runtime_files, "${3rd}/luv/library")
+
 return {
     cmd = { "lua-language-server" },
     filetypes = { "lua" },
@@ -17,7 +20,7 @@ return {
             runtime = { version = "LuaJIT", },
             workspace = {
                 checkThirdParty = false,
-                library = vim.api.nvim_get_runtime_file("", true),
+                library = runtime_files,
             },
         }
     },
