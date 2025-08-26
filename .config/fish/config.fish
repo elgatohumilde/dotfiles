@@ -19,34 +19,44 @@ if status is-interactive
     alias ldc 'lazydocker'
     alias ylg 'lazygit --git-dir ~/.local/share/yadm/repo.git/'
 
-    function on_fish_bind_mode --on-variable fish_bind_mode
-        set --global --export vi_mode_symbol ""
+    function fish_prompt --description Aphrodite
+        set -l retc red
+        test $status = 0; and set retc normal
 
-        set --local color
-        set --local char
-        if test "$fish_key_bindings" = fish_vi_key_bindings
-            switch $fish_bind_mode
-                case default
-                    set color red
-                    set symbol N
-                case insert
-                    set color green
-                    set symbol I
-                case replace replace_one
-                    set color green
-                    set symbol R
-                case visual
-                    set color brmagenta
-                    set symbol V
-                case '*'
-                    set color cyan
-                    set symbol "?"
-            end
-            set vi_mode_symbol (set_color --bold $color)"[$symbol]"(set_color normal)
+        set -g VIRTUAL_ENV_DISABLE_PROMPT true
+        set -q VIRTUAL_ENV; and echo -n (set_color white)'['(basename "$VIRTUAL_ENV")'] '
+
+        echo -n (set_color cyan)$USER
+        echo -n (set_color brblack)'@'
+        echo -n (set_color brblue)(prompt_hostname)
+        echo -n (set_color brblack)':'
+        echo -n (set_color normal)(prompt_pwd -D 64)
+        echo -n ' '
+
+        set -l git_branch (git --no-optional-locks rev-parse --abbrev-ref HEAD 2> /dev/null)
+        if test -n "$git_branch"
+            set -l git_status (git --no-optional-locks status --porcelain 2> /dev/null | tail -n 1)
+
+            set -l git_branch_color brgreen
+            test -n "$git_status"; and set git_branch_color bryellow
+
+            echo -n "$(set_color $git_branch_color)‹"$git_branch"›"
         end
+
+        set -q APHRODITE_THEME_SHOW_TIME; and echo -n "$(set_color brblack) [$(date +%H:%M:%S)]"
+
+        echo
+
+        set_color $retc
+        if functions -q fish_is_root_user; and fish_is_root_user
+            echo -n '# '
+        else
+            echo -n '$ '
+        end
+
+        set_color normal
     end
 
     zoxide init --cmd cd fish | source
-    starship init fish | source
     direnv hook fish | source
 end
