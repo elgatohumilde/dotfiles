@@ -48,7 +48,7 @@ packages=(
     "unzip"
     "7zip"
     "foot"
-    "neovim-nightly-bin"
+    "neovim"
     "gum"
     "wl-clipboard"
     "wl-clipboard-history-git"
