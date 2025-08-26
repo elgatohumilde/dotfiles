@@ -4,30 +4,39 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
-vim.pack.add {
-    { src = "https://github.com/marko-cerovac/material.nvim" },
+local mini_path = vim.fn.stdpath("data") .. "/site/pack/deps/start/mini.deps"
+if not vim.loop.fs_stat(mini_path) then
+    vim.fn.system({
+        "git", "clone", "https://github.com/echasnovski/mini.deps", mini_path
+    })
+    vim.opt.rtp:append(mini_path)
+end
+require "mini.deps".setup()
 
-    { src = "https://github.com/stevearc/oil.nvim" },
+local add = MiniDeps.add
 
-    { src = "https://github.com/aserowy/tmux.nvim" },
+add({ source = "marko-cerovac/material.nvim" })
 
-    { src = "https://github.com/Saghen/blink.cmp",               version = "v1.6.0" },
-    { src = "https://github.com/j-hui/fidget.nvim" },
-    { src = "https://github.com/mason-org/mason.nvim" },
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+add({ source = "stevearc/oil.nvim" })
 
-    { src = "https://github.com/chomosuke/typst-preview.nvim" },
+add({ source = "aserowy/tmux.nvim" })
 
-    { src = "https://github.com/folke/snacks.nvim" },
-    { src = "https://github.com/echasnovski/mini.nvim" },
+add({ source = "j-hui/fidget.nvim" })
+add({ source = "mason-org/mason.nvim" })
+add({ source = "nvim-treesitter/nvim-treesitter" })
+add({ source = "Saghen/blink.cmp", checkout = "v1.6.0" })
 
-    { src = "https://github.com/lewis6991/gitsigns.nvim" },
+add({ source = "chomosuke/typst-preview.nvim" })
 
-    { src = "https://github.com/nvim-lua/plenary.nvim" },
-    { src = "https://github.com/jiaoshijie/undotree" },
+add({ source = "folke/snacks.nvim" })
+add({ source = "echasnovski/mini.nvim" })
 
-    { src = "https://github.com/mfussenegger/nvim-jdtls" },
-}
+add({ source = "lewis6991/gitsigns.nvim" })
+
+add({ source = "nvim-lua/plenary.nvim" })
+add({ source = "jiaoshijie/undotree" })
+
+add({ source = "mfussenegger/nvim-jdtls" })
 
 require "mini.icons".setup()
 
@@ -70,47 +79,34 @@ vim.lsp.enable { "lua_ls", "tinymist", "clangd" }
 --------------
 ---- opts ----
 --------------
+vim.g.have_nerd_font = true
+vim.o.autoindent = true
+vim.o.background = "dark"
+vim.o.breakindent = true
+vim.o.clipboard = "unnamedplus"
+vim.o.cursorline = true
 vim.o.encoding = "UTF-8"
-
+vim.o.expandtab = true
+vim.o.ignorecase = true
+vim.o.laststatus = 0
 vim.o.number = true
 vim.o.relativenumber = true
-
-vim.o.autoindent = true
-vim.o.smartindent = true
-vim.o.breakindent = true
-
-vim.o.expandtab = true
-vim.o.smarttab = true
-
-vim.o.cursorline = true
-vim.o.winborder = "rounded"
-
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
-vim.o.undofile = true
-vim.o.swapfile = false
-
-vim.o.wrap = false
-
-vim.o.splitright = true
-vim.o.splitbelow = true
-
-vim.o.laststatus = 0
-vim.o.showmode = false
-vim.o.background = "dark"
-
-vim.o.tabstop = 2
 vim.o.shiftwidth = 4
-
-vim.o.virtualedit = "all"
-vim.o.clipboard = "unnamedplus"
-
+vim.o.showmode = false
+vim.o.smartcase = true
+vim.o.smartindent = true
+vim.o.smarttab = true
 vim.o.spell = true
 vim.o.spelllang = "en_us"
-
+vim.o.splitbelow = true
+vim.o.splitright = true
+vim.o.swapfile = false
+vim.o.tabstop = 2
 vim.o.termguicolors = true
-vim.g.have_nerd_font = true
+vim.o.undofile = true
+vim.o.virtualedit = "all"
+vim.o.winborder = "rounded"
+vim.o.wrap = false
 
 
 ------------------
@@ -197,5 +193,3 @@ require "material".setup {
     }
 }
 vim.cmd.colorscheme "material"
-
--- vim.pack.update()
