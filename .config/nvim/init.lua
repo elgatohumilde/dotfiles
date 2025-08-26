@@ -27,6 +27,7 @@ vim.o.tabstop = 2
 vim.o.termguicolors = true
 vim.o.undofile = true
 vim.o.virtualedit = "all"
+vim.o.winblend = 0
 vim.o.winborder = "rounded"
 vim.o.wrap = false
 
@@ -112,7 +113,11 @@ require "nvim-treesitter.configs".setup {
     auto_install = true,
     highlight = { enable = true },
 }
-require "fidget".setup {}
+require "fidget".setup {
+    notification = {
+        window = { winblend = vim.o.winblend },
+    }
+}
 
 require "mason".setup()
 require "blink-cmp".setup {
