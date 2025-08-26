@@ -1,3 +1,36 @@
+--------------
+---- opts ----
+--------------
+vim.g.have_nerd_font = true
+vim.o.autoindent = true
+vim.o.background = "dark"
+vim.o.breakindent = true
+vim.o.clipboard = "unnamedplus"
+vim.o.cursorline = true
+vim.o.encoding = "UTF-8"
+vim.o.expandtab = true
+vim.o.ignorecase = true
+vim.o.laststatus = 0
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.shiftwidth = 4
+vim.o.showmode = false
+vim.o.smartcase = true
+vim.o.smartindent = true
+vim.o.smarttab = true
+vim.o.spell = true
+vim.o.spelllang = "en_us"
+vim.o.splitbelow = true
+vim.o.splitright = true
+vim.o.swapfile = false
+vim.o.tabstop = 2
+vim.o.termguicolors = true
+vim.o.undofile = true
+vim.o.virtualedit = "all"
+vim.o.winborder = "rounded"
+vim.o.wrap = false
+
+
 -----------------
 ---- plugins ----
 -----------------
@@ -15,7 +48,7 @@ require "mini.deps".setup()
 
 local add = MiniDeps.add
 
-add({ source = "marko-cerovac/material.nvim" })
+add({ source = "rebelot/kanagawa.nvim" })
 
 add({ source = "stevearc/oil.nvim" })
 
@@ -37,6 +70,35 @@ add({ source = "nvim-lua/plenary.nvim" })
 add({ source = "jiaoshijie/undotree" })
 
 add({ source = "mfussenegger/nvim-jdtls" })
+
+
+require "kanagawa".setup {
+    transparent = true,
+    overrides = function(colors)
+        local theme = colors.theme
+
+        return {
+            FloatTitle = { bg = "none" },
+            NormalFloat = { bg = "none" },
+            FloatBorder = { bg = "none" },
+
+            PmenuThumb = { bg = theme.ui.bg_p2 },
+            PmenuSel = { fg = 'none', bg = theme.ui.bg_p2 },
+            PmenuExtra = { fg = theme.syn.comment, bg = theme.ui.bg },
+            Pmenu = {
+                fg = theme.ui.shade0,
+                bg = theme.ui.bg,
+                blend = vim.o.pumblend,
+            },
+        }
+    end,
+    colors = { theme = { all = { ui = {
+        bg = "none",
+        bg_gutter = "none"
+    } } } },
+}
+vim.cmd.colorscheme "kanagawa"
+vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { link = "FloatBorder" })
 
 require "mini.icons".setup()
 
@@ -74,39 +136,6 @@ vim.ui.select = Snacks.picker.select
 
 vim.diagnostic.config { virtual_text = true, }
 vim.lsp.enable { "lua_ls", "tinymist", "clangd" }
-
-
---------------
----- opts ----
---------------
-vim.g.have_nerd_font = true
-vim.o.autoindent = true
-vim.o.background = "dark"
-vim.o.breakindent = true
-vim.o.clipboard = "unnamedplus"
-vim.o.cursorline = true
-vim.o.encoding = "UTF-8"
-vim.o.expandtab = true
-vim.o.ignorecase = true
-vim.o.laststatus = 0
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.shiftwidth = 4
-vim.o.showmode = false
-vim.o.smartcase = true
-vim.o.smartindent = true
-vim.o.smarttab = true
-vim.o.spell = true
-vim.o.spelllang = "en_us"
-vim.o.splitbelow = true
-vim.o.splitright = true
-vim.o.swapfile = false
-vim.o.tabstop = 2
-vim.o.termguicolors = true
-vim.o.undofile = true
-vim.o.virtualedit = "all"
-vim.o.winborder = "rounded"
-vim.o.wrap = false
 
 
 ------------------
@@ -180,16 +209,3 @@ map("n", "gD", Snacks.picker.lsp_declarations)
 map("n", "<leader>so", Snacks.picker.lsp_symbols)
 map("n", "gi", Snacks.picker.lsp_implementations)
 map("n", "gt", Snacks.picker.lsp_type_definitions)
-
-
----------------
----- theme ----
----------------
-vim.g.material_style = "darker"
-require "material".setup {
-    plugins = { "blink" },
-    disable = {
-        background = true,
-    }
-}
-vim.cmd.colorscheme "material"
