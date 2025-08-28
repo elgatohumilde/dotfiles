@@ -49,7 +49,7 @@ require "mini.deps".setup()
 
 local add = MiniDeps.add
 
-add({ source = "rebelot/kanagawa.nvim" })
+add({ source = "blazkowolf/gruber-darker.nvim" })
 
 add({ source = "stevearc/oil.nvim" })
 
@@ -73,33 +73,7 @@ add({ source = "jiaoshijie/undotree" })
 add({ source = "mfussenegger/nvim-jdtls" })
 
 
-require "kanagawa".setup {
-    transparent = true,
-    overrides = function(colors)
-        local theme = colors.theme
-
-        return {
-            FloatTitle = { bg = "none" },
-            NormalFloat = { bg = "none" },
-            FloatBorder = { bg = "none" },
-
-            PmenuThumb = { bg = theme.ui.bg_p2 },
-            PmenuSel = { fg = 'none', bg = theme.ui.bg_p2 },
-            PmenuExtra = { fg = theme.syn.comment, bg = theme.ui.bg },
-            Pmenu = {
-                fg = theme.ui.shade0,
-                bg = theme.ui.bg,
-                blend = vim.o.pumblend,
-            },
-        }
-    end,
-    colors = { theme = { all = { ui = {
-        bg = "none",
-        bg_gutter = "none"
-    } } } },
-}
-vim.cmd.colorscheme "kanagawa"
-vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { link = "FloatBorder" })
+vim.cmd.colorscheme "gruber-darker"
 
 require "mini.icons".setup()
 
