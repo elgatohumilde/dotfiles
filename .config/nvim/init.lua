@@ -13,6 +13,7 @@ vim.o.ignorecase = true
 vim.o.laststatus = 0
 vim.o.number = true
 vim.o.relativenumber = true
+vim.o.scrolloff = 20;
 vim.o.shiftwidth = 4
 vim.o.showmode = false
 vim.o.smartcase = true
@@ -118,9 +119,6 @@ vim.lsp.enable { "lua_ls", "tinymist", "clangd", "verible" }
 local create_autocmd = vim.api.nvim_create_autocmd
 create_autocmd("TextYankPost", {
     callback = function() vim.highlight.on_yank() end
-})
-create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-    callback = function() vim.cmd "normal! zz" end
 })
 create_autocmd("BufWritePre", {
     callback = function() vim.lsp.buf.format() end
