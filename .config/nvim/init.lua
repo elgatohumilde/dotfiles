@@ -59,7 +59,6 @@ require "mini.icons".setup()
 require "mini.notify".setup()
 vim.notify = MiniNotify.make_notify()
 
-require "mini.sessions".setup()
 require "mini.surround".setup()
 require "mini.pairs".setup()
 require "mini.ai".setup()
