@@ -83,7 +83,6 @@ later(function()
     create_autocmd("LspAttach", {
         callback = function(args)
             add({ source = "Saghen/blink.cmp", checkout = "v1.6.0" })
-            vim.ui.select = Snacks.picker.select
             require "blink-cmp".setup {
                 signature = { enabled = true },
                 completion = {
@@ -132,6 +131,7 @@ later(function()
     require "snacks".setup()
     require "undotree".setup()
 
+    vim.ui.select = Snacks.picker.select
     local map = vim.keymap.set
 
     map("n", "/", Snacks.picker.lines)
