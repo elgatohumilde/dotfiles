@@ -18,8 +18,6 @@ vim.o.showmode = false
 vim.o.smartcase = true
 vim.o.smartindent = true
 vim.o.smarttab = true
-vim.o.spell = true
-vim.o.spelllang = "en_us"
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.swapfile = false
@@ -162,7 +160,6 @@ map("n", "<leader>Q", Snacks.bufdelete.other)
 
 map("n", "/", Snacks.picker.lines)
 map("n", "\\", Snacks.picker.zoxide)
-map("n", "<A-s>", Snacks.picker.spelling)
 map("n", "<leader>sg", Snacks.picker.grep)
 map("n", "<leader>sh", Snacks.picker.help)
 map("n", "<leader>sf", Snacks.picker.files)
