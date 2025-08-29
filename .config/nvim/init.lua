@@ -1,6 +1,3 @@
---------------
----- opts ----
---------------
 vim.g.have_nerd_font = true
 vim.o.autoindent = true
 vim.o.background = "dark"
@@ -31,9 +28,6 @@ vim.o.winborder = "rounded"
 vim.o.wrap = false
 
 
------------------
----- plugins ----
------------------
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
@@ -48,40 +42,29 @@ require "mini.deps".setup()
 
 local add = MiniDeps.add
 
-add({ source = "blazkowolf/gruber-darker.nvim" })
-
-add({ source = "stevearc/oil.nvim" })
-
 add({ source = "aserowy/tmux.nvim" })
-
-add({ source = "mason-org/mason.nvim" })
-add({ source = "nvim-treesitter/nvim-treesitter" })
-add({ source = "Saghen/blink.cmp", checkout = "v1.6.0" })
-
-add({ source = "chomosuke/typst-preview.nvim" })
-
-add({ source = "folke/snacks.nvim" })
+add({ source = "blazkowolf/gruber-darker.nvim" })
 add({ source = "echasnovski/mini.nvim" })
-
-add({ source = "lewis6991/gitsigns.nvim" })
-
-add({ source = "nvim-lua/plenary.nvim" })
+add({ source = "folke/snacks.nvim" })
 add({ source = "jiaoshijie/undotree" })
-
-add({ source = "mfussenegger/nvim-jdtls" })
+add({ source = "lewis6991/gitsigns.nvim" })
+add({ source = "mason-org/mason.nvim" })
+add({ source = "nvim-lua/plenary.nvim" })
+add({ source = "nvim-treesitter/nvim-treesitter" })
 
 
 vim.cmd.colorscheme "gruber-darker"
-
 require "mini.icons".setup()
+
+require "mini.notify".setup()
+vim.notify = MiniNotify.make_notify()
 
 require "mini.sessions".setup()
 require "mini.surround".setup()
 require "mini.pairs".setup()
 require "mini.ai".setup()
 
-require "mini.notify".setup()
-vim.notify = MiniNotify.make_notify()
+require "mason".setup()
 
 ---@diagnostic disable-next-line: missing-fields
 require "nvim-treesitter.configs".setup {
@@ -89,33 +72,16 @@ require "nvim-treesitter.configs".setup {
     highlight = { enable = true },
 }
 
-require "mason".setup()
-require "blink-cmp".setup {
-    signature = { enabled = true },
-    completion = {
-        ghost_text = { enabled = true },
-        documentation = { auto_show = true },
-    },
-}
+vim.lsp.enable({ "clangd", "lua_ls", "tinymist", "verible" })
 
-require "typst-preview".setup {
-    invert_colors = "auto",
-    dependencies_bin = { ["tinymist"] = "tinymist", },
-}
 require "undotree".setup()
 require "snacks".setup()
 require "tmux".setup()
-require "oil".setup()
 
 vim.ui.select = Snacks.picker.select
-
 vim.diagnostic.config { virtual_text = true, }
-vim.lsp.enable { "lua_ls", "tinymist", "clangd", "verible" }
 
 
-------------------
----- autocmds ----
-------------------
 local create_autocmd = vim.api.nvim_create_autocmd
 create_autocmd("TextYankPost", {
     callback = function() vim.highlight.on_yank() end
@@ -123,68 +89,72 @@ create_autocmd("TextYankPost", {
 create_autocmd("BufWritePre", {
     callback = function() vim.lsp.buf.format() end
 })
+create_autocmd("LspAttach", {
+    callback = function(args)
+        add({ source = "Saghen/blink.cmp", checkout = "v1.6.0" })
+        require "blink-cmp".setup {
+            signature = { enabled = true },
+            completion = {
+                ghost_text = { enabled = true },
+                documentation = { auto_show = true },
+            },
+        }
+
+        local bufnr = args.buf
+        local map = function(mode, lhs, rhs)
+            vim.keymap.set(mode, lhs, rhs, { buffer = bufnr })
+        end
+
+        map("n", "K", vim.lsp.buf.hover)
+        map("n", "<leader>f", vim.lsp.buf.format)
+        map("n", "<leader>rn", vim.lsp.buf.rename)
+        map("n", "<leader>ca", vim.lsp.buf.code_action)
+        map("n", "<leader>d", vim.diagnostic.open_float)
+
+        map("n", "gr", Snacks.picker.lsp_references)
+        map("n", "gd", Snacks.picker.lsp_definitions)
+        map("n", "gD", Snacks.picker.lsp_declarations)
+        map("n", "<leader>so", Snacks.picker.lsp_symbols)
+        map("n", "gi", Snacks.picker.lsp_implementations)
+        map("n", "gt", Snacks.picker.lsp_type_definitions)
+    end
+})
 
 
-------------------
----- commands ----
-------------------
 local create_command = vim.api.nvim_create_user_command
 create_command("LspInfo", ":checkhealth vim.lsp", {})
+create_command("Oil", function()
+    add({ source = "stevearc/oil.nvim" })
+    require "oil".setup()
+    vim.cmd "Oil"
+end, {})
 
 
------------------
----- keymaps ----
------------------
 local map = vim.keymap.set
-
-map("n", "q:", "<nop>")
-map("n", "<leader>/", "/")
-map("v", "<leader>r", "\"hy:%s/<C-r>h//g<left><left>")
-
-map("o", "ie", ":<C-u>normal! mzggVG<CR>`z")
-map("x", "ie", ":<C-u>normal! ggVG<CR>")
-
-map("n", "<leader>-", ":sp<CR>")
-map("n", "<leader>|", ":vs<CR>")
-
-map("n", "<leader>n", ":e $MYVIMRC<CR>")
-
-map("n", "U", "<C-r>")
-map({ "n", "v" }, "gh", "^")
-map({ "n", "v" }, "gl", "$")
-map({ "n", "v" }, "gL", "g$")
-
-map("x", "<leader>p", "\"_dP")
-map("n", "<Esc>", ":nohl<CR>")
-map("t", "<Esc><Esc>", "<C-\\><C-n>")
-map("n", "<A-z>", ":b#<CR>")
-
-map("n", "<C-s>", ":Oil<CR>")
-
-map("n", "<leader>q", Snacks.bufdelete.delete)
-map("n", "<leader>Q", Snacks.bufdelete.other)
-
 map("n", "/", Snacks.picker.lines)
-map("n", "\\", Snacks.picker.zoxide)
+map("n", "<A-z>", ":b#<CR>")
+map("n", "<C-s>", ":Oil<CR>")
+map("n", "<Esc>", ":nohl<CR>")
+map("n", "<leader>-", ":sp<CR>")
+map("n", "<leader>/", "/")
+map("n", "<leader><leader>", Snacks.picker.buffers)
+map("n", "<leader>Q", Snacks.bufdelete.other)
+map("n", "<leader>n", ":e $MYVIMRC<CR>")
+map("n", "<leader>q", Snacks.bufdelete.delete)
+map("n", "<leader>sd", Snacks.picker.diagnostics)
+map("n", "<leader>sf", Snacks.picker.files)
 map("n", "<leader>sg", Snacks.picker.grep)
 map("n", "<leader>sh", Snacks.picker.help)
-map("n", "<leader>sf", Snacks.picker.files)
-map("n", "<leader>sd", Snacks.picker.diagnostics)
-map("n", "<leader><leader>", Snacks.picker.buffers)
-
 map("n", "<leader>ut", require("undotree").toggle)
-
-map("n", "<leader>tp", ":TypstPreviewToggle<CR>")
-
-map("n", "K", vim.lsp.buf.hover)
-map("n", "<leader>f", vim.lsp.buf.format)
-map("n", "<leader>rn", vim.lsp.buf.rename)
-map("n", "<leader>ca", vim.lsp.buf.code_action)
-map("n", "<leader>d", vim.diagnostic.open_float)
-
-map("n", "gr", Snacks.picker.lsp_references)
-map("n", "gd", Snacks.picker.lsp_definitions)
-map("n", "gD", Snacks.picker.lsp_declarations)
-map("n", "<leader>so", Snacks.picker.lsp_symbols)
-map("n", "gi", Snacks.picker.lsp_implementations)
-map("n", "gt", Snacks.picker.lsp_type_definitions)
+map("n", "<leader>|", ":vs<CR>")
+map("n", "U", "<C-r>")
+map("n", "\\", Snacks.picker.zoxide)
+map("n", "q:", "<nop>")
+map("o", "ie", ":<C-u>normal! mzggVG<CR>`z")
+map("t", "<Esc><Esc>", "<C-\\><C-n>")
+map("v", "<leader>r", "\"hy:%s/<C-r>h//g<left><left>")
+map("x", "<leader>p", "\"_dP")
+map("x", "ie", ":<C-u>normal! ggVG<CR>")
+map({ "n", "v" }, "gL", "g$")
+map({ "n", "v" }, "gh", "^")
+map({ "n", "v" }, "gl", "$")

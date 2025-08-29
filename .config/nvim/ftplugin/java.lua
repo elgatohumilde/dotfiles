@@ -1,3 +1,6 @@
+local add = MiniDeps.add
+add({ source = "mfussenegger/nvim-jdtls" })
+
 local home = vim.env.HOME
 
 local function get_jdtls_workspace_dir()
