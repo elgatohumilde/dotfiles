@@ -127,6 +127,13 @@ create_autocmd("BufWritePre", {
 })
 
 
+------------------
+---- commands ----
+------------------
+local create_command = vim.api.nvim_create_user_command
+create_command("LspInfo", ":checkhealth vim.lsp", {})
+
+
 -----------------
 ---- keymaps ----
 -----------------
