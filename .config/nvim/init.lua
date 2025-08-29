@@ -55,7 +55,6 @@ add({ source = "stevearc/oil.nvim" })
 
 add({ source = "aserowy/tmux.nvim" })
 
-add({ source = "j-hui/fidget.nvim" })
 add({ source = "mason-org/mason.nvim" })
 add({ source = "nvim-treesitter/nvim-treesitter" })
 add({ source = "Saghen/blink.cmp", checkout = "v1.6.0" })
@@ -82,15 +81,13 @@ require "mini.surround".setup()
 require "mini.pairs".setup()
 require "mini.ai".setup()
 
+require "mini.notify".setup()
+vim.notify = MiniNotify.make_notify()
+
 ---@diagnostic disable-next-line: missing-fields
 require "nvim-treesitter.configs".setup {
     auto_install = true,
     highlight = { enable = true },
-}
-require "fidget".setup {
-    notification = {
-        window = { winblend = vim.o.winblend },
-    }
 }
 
 require "mason".setup()
