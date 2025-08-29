@@ -115,13 +115,14 @@ vim.lsp.enable { "lua_ls", "tinymist", "clangd", "verible" }
 ------------------
 ---- autocmds ----
 ------------------
-vim.api.nvim_create_autocmd("TextYankPost", {
+local create_autocmd = vim.api.nvim_create_autocmd
+create_autocmd("TextYankPost", {
     callback = function() vim.highlight.on_yank() end
 })
-vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+create_autocmd({ "CursorMoved", "CursorMovedI" }, {
     callback = function() vim.cmd "normal! zz" end
 })
-vim.api.nvim_create_autocmd("BufWritePre", {
+create_autocmd("BufWritePre", {
     callback = function() vim.lsp.buf.format() end
 })
 
