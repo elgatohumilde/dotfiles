@@ -180,7 +180,7 @@ map("n", "K", vim.lsp.buf.hover)
 map("n", "<leader>f", vim.lsp.buf.format)
 map("n", "<leader>rn", vim.lsp.buf.rename)
 map("n", "<leader>ca", vim.lsp.buf.code_action)
-map("n", "<leader>D", vim.diagnostic.open_float)
+map("n", "<leader>d", vim.diagnostic.open_float)
 
 map("n", "gr", Snacks.picker.lsp_references)
 map("n", "gd", Snacks.picker.lsp_definitions)
