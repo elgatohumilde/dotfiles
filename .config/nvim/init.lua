@@ -1,36 +1,3 @@
-vim.g.have_nerd_font = true
-vim.o.autoindent = true
-vim.o.background = "dark"
-vim.o.breakindent = true
-vim.o.clipboard = "unnamedplus"
-vim.o.cursorline = true
-vim.o.encoding = "UTF-8"
-vim.o.expandtab = true
-vim.o.ignorecase = true
-vim.o.laststatus = 0
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.scrolloff = 20;
-vim.o.shiftwidth = 4
-vim.o.showmode = false
-vim.o.smartcase = true
-vim.o.smartindent = true
-vim.o.smarttab = true
-vim.o.splitbelow = true
-vim.o.splitright = true
-vim.o.swapfile = false
-vim.o.tabstop = 2
-vim.o.termguicolors = true
-vim.o.undofile = true
-vim.o.virtualedit = "all"
-vim.o.winblend = 0
-vim.o.winborder = "rounded"
-vim.o.wrap = false
-
-
-vim.g.mapleader = " "
-vim.g.maplocalleader = ","
-
 local mini_path = vim.fn.stdpath("data") .. "/site/pack/deps/start/mini.deps"
 if not vim.loop.fs_stat(mini_path) then
     vim.fn.system({
@@ -41,6 +8,40 @@ end
 require "mini.deps".setup()
 
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+
+now(function()
+    vim.g.have_nerd_font = true
+    vim.o.autoindent = true
+    vim.o.background = "dark"
+    vim.o.breakindent = true
+    vim.o.clipboard = "unnamedplus"
+    vim.o.cursorline = true
+    vim.o.encoding = "UTF-8"
+    vim.o.expandtab = true
+    vim.o.ignorecase = true
+    vim.o.laststatus = 0
+    vim.o.number = true
+    vim.o.relativenumber = true
+    vim.o.scrolloff = 20;
+    vim.o.shiftwidth = 4
+    vim.o.showmode = false
+    vim.o.smartcase = true
+    vim.o.smartindent = true
+    vim.o.smarttab = true
+    vim.o.splitbelow = true
+    vim.o.splitright = true
+    vim.o.swapfile = false
+    vim.o.tabstop = 2
+    vim.o.termguicolors = true
+    vim.o.undofile = true
+    vim.o.virtualedit = "all"
+    vim.o.winblend = 0
+    vim.o.winborder = "rounded"
+    vim.o.wrap = false
+
+    vim.g.mapleader = " "
+    vim.g.maplocalleader = ","
+end)
 
 
 now(function()
