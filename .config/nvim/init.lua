@@ -128,8 +128,10 @@ end)
 
 
 later(function()
-    add({ source = "jiaoshijie/undotree" })
-    add({ source = "nvim-lua/plenary.nvim" })
+    add({
+        source = "jiaoshijie/undotree",
+        depends = { "nvim-lua/plenary.nvim" },
+    })
     require "undotree".setup()
 
     vim.ui.select = Snacks.picker.select
