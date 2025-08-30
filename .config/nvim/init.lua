@@ -48,7 +48,6 @@ now(function()
   add({ source = "blazkowolf/gruber-darker.nvim" })
   add({ source = "echasnovski/mini.nvim" })
   add({ source = "folke/snacks.nvim" })
-  add({ source = "mason-org/mason.nvim" })
 
   vim.cmd.colorscheme "gruber-darker"
   require "mini.icons".setup()
@@ -57,7 +56,6 @@ now(function()
   vim.notify = MiniNotify.make_notify()
 
   require "snacks".setup()
-  require "mason".setup()
 end)
 
 
@@ -102,8 +100,10 @@ end)
 
 
 later(function()
+  add({ source = "mason-org/mason.nvim" })
   add({ source = "nvim-treesitter/nvim-treesitter" })
 
+  require "mason".setup()
   ---@diagnostic disable-next-line: missing-fields
   require "nvim-treesitter.configs".setup {
     auto_install = true,
