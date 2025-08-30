@@ -47,32 +47,19 @@ end)
 now(function()
     add({ source = "blazkowolf/gruber-darker.nvim" })
     add({ source = "echasnovski/mini.nvim" })
+    add({ source = "folke/snacks.nvim" })
 
     vim.cmd.colorscheme "gruber-darker"
     require "mini.icons".setup()
 
     require "mini.notify".setup()
     vim.notify = MiniNotify.make_notify()
+
+    require "snacks".setup()
 end)
 
 
-later(function()
-    add({ source = "mason-org/mason.nvim" })
-    add({ source = "nvim-treesitter/nvim-treesitter" })
-
-    require "mason".setup()
-    ---@diagnostic disable-next-line: missing-fields
-    require "nvim-treesitter.configs".setup {
-        auto_install = true,
-        highlight = { enable = true },
-    }
-
-    vim.diagnostic.config { virtual_text = true, }
-    vim.lsp.enable({ "clangd", "lua_ls", "tinymist", "verible" })
-end)
-
-
-later(function()
+now(function()
     local create_autocmd = vim.api.nvim_create_autocmd
 
     create_autocmd("TextYankPost", {
@@ -85,11 +72,10 @@ later(function()
         callback = function(args)
             add({ source = "Saghen/blink.cmp", checkout = "v1.6.0" })
             require "blink-cmp".setup {
+                cmdline = { enabled = false },
                 signature = { enabled = true },
-                completion = {
-                    ghost_text = { enabled = true },
-                    documentation = { auto_show = true },
-                },
+                sources = { default = { "lsp", "snippets", "path" } },
+                completion = { documentation = { auto_show = true }, },
             }
 
             local bufnr = args.buf
@@ -114,6 +100,22 @@ end)
 
 
 later(function()
+    add({ source = "mason-org/mason.nvim" })
+    add({ source = "nvim-treesitter/nvim-treesitter" })
+
+    require "mason".setup()
+    ---@diagnostic disable-next-line: missing-fields
+    require "nvim-treesitter.configs".setup {
+        auto_install = true,
+        highlight = { enable = true },
+    }
+
+    vim.diagnostic.config { virtual_text = true, }
+    vim.lsp.enable({ "clangd", "lua_ls", "tinymist", "verible" })
+end)
+
+
+later(function()
     local create_command = vim.api.nvim_create_user_command
 
     create_command("LspInfo", ":checkhealth vim.lsp", {})
@@ -126,10 +128,8 @@ end)
 
 
 later(function()
-    add({ source = "folke/snacks.nvim" })
     add({ source = "jiaoshijie/undotree" })
     add({ source = "nvim-lua/plenary.nvim" })
-    require "snacks".setup()
     require "undotree".setup()
 
     vim.ui.select = Snacks.picker.select
