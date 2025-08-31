@@ -105,6 +105,7 @@ packages=(
   "zathura-djvu"
   "zathura-pdf-mupdf"
   "zen-browser-bin"
+  "zig"
   "zip"
   "zoxide"
 )

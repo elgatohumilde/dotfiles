@@ -103,11 +103,31 @@ now(function()
 	})
 end)
 
-later(function()
-	add({ source = "mason-org/mason.nvim" })
-	add({ source = "nvim-treesitter/nvim-treesitter" })
+now(function()
+	add({
+		source = "WhoIsSethDaniel/mason-tool-installer.nvim",
+		depends = { "mason-org/mason.nvim" },
+	})
 
 	require("mason").setup()
+	require("mason-tool-installer").setup({
+		ensure_installed = {
+			"bash-language-server",
+			"clangd",
+			"jdtls",
+			"lua-language-server",
+			"shfmt",
+			"stylua",
+			"tinymist",
+			"verible",
+			{ "zls", version = "0.14.0" },
+		},
+	})
+end)
+
+later(function()
+	add({ source = "nvim-treesitter/nvim-treesitter" })
+
 	---@diagnostic disable-next-line: missing-fields
 	require("nvim-treesitter.configs").setup({
 		auto_install = true,
@@ -115,7 +135,7 @@ later(function()
 	})
 
 	vim.diagnostic.config({ virtual_text = true })
-	vim.lsp.enable({ "clangd", "lua_ls", "tinymist", "verible", "bashls" })
+	vim.lsp.enable({ "clangd", "lua_ls", "tinymist", "verible", "bashls", "zls" })
 end)
 
 later(function()
