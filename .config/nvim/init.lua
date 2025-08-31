@@ -50,15 +50,18 @@ end)
 
 now(function()
   add({ source = "blazkowolf/gruber-darker.nvim" })
+  add({ source = "folke/snacks.nvim" })
   add({ source = "nvim-mini/mini.icons" })
   add({ source = "nvim-mini/mini.notify" })
-  add({ source = "folke/snacks.nvim" })
+  add({ source = "stevearc/oil.nvim" })
 
   vim.cmd.colorscheme "gruber-darker"
   require "mini.icons".setup()
 
   require "mini.notify".setup()
   vim.notify = MiniNotify.make_notify()
+
+  require "oil".setup()
 end)
 
 
@@ -123,11 +126,6 @@ later(function()
   local create_command = vim.api.nvim_create_user_command
 
   create_command("LspInfo", ":checkhealth vim.lsp", {})
-  create_command("Oil", function()
-    add({ source = "stevearc/oil.nvim" })
-    require "oil".setup()
-    vim.cmd "Oil"
-  end, {})
 end)
 
 
