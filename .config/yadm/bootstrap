@@ -214,6 +214,10 @@ echo ":: Checking that required packages are installed..."
 _installPackages "${packages[@]}"
 echo
 
+echo ":: Installing Yazi plugins..."
+ya pkg install
+echo
+
 gum spin --spinner dot --title "Starting setup now..." -- sleep 3
 
 echo -e "${GREEN}"
