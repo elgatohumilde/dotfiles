@@ -15,6 +15,7 @@ local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 
 now(function()
 	vim.g.have_nerd_font = true
+	vim.g.loaded_netrwPlugin = 1
 	vim.o.autoindent = true
 	vim.o.background = "dark"
 	vim.o.breakindent = true
@@ -52,17 +53,12 @@ now(function()
 	add({ source = "folke/snacks.nvim" })
 	add({ source = "nvim-mini/mini.icons" })
 	add({ source = "nvim-mini/mini.notify" })
-	add({ source = "stevearc/oil.nvim" })
 
 	vim.cmd.colorscheme("gruber-darker")
 	require("mini.icons").setup()
 
 	require("mini.notify").setup()
 	vim.notify = MiniNotify.make_notify()
-
-	require("oil").setup({
-		view_options = { show_hidden = true },
-	})
 end)
 
 now(function()
@@ -154,8 +150,9 @@ later(function()
 
 	map("n", "/", Snacks.picker.lines)
 	map("n", "<A-z>", ":b#<CR>")
-	map("n", "<C-s>", ":Oil<CR>")
+	map("n", "<C-s>", ":Yazi<CR>")
 	map("n", "<Esc>", ":nohl<CR>")
+	map("n", "<F1>", Snacks.picker.help)
 	map("n", "<leader>-", ":sp<CR>")
 	map("n", "<leader>/", "/")
 	map("n", "<leader><leader>", Snacks.picker.buffers)
@@ -165,7 +162,6 @@ later(function()
 	map("n", "<leader>sd", Snacks.picker.diagnostics)
 	map("n", "<leader>sf", Snacks.picker.files)
 	map("n", "<leader>sg", Snacks.picker.grep)
-	map("n", "<leader>sh", Snacks.picker.help)
 	map("n", "<leader>ut", require("undotree").toggle)
 	map("n", "<leader>|", ":vs<CR>")
 	map("n", "U", "<C-r>")
@@ -197,4 +193,10 @@ later(function()
 	Conform.setup({ format_on_save = { lsp_format = "fallback" } })
 	Conform.formatters_by_ft.lua = { "stylua" }
 	Conform.formatters_by_ft.sh = { "shfmt" }
+
+	add({
+		source = "mikavilpas/yazi.nvim",
+		depends = { "nvim-lua/plenary.nvim" },
+	})
+	require("yazi").setup({ open_for_directories = true })
 end)
