@@ -75,14 +75,6 @@ now(function()
 	})
 	create_autocmd("LspAttach", {
 		callback = function(args)
-			add({ source = "Saghen/blink.cmp", checkout = "v1.6.0" })
-			require("blink-cmp").setup({
-				cmdline = { enabled = false },
-				signature = { enabled = true },
-				sources = { default = { "lsp", "snippets", "path" } },
-				completion = { documentation = { auto_show = true } },
-			})
-
 			local bufnr = args.buf
 			local map = function(mode, lhs, rhs)
 				vim.keymap.set(mode, lhs, rhs, { buffer = bufnr })
@@ -108,7 +100,6 @@ now(function()
 		source = "WhoIsSethDaniel/mason-tool-installer.nvim",
 		depends = { "mason-org/mason.nvim" },
 	})
-
 	require("mason").setup()
 	require("mason-tool-installer").setup({
 		ensure_installed = {
@@ -136,6 +127,12 @@ later(function()
 
 	vim.diagnostic.config({ virtual_text = true })
 	vim.lsp.enable({ "clangd", "lua_ls", "tinymist", "verible", "bashls", "zls" })
+
+	add({ source = "Saghen/blink.cmp", checkout = "v1.6.0" })
+	require("blink-cmp").setup({
+		signature = { enabled = true },
+		completion = { documentation = { auto_show = true } },
+	})
 end)
 
 later(function()
