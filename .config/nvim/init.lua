@@ -61,7 +61,9 @@ now(function()
   require "mini.notify".setup()
   vim.notify = MiniNotify.make_notify()
 
-  require "oil".setup { view_options = { show_hidden = true } }
+  require "oil".setup {
+    view_options = { show_hidden = true }
+  }
 end)
 
 
@@ -70,9 +72,6 @@ now(function()
 
   create_autocmd("TextYankPost", {
     callback = function() vim.highlight.on_yank() end
-  })
-  create_autocmd("BufWritePre", {
-    callback = function() vim.lsp.buf.format() end
   })
   create_autocmd("LspAttach", {
     callback = function(args)
@@ -92,7 +91,6 @@ now(function()
       local Snacks = require "snacks"
       map("n", "<leader>ca", vim.lsp.buf.code_action)
       map("n", "<leader>d", vim.diagnostic.open_float)
-      map("n", "<leader>f", vim.lsp.buf.format)
       map("n", "<leader>rn", vim.lsp.buf.rename)
       map("n", "<leader>so", Snacks.picker.lsp_symbols)
       map("n", "K", vim.lsp.buf.hover)
@@ -176,8 +174,13 @@ later(function()
   add({ source = "nvim-mini/mini.ai" })
   add({ source = "nvim-mini/mini.pairs" })
   add({ source = "nvim-mini/mini.surround" })
+  add({ source = "stevearc/conform.nvim" })
   require "mini.ai".setup()
   require "mini.pairs".setup()
   require "mini.surround".setup()
   require "tmux".setup()
+
+  require "conform".setup {
+    format_on_save = { lsp_format = "fallback" }
+  }
 end)
