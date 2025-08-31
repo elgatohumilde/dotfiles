@@ -4,169 +4,168 @@ set -euo pipefail
 yadm checkout .
 clear
 
-
 # Variables
 
 HOME_dir="$HOME"
 
 packages=(
-    "7zip"
-    "bat"
-    "brightnessctl"
-    "chromium"
-    "cliphist"
-    "cmake"
-    "coursier-bin"
-    "direnv"
-    "docker"
-    "docker-compose"
-    "equibop-bin"
-    "exa"
-    "eza"
-    "fd"
-    "figlet"
-    "fish"
-    "foot"
-    "fzf"
-    "git"
-    "gnu-free-fonts"
-    "gum"
-    "hyprland"
-    "hyprlock"
-    "hyprpaper"
-    "hyprpicker"
-    "hyprshot"
-    "imv"
-    "iverilog"
-    "jdk-openjdk"
-    "lazydocker-bin"
-    "lazygit"
-    "lib32-pipewire"
-    "libnotify"
-    "mako"
-    "man-db"
-    "man-pages"
-    "mill"
-    "moreutils"
-    "mpv"
-    "neovim"
-    "nerd-fonts"
-    "networkmanager"
-    "nodejs"
-    "noto-fonts"
-    "noto-fonts-cjk"
-    "noto-fonts-emoji"
-    "noto-fonts-extra"
-    "npm"
-    "openjdk-src"
-    "openssh"
-    "pacman-contrib"
-    "pamixer"
-    "pavucontrol"
-    "pgcli"
-    "pipewire"
-    "pipewire-audio"
-    "pipewire-docs"
-    "pipewire-pulse"
-    "playerctl"
-    "pnpm"
-    "postgresql"
-    "python"
-    "python-pip"
-    "qt5-wayland"
-    "qt6-wayland"
-    "r"
-    "ripgrep"
-    "rofi-wayland"
-    "rust"
-    "sed"
-    "starship"
-    "texinfo"
-    "tmux"
-    "tree-sitter"
-    "tree-sitter-cli"
-    "typst"
-    "unzip"
-    "waybar"
-    "wget"
-    "wireplumber"
-    "wireplumber-docs"
-    "wl-clipboard"
-    "wl-clipboard-history-git"
-    "wlr-randr"
-    "wtype"
-    "xdg-desktop-portal"
-    "xdg-desktop-portal-gtk"
-    "xdg-desktop-portal-hyprland"
-    "xdg-desktop-portal-wlr"
-    "xdg-user-dirs"
-    "xdg-utils"
-    "xwayland-satellite"
-    "zathura"
-    "zathura-djvu"
-    "zathura-pdf-mupdf"
-    "zen-browser-bin"
-    "zip"
-    "zoxide"
+  "7zip"
+  "bat"
+  "brightnessctl"
+  "chromium"
+  "cliphist"
+  "cmake"
+  "coursier-bin"
+  "direnv"
+  "docker"
+  "docker-compose"
+  "equibop-bin"
+  "exa"
+  "eza"
+  "fd"
+  "figlet"
+  "fish"
+  "foot"
+  "fzf"
+  "git"
+  "gnu-free-fonts"
+  "gum"
+  "hyprland"
+  "hyprlock"
+  "hyprpaper"
+  "hyprpicker"
+  "hyprshot"
+  "imv"
+  "iverilog"
+  "jdk-openjdk"
+  "lazydocker-bin"
+  "lazygit"
+  "lib32-pipewire"
+  "libnotify"
+  "mako"
+  "man-db"
+  "man-pages"
+  "mill"
+  "moreutils"
+  "mpv"
+  "neovim"
+  "nerd-fonts"
+  "networkmanager"
+  "nodejs"
+  "noto-fonts"
+  "noto-fonts-cjk"
+  "noto-fonts-emoji"
+  "noto-fonts-extra"
+  "npm"
+  "openjdk-src"
+  "openssh"
+  "pacman-contrib"
+  "pamixer"
+  "pavucontrol"
+  "pgcli"
+  "pipewire"
+  "pipewire-audio"
+  "pipewire-docs"
+  "pipewire-pulse"
+  "playerctl"
+  "pnpm"
+  "postgresql"
+  "python"
+  "python-pip"
+  "qt5-wayland"
+  "qt6-wayland"
+  "r"
+  "ripgrep"
+  "rofi-wayland"
+  "rust"
+  "sed"
+  "starship"
+  "texinfo"
+  "tmux"
+  "tree-sitter"
+  "tree-sitter-cli"
+  "typst"
+  "unzip"
+  "waybar"
+  "wget"
+  "wireplumber"
+  "wireplumber-docs"
+  "wl-clipboard"
+  "wl-clipboard-history-git"
+  "wlr-randr"
+  "wtype"
+  "xdg-desktop-portal"
+  "xdg-desktop-portal-gtk"
+  "xdg-desktop-portal-hyprland"
+  "xdg-desktop-portal-wlr"
+  "xdg-user-dirs"
+  "xdg-utils"
+  "xwayland-satellite"
+  "zathura"
+  "zathura-djvu"
+  "zathura-pdf-mupdf"
+  "zen-browser-bin"
+  "zip"
+  "zoxide"
 )
 
 # Utilities
 
 _isInstalled() {
-    package="$1"
-    check="$(sudo pacman -Qs --color always "${package}" | grep "local" | grep "${package} ")"
-    if [ -n "${check}" ]; then
-        echo 0
-        return #true
-    fi
-    echo 1
-    return #false
+  package="$1"
+  check="$(sudo pacman -Qs --color always "${package}" | grep "local" | grep "${package} ")"
+  if [ -n "${check}" ]; then
+    echo 0
+    return #true
+  fi
+  echo 1
+  return #false
 }
 
 _checkCommandExists() {
-    package="$1"
-    if ! command -v $package >/dev/null; then
-        return 1
-    else
-        return 0
-    fi
+  package="$1"
+  if ! command -v $package >/dev/null; then
+    return 1
+  else
+    return 0
+  fi
 }
 
 _installPackages() {
-    toInstall=()
-    for pkg; do
-        if [[ $(_isInstalled "${pkg}") == 0 ]]; then
-            echo ":: ${pkg} is already installed."
-            continue
-        fi
-        toInstall+=("${pkg}")
-    done
-    if [[ "${toInstall[@]}" == "" ]]; then
-        return
+  toInstall=()
+  for pkg; do
+    if [[ $(_isInstalled "${pkg}") == 0 ]]; then
+      echo ":: ${pkg} is already installed."
+      continue
     fi
-    printf "Package not installed:\n%s\n" "${toInstall[@]}"
-    yay --noconfirm -S "${toInstall[@]}"
+    toInstall+=("${pkg}")
+  done
+  if [[ "${toInstall[@]}" == "" ]]; then
+    return
+  fi
+  printf "Package not installed:\n%s\n" "${toInstall[@]}"
+  yay --noconfirm -S "${toInstall[@]}"
 }
 
 _installYay() {
-    _installPackages "base-devel"
-    SCRIPT=$(realpath "$0")
-    temp_path=$(dirname "$SCRIPT")
-    git clone https://aur.archlinux.org/yay.git $HOME_dir/yay
-    cd $HOME_dir/yay
-    makepkg -si
-    cd $temp_path
-    rm -rf $HOME_dir/yay
-    echo ":: yay has been installed successfully."
+  _installPackages "base-devel"
+  SCRIPT=$(realpath "$0")
+  temp_path=$(dirname "$SCRIPT")
+  git clone https://aur.archlinux.org/yay.git $HOME_dir/yay
+  cd $HOME_dir/yay
+  makepkg -si
+  cd $temp_path
+  rm -rf $HOME_dir/yay
+  echo ":: yay has been installed successfully."
 }
 
 # Colors
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;32m'
-BLUE='\033[0;34m'
-NONE='\033[0m'
+RED="\033[0;31m"
+GREEN="\033[0;32m"
+YELLOW="\033[1;32m"
+BLUE="\033[0;34m"
+NONE="\033[0m"
 
 echo -e "${GREEN}"
 cat <<"EOF"
@@ -179,32 +178,32 @@ EOF
 echo "elgatohumilde's dotfiles"
 echo -e "${NONE}"
 while true; do
-    read -p "DO YOU WANT TO START THE INSTALLATION NOW? (Yy/Nn): " yn
-    case $yn in
-        [Yy]*)
-            echo ":: Installation started."
-            echo
-            break
-            ;;
-        [Nn]*)
-            echo ":: Installation canceled."
-            exit
-            break
-            ;;
-        *)
-            echo ":: Please answer yes or no."
-            ;;
-    esac
+  read -p "DO YOU WANT TO START THE INSTALLATION NOW? (Yy/Nn): " yn
+  case $yn in
+  [Yy]*)
+    echo ":: Installation started."
+    echo
+    break
+    ;;
+  [Nn]*)
+    echo ":: Installation canceled."
+    exit
+    break
+    ;;
+  *)
+    echo ":: Please answer yes or no."
+    ;;
+  esac
 done
 
 sudo pacman -Sy
 echo
 
 if _checkCommandExists "yay"; then
-    echo ":: yay is already installed"
+  echo ":: yay is already installed"
 else
-    echo ":: The installer requires yay. yay will be installed now"
-    _installYay
+  echo ":: The installer requires yay. yay will be installed now"
+  _installYay
 fi
 echo
 
@@ -221,40 +220,40 @@ echo
 nvidia=$(gum confirm "Do you have an NVIDIA GPU and like to install the propietary driver for it?" && echo "Y" || echo "N")
 
 if [[ $nvidia =~ ^[Yy]$ ]]; then
-    echo "Installing NVIDIA packages..."
-    nvidia_pkgs=(
-        nvidia-open nvidia-settings
-        libva libva-nvidia-driver
-        nvidia-utils lib32-nvidia-utils
-    )
-    for krnl in $(cat /usr/lib/modules/*/pkgbase); do
-        for pkg in "${krnl}-headers" "${nvidia_pkgs[@]}"; do
-            yay -S --noconfirm "$pkg"
-        done
+  echo "Installing NVIDIA packages..."
+  nvidia_pkgs=(
+    nvidia-open nvidia-settings
+    libva libva-nvidia-driver
+    nvidia-utils lib32-nvidia-utils
+  )
+  for krnl in $(cat /usr/lib/modules/*/pkgbase); do
+    for pkg in "${krnl}-headers" "${nvidia_pkgs[@]}"; do
+      yay -S --noconfirm "$pkg"
     done
+  done
 
-    if ! grep -qE '^MODULES=.*nvidia.*nvidia_modeset.*nvidia_uvm.*nvidia_drm' /etc/mkinitcpio.conf; then
-        sudo sed -Ei 's/^(MODULES=\([^\)]*)\)/\1 nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
-        echo "Nvidia modules added to /etc/mkinitcpio.conf"
-    fi
-    sudo mkinitcpio -P
+  if ! grep -qE "^MODULES=.*nvidia.*nvidia_modeset.*nvidia_uvm.*nvidia_drm" /etc/mkinitcpio.conf; then
+    sudo sed -Ei "s/^(MODULES=\([^\)]*)\)/\1 nvidia nvidia_modeset nvidia_uvm nvidia_drm)/" /etc/mkinitcpio.conf
+    echo "Nvidia modules added to /etc/mkinitcpio.conf"
+  fi
+  sudo mkinitcpio -P
 
-    NVEA="/etc/modprobe.d/nvidia.conf"
-    if [[ ! -f "$NVEA" ]]; then
-        touch "$NVEA"
-        echo "options nvidia_drm modeset=1 fbdev=1" | sudo tee -a "$NVEA"
-        echo "options nvidia NVreg_PreserveVideoMemoryAllocations=1" | sudo tee -a "$NVEA"
-    fi
+  NVEA="/etc/modprobe.d/nvidia.conf"
+  if [[ ! -f "$NVEA" ]]; then
+    touch "$NVEA"
+    echo "options nvidia_drm modeset=1 fbdev=1" | sudo tee -a "$NVEA"
+    echo "options nvidia NVreg_PreserveVideoMemoryAllocations=1" | sudo tee -a "$NVEA"
+  fi
 
-    if gum confirm "Would you like to blacklist the Nouveau driver?"; then
-        echo "blacklist nouveau" | sudo tee /etc/modprobe.d/nouveau.conf
-        echo "install nouveau /bin/true" | sudo tee /etc/modprobe.d/blacklist.conf
-    fi
+  if gum confirm "Would you like to blacklist the Nouveau driver?"; then
+    echo "blacklist nouveau" | sudo tee /etc/modprobe.d/nouveau.conf
+    echo "install nouveau /bin/true" | sudo tee /etc/modprobe.d/blacklist.conf
+  fi
 
-    echo "Configuration complete!"
+  echo "Configuration complete!"
 
 else
-    echo "NVIDIA installation skipped."
+  echo "NVIDIA installation skipped."
 fi
 
 echo ":: Enabling systemd services..."
@@ -263,5 +262,5 @@ systemctl enable --now docker.service
 echo ":: Adding user groups..."
 sudo usermod -aG docker joaquin
 
-gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 xdg-mime default org.pwmt.zathura-pdf-mupdf.desktop application/pdf

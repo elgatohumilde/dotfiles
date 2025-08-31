@@ -115,7 +115,7 @@ later(function()
 	})
 
 	vim.diagnostic.config({ virtual_text = true })
-	vim.lsp.enable({ "clangd", "lua_ls", "tinymist", "verible" })
+	vim.lsp.enable({ "clangd", "lua_ls", "tinymist", "verible", "bashls" })
 end)
 
 later(function()
@@ -179,4 +179,5 @@ later(function()
 	local Conform = require("conform")
 	Conform.setup({ format_on_save = { lsp_format = "fallback" } })
 	Conform.formatters_by_ft.lua = { "stylua" }
+	Conform.formatters_by_ft.sh = { "shfmt" }
 end)
