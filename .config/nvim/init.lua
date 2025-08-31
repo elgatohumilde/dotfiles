@@ -1,12 +1,14 @@
 vim.loader.enable()
 
-local mini_path = vim.fn.stdpath("data") .. "/site/pack/deps/start/mini.deps"
-if not vim.loop.fs_stat(mini_path) then
-  vim.fn.system({
-    "git", "clone", "https://github.com/nvim-mini/mini.deps", mini_path
-  })
-  vim.opt.rtp:append(mini_path)
+local function bootstrap(repo, path)
+  if not vim.loop.fs_stat(path) then
+    vim.fn.system({ "git", "clone", repo, path })
+    vim.opt.rtp:preppend(path)
+  end
 end
+
+local mini_path = vim.fn.stdpath("data") .. "/site/pack/deps/start/mini.deps"
+bootstrap("https://github.com/nvim-mini/mini.deps", mini_path)
 require "mini.deps".setup()
 
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
