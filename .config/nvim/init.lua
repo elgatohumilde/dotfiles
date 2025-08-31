@@ -61,7 +61,7 @@ now(function()
   require "mini.notify".setup()
   vim.notify = MiniNotify.make_notify()
 
-  require "oil".setup()
+  require "oil".setup { view_options = { show_hidden = true } }
 end)
 
 
@@ -81,7 +81,7 @@ now(function()
         cmdline = { enabled = false },
         signature = { enabled = true },
         sources = { default = { "lsp", "snippets", "path" } },
-        completion = { documentation = { auto_show = true }, },
+        completion = { documentation = { auto_show = true } },
       }
 
       local bufnr = args.buf
