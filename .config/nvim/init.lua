@@ -1,3 +1,5 @@
+vim.loader.enable()
+
 local mini_path = vim.fn.stdpath("data") .. "/site/pack/deps/start/mini.deps"
 if not vim.loop.fs_stat(mini_path) then
   vim.fn.system({
