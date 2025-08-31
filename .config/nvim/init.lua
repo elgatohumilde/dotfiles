@@ -54,8 +54,6 @@ now(function()
 
   require "mini.notify".setup()
   vim.notify = MiniNotify.make_notify()
-
-  require "snacks".setup()
 end)
 
 
@@ -83,6 +81,7 @@ now(function()
         vim.keymap.set(mode, lhs, rhs, { buffer = bufnr })
       end
 
+      local Snacks = require "snacks"
       map("n", "<leader>ca", vim.lsp.buf.code_action)
       map("n", "<leader>d", vim.diagnostic.open_float)
       map("n", "<leader>f", vim.lsp.buf.format)
@@ -132,6 +131,7 @@ later(function()
     source = "jiaoshijie/undotree",
     depends = { "nvim-lua/plenary.nvim" },
   })
+  require "snacks".setup()
   require "undotree".setup()
 
   vim.ui.select = Snacks.picker.select
