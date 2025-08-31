@@ -3,7 +3,7 @@ vim.loader.enable()
 local mini_path = vim.fn.stdpath("data") .. "/site/pack/deps/start/mini.deps"
 if not vim.loop.fs_stat(mini_path) then
   vim.fn.system({
-    "git", "clone", "https://github.com/echasnovski/mini.deps", mini_path
+    "git", "clone", "https://github.com/nvim-mini/mini.deps", mini_path
   })
   vim.opt.rtp:append(mini_path)
 end
@@ -48,7 +48,8 @@ end)
 
 now(function()
   add({ source = "blazkowolf/gruber-darker.nvim" })
-  add({ source = "echasnovski/mini.nvim" })
+  add({ source = "nvim-mini/mini.icons" })
+  add({ source = "nvim-mini/mini.notify" })
   add({ source = "folke/snacks.nvim" })
 
   vim.cmd.colorscheme "gruber-darker"
@@ -172,6 +173,9 @@ end)
 later(function()
   add({ source = "aserowy/tmux.nvim" })
   add({ source = "lewis6991/gitsigns.nvim" })
+  add({ source = "nvim-mini/mini.ai" })
+  add({ source = "nvim-mini/mini.pairs" })
+  add({ source = "nvim-mini/mini.surround" })
   require "mini.ai".setup()
   require "mini.pairs".setup()
   require "mini.surround".setup()
