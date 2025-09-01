@@ -198,5 +198,11 @@ later(function()
 		source = "mikavilpas/yazi.nvim",
 		depends = { "nvim-lua/plenary.nvim" },
 	})
-	require("yazi").setup({ open_for_directories = true })
+	require("yazi").setup({
+		open_for_directories = true,
+		integrations = {
+			grep_in_directory = "snacks.picker",
+			grep_in_selected_files = "snacks.picker",
+		},
+	})
 end)
