@@ -79,7 +79,6 @@ packages=(
   "rofi-wayland"
   "rust"
   "sed"
-  "starship"
   "texinfo"
   "tmux"
   "tree-sitter"
